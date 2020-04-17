@@ -1,0 +1,13 @@
+- Question object
+	Draw function
+	Update function
+	
+- Answer object
+	Draw function
+	Update function
+	"isAnswer" variable
+
+- Menu button object
+	Draw function
+	Redirect function
+	

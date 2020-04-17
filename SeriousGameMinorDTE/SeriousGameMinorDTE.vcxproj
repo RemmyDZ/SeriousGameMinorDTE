@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globals.h" />
+    <ClInclude Include="objects.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
