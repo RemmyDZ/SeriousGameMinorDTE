@@ -47,7 +47,21 @@ int main()
 	//Main loop
 	while (!isGameFinished)
 	{
-
+		ALLEGRO_EVENT event;
+		al_wait_for_event(event_queue, &event);
+		if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
+		{
+			isGameFinished = true;
+		}
+		if (event.type == ALLEGRO_EVENT_KEY_DOWN)
+		{
+			switch (event.keyboard.keycode)
+			{
+			case ALLEGRO_KEY_ESCAPE:
+				isGameFinished = true;
+				break;
+			}
+		}
 	}
 
 	al_destroy_display(display);
