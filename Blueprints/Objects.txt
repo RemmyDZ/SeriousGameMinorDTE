@@ -1,13 +1,20 @@
 - Question object
+	x, y variables
+	Font variable
+	Text size variable
 	Draw function
 	Update function
 	
 - Answer object
+	onClick function
+	mouseHover function
 	Draw function
 	Update function
 	"isAnswer" variable
 
 - Menu button object
+	onClick function
+	mouseHover function
 	Draw function
 	Redirect function
 	
