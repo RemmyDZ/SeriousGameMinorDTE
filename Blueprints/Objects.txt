@@ -1,5 +1,6 @@
 - Question object
 	x, y variables
+	Bitmap variable
 	Font variable
 	Text size variable
 	Draw function
@@ -7,12 +8,14 @@
 	
 - Answer object
 	onClick function
+	Bitmap variable
 	mouseHover function
 	Draw function
 	Update function
 	"isAnswer" variable
 
 - Menu button object
+	Bitmap variable
 	onClick function
 	mouseHover function
 	Draw function
