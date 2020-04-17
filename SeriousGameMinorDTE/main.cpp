@@ -14,6 +14,10 @@ int main()
 		al_show_native_message_box(0, "Error", "Error", "Could not initialize Allegro", 0, 0);
 	}
 
+	//Set display flags (only works if doing so before creating the display)
+	al_set_new_display_option(ALLEGRO_VSYNC, 1, ALLEGRO_SUGGEST); //Run game in V-sync if available
+	al_set_new_display_flags(ALLEGRO_WINDOWED); //Set the game to windowed by default
+
 	//Create display
 	ALLEGRO_DISPLAY* display;
 	display = al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT);
@@ -21,7 +25,6 @@ int main()
 	{
 		al_show_native_message_box(0, "Error", "Error", "Could not create display", 0, 0);
 	}
-	al_set_new_display_option(ALLEGRO_VSYNC, 1, ALLEGRO_SUGGEST); //Run game in V-sync if available
 
 	//Define standard colors
 	ALLEGRO_COLOR BLACK = al_map_rgb(0, 0, 0);
@@ -73,6 +76,18 @@ int main()
 			{
 			case ALLEGRO_KEY_ESCAPE:
 				isGameFinished = true;
+				break;
+			case ALLEGRO_KEY_F:
+				if (fullScreen)
+				{
+					fullScreen = false;
+					al_toggle_display_flag(display, ALLEGRO_FULLSCREEN_WINDOW, false);
+				}
+				else if (!fullScreen)
+				{
+					fullScreen = true;
+					al_toggle_display_flag(display, ALLEGRO_FULLSCREEN_WINDOW, true);
+				}
 				break;
 			}
 		}
