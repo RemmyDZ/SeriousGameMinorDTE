@@ -17,7 +17,7 @@ struct Question {
 		this->textY = textY;
 		this->question = question;
 		this->fontSize = fontSize;
-		bitmap = al_load_bitmap("Resources/textures/Question_box.bmp");
+		bitmap = al_load_bitmap("Resources/Textures/Question_box.bmp");
 		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", fontSize, NULL);
 	}
@@ -39,16 +39,21 @@ struct Answer {
 	std::string answer;
 	bool isAnswer; //True if it's the correct answer, false if not
 	bool isVisible;
+	int position; //Left or right
 	ALLEGRO_BITMAP* bitmap = NULL;
 
-	Answer(int x, int y, std::string answer) //Constructor
+	Answer(int x, int y, std::string answer, int position) //Constructor
 	{
 		this->x = x;
 		this->y = y;
 		this->answer = answer;
+		this->position = position;
 		isAnswer = false; //NEEDS FIX
 		isVisible = true; //NEEDS FIX
-		bitmap = al_load_bitmap("Resources/textures/Answer1.bmp"); //FIX (some need Answer2.bmp)
+		if (position == LEFT)
+			bitmap = al_load_bitmap("Resources/Textures/Answer1.bmp"); //Load Answer1 bitmap for answers on the left
+		else if (position == RIGHT)
+			bitmap = al_load_bitmap("Resources/Textures/Answer2.bmp"); //Load Answer2 bitmap for answers on the right
 		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 	}
 
@@ -95,7 +100,7 @@ struct Background {
 	{
 		this->x = x;
 		this->y = y;
-		bitmap = al_load_bitmap("Resources/textures/Background_quiz.bmp");
+		bitmap = al_load_bitmap("Resources/Textures/Background_quiz.bmp");
 	}
 
 	void draw()

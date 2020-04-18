@@ -24,6 +24,9 @@ const int ANSWER_Y[4] = { 550, 550, DISPLAY_HEIGHT - 175, DISPLAY_HEIGHT - 175 }
 //Maximum amount of possible answers per question
 const int MAX_ANSWERS = 4;
 
+//Answer left or right --> This decides what bitmap to load
+enum POSITION { LEFT, RIGHT};
+
 //Refresh rate
 const int FPS = 60;
 
