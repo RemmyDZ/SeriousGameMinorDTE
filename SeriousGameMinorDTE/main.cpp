@@ -102,6 +102,7 @@ int main()
 
 			//Draw objects here
 			background.draw();
+			question.draw();
 
 			al_flip_display(); //Everything is drawn to a buffer. Once you flip the display, the buffer replaces the current screen composition
 		}

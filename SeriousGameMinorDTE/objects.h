@@ -12,6 +12,7 @@ struct Question {
 		this->y = y;
 		this->question = question;
 		bitmap = al_load_bitmap("Resources/textures/Question_box.bmp");
+		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 255, 255));
 	}
 
 	void setNextQuestion()
@@ -20,7 +21,7 @@ struct Question {
 	}
 	void draw()
 	{
-		//Draw bitmap and text
+		al_draw_bitmap(bitmap, 0, 0, NULL);
 	}
 };
 
