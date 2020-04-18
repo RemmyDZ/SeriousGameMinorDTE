@@ -36,8 +36,10 @@ struct Background {
 	int x, y;
 	ALLEGRO_BITMAP* bitmap;
 
-	Background()
+	Background(int x, int y)
 	{
+		this->x = x;
+		this->y = y;
 		bitmap = al_load_bitmap("Resources/textures/Background_quiz.bmp");
 	}
 

@@ -52,6 +52,7 @@ int main()
 
 	//Create objects
 	Question question(0, 0, questions[0]);
+	Background background(0, 0);
 
 	//Start timer
 	al_start_timer(timer);
@@ -98,7 +99,10 @@ int main()
 		{
 			redraw = false;
 			al_clear_to_color(BLACK); //Set background to black
+
 			//Draw objects here
+			background.draw();
+
 			al_flip_display(); //Everything is drawn to a buffer. Once you flip the display, the buffer replaces the current screen composition
 		}
 	}
