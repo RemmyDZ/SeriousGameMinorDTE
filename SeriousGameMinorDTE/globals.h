@@ -4,6 +4,9 @@
 const int DISPLAY_WIDTH = 1600;
 const int DISPLAY_HEIGHT = 900;
 
+//Game states
+enum GAMESTATE { MAINMENU, QUIZ_ONE, QUIZ_TWO, QUIZ_THREE, QUIZ_FOUR, QUIZ_FIVE }; //Gameover maybe?
+
 //Coordinations
 const int BACKGROUND_X = 0;
 const int BACKGROUND_Y = 0;
