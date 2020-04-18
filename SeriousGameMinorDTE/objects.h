@@ -31,3 +31,18 @@ struct Answer {
 struct MenuButton {
 	int x, y;
 };
+
+struct Background {
+	int x, y;
+	ALLEGRO_BITMAP* bitmap;
+
+	Background()
+	{
+		bitmap = al_load_bitmap("Resources/textures/Background_quiz.bmp");
+	}
+
+	void draw()
+	{
+		al_draw_bitmap(bitmap, 0, 0, NULL);
+	}
+};
