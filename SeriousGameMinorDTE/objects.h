@@ -39,7 +39,7 @@ struct Answer {
 	bool isAnswer; //True if it's the correct answer, false if not
 	ALLEGRO_BITMAP* bitmap;
 
-	Answer(int x, int y, std::string answer)
+	Answer(int x, int y, std::string answer) //Constructor
 	{
 		this->x = x;
 		this->y = y;
@@ -57,13 +57,38 @@ struct Answer {
 
 struct MenuButton {
 	int x, y;
+	std::string text;
+	ALLEGRO_BITMAP* bitmap;
+
+	MenuButton(int x, int y, std::string text)
+	{
+		this->x = x;
+		this->y = y;
+		this->text = text;
+		//bitmap = ...
+	}
+
+	void onMouseHover()
+	{
+		//Change color?
+	}
+
+	void onClick()
+	{
+		//Redirect to quiz
+	}
+
+	void draw()
+	{
+		//Draw bitmap + text
+	}
 };
 
 struct Background {
 	int x, y;
 	ALLEGRO_BITMAP* bitmap;
 
-	Background(int x, int y)
+	Background(int x, int y) //Constructor
 	{
 		this->x = x;
 		this->y = y;
@@ -72,6 +97,6 @@ struct Background {
 
 	void draw()
 	{
-		al_draw_bitmap(bitmap, 0, 0, NULL);
+		al_draw_bitmap(bitmap, x, y, NULL);
 	}
 };
