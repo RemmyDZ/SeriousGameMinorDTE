@@ -35,9 +35,11 @@ struct Question {
 
 struct Answer {
 	int x, y;
+	//Add text coordinates here
 	std::string answer;
 	bool isAnswer; //True if it's the correct answer, false if not
-	ALLEGRO_BITMAP* bitmap;
+	bool isVisible;
+	ALLEGRO_BITMAP* bitmap = NULL;
 
 	Answer(int x, int y, std::string answer) //Constructor
 	{
@@ -45,13 +47,14 @@ struct Answer {
 		this->y = y;
 		this->answer = answer;
 		isAnswer = false; //NEEDS FIX
-		bitmap = al_load_bitmap("Resources/textures/Answer1.bmp");
+		isVisible = true; //NEEDS FIX
+		bitmap = al_load_bitmap("Resources/textures/Answer1.bmp"); //FIX (some need Answer2.bmp)
 		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 	}
 
 	void draw()
 	{
-		al_draw_bitmap(bitmap, 50, 600, NULL);
+		al_draw_bitmap(bitmap, x, y, NULL);
 	}
 };
 

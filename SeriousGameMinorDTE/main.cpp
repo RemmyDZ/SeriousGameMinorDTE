@@ -1,5 +1,6 @@
 //Libraries
 #include<iostream>
+#include<iterator>
 #include<allegro5/allegro.h>
 #include<allegro5/allegro_native_dialog.h>
 #include<allegro5/allegro_primitives.h>
@@ -57,6 +58,8 @@ int main()
 	//Create objects
 	Question question(QUESTIONBOX_X, QUESTIONBOX_Y, QUESTION_TEXT_X, QUESTION_TEXT_Y, questions[0], QUESTION_FONT_SIZE);
 	Background background(BACKGROUND_X, BACKGROUND_Y);
+	Answer answer[MAX_ANSWERS] = { Answer(ANSWER_X[0], ANSWER_Y[0], "True"), Answer(ANSWER_X[1], ANSWER_Y[1], "False"), 
+									Answer(ANSWER_X[2], ANSWER_Y[2], "Haha"), Answer(ANSWER_X[3], ANSWER_Y[3], "Hoho") }; //Change text once text coordinates are implemented and update draw()
 
 	//Start timer
 	al_start_timer(timer);
@@ -107,6 +110,13 @@ int main()
 			//Draw objects here
 			background.draw();
 			question.draw();
+			for (int i = 0; i < std::size(answer); i++) //FIX WARNING
+			{
+				if (answer[i].isVisible) //Only draw answer if visible (non-visible if question has less answers than the max amount of answers)
+				{
+					answer[i].draw();
+				}
+			}
 
 			al_flip_display(); //Everything is drawn to a buffer. Once you flip the display, the buffer replaces the current screen composition
 		}

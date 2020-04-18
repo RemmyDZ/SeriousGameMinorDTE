@@ -18,8 +18,11 @@ const int QUESTION_FONT_SIZE = 100;
 const int QUESTION_TEXT_X = 100;
 const int QUESTION_TEXT_Y = 100;
 
-const int ANSWER_X[4] = { 20, 20, DISPLAY_WIDTH - 20, DISPLAY_WIDTH - 20 };
-const int ANSWER_Y[4] = { 650, 650, DISPLAY_HEIGHT - 20, DISPLAY_HEIGHT - 20 };
+const int ANSWER_X[4] = { 2, DISPLAY_WIDTH - 802, 2, DISPLAY_WIDTH - 802 };
+const int ANSWER_Y[4] = { 550, 550, DISPLAY_HEIGHT - 175, DISPLAY_HEIGHT - 175 };
+
+//Maximum amount of possible answers per question
+const int MAX_ANSWERS = 4;
 
 //Refresh rate
 const int FPS = 60;
@@ -37,7 +40,7 @@ bool fullScreen = false; //Game starts in windowed mode, which can be toggled to
 std::string questions[] = { "Question 1", "Question 2", "Question 3", "Question 4" };
 
 //Answers
-std::string answers[][4] = { {"A", "B", "C", "D"}, //Maximum of 4 answers for a single question
+std::string answers[][MAX_ANSWERS] = { {"A", "B", "C", "D"}, //Maximum of 4 answers for a single question
 							{"AA", "BB", "CC", "DD"},
 							{"AAA", "BBB", "CCC", "DDD"},
 							{"AAAA", "BBBB", "CCCC", "DDDD"} };
