@@ -3,6 +3,7 @@
 #include<allegro5/allegro.h>
 #include<allegro5/allegro_native_dialog.h>
 #include<allegro5/allegro_primitives.h>
+#include<allegro5/allegro_image.h>
 #include"globals.h"
 #include"objects.h"
 
@@ -35,6 +36,7 @@ int main()
 
 	//Initialize addons
 	al_init_primitives_addon();
+	al_init_image_addon();
 	al_install_keyboard();
 
 	//Create timer
@@ -49,7 +51,7 @@ int main()
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
 	//Create objects
-
+	Question question(0, 0, questions[0]);
 
 	//Start timer
 	al_start_timer(timer);

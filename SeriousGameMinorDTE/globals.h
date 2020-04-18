@@ -17,10 +17,10 @@ bool redraw = true; //Always start with 'true', otherwise nothing will be drawn 
 bool fullScreen = false; //Game starts in windowed mode, which can be toggled to fullscreen
 
 //Questions
-const char* questions[] = { "Question 1", "Question 2", "Question 3", "Question 4" };
+std::string questions[] = { "Question 1", "Question 2", "Question 3", "Question 4" };
 
 //Answers
-const char* answers[][4] = { {"A", "B", "C", "D"}, //Maximum of 4 answers for a single question
+std::string answers[][4] = { {"A", "B", "C", "D"}, //Maximum of 4 answers for a single question
 							{"AA", "BB", "CC", "DD"},
 							{"AAA", "BBB", "CCC", "DDD"},
 							{"AAAA", "BBBB", "CCCC", "DDDD"} };
