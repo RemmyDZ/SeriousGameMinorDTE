@@ -27,6 +27,24 @@ struct Question {
 
 struct Answer {
 	int x, y;
+	std::string answer;
+	bool isAnswer; //True if it's the correct answer, false if not
+	ALLEGRO_BITMAP* bitmap;
+
+	Answer(int x, int y, std::string answer)
+	{
+		this->x = x;
+		this->y = y;
+		this->answer = answer;
+		isAnswer = false; //NEEDS FIX
+		bitmap = al_load_bitmap("Resources/textures/Answer1.bmp");
+		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 255, 255));
+	}
+
+	void draw()
+	{
+		al_draw_bitmap(bitmap, 50, 600, NULL);
+	}
 };
 
 struct MenuButton {
