@@ -11,6 +11,10 @@ const int BACKGROUND_Y = 0;
 const int QUESTIONBOX_X = 0;
 const int QUESTIONBOX_Y = 0;
 
+const int QUESTION_FONT_SIZE = 100;
+const int QUESTION_TEXT_X = 100;
+const int QUESTION_TEXT_Y = 100;
+
 const int ANSWER_X[4] = { 20, 20, DISPLAY_WIDTH - 20, DISPLAY_WIDTH - 20 };
 const int ANSWER_Y[4] = { 650, 650, DISPLAY_HEIGHT - 20, DISPLAY_HEIGHT - 20 };
 

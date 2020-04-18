@@ -3,16 +3,23 @@
 //Question object
 struct Question {
 	int x, y;
+	int textX, textY;
+	int fontSize;
 	std::string question;
 	ALLEGRO_BITMAP* bitmap = NULL;
+	ALLEGRO_FONT* font = NULL;
 
-	Question(int x, int y, std::string question) //Constructor
+	Question(int x, int y, int textX, int textY, std::string question, int fontSize) //Constructor
 	{
 		this->x = x;
 		this->y = y;
+		this->textX = textX;
+		this->textY = textY;
 		this->question = question;
+		this->fontSize = fontSize;
 		bitmap = al_load_bitmap("Resources/textures/Question_box.bmp");
 		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
+		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", fontSize, NULL);
 	}
 
 	void setNextQuestion()
@@ -21,7 +28,8 @@ struct Question {
 	}
 	void draw()
 	{
-		al_draw_bitmap(bitmap, 0, 0, NULL);
+		al_draw_bitmap(bitmap, x, y, NULL);
+		al_draw_text(font, al_map_rgb(0, 0, 0), textX, textY, NULL, question.c_str());
 	}
 };
 

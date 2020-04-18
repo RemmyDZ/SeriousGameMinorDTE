@@ -4,6 +4,8 @@
 #include<allegro5/allegro_native_dialog.h>
 #include<allegro5/allegro_primitives.h>
 #include<allegro5/allegro_image.h>
+#include<allegro5/allegro_font.h>
+#include<allegro5/allegro_ttf.h>
 #include"globals.h"
 #include"objects.h"
 
@@ -37,6 +39,8 @@ int main()
 	//Initialize addons
 	al_init_primitives_addon();
 	al_init_image_addon();
+	al_init_font_addon();
+	al_init_ttf_addon();
 	al_install_keyboard();
 
 	//Create timer
@@ -51,7 +55,7 @@ int main()
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
 	//Create objects
-	Question question(QUESTIONBOX_X, QUESTIONBOX_Y, questions[0]);
+	Question question(QUESTIONBOX_X, QUESTIONBOX_Y, QUESTION_TEXT_X, QUESTION_TEXT_Y, questions[0], QUESTION_FONT_SIZE);
 	Background background(BACKGROUND_X, BACKGROUND_Y);
 
 	//Start timer
