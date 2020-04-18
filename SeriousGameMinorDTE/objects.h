@@ -12,7 +12,7 @@ struct Question {
 		this->y = y;
 		this->question = question;
 		bitmap = al_load_bitmap("Resources/textures/Question_box.bmp");
-		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 255, 255));
+		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 	}
 
 	void setNextQuestion()
@@ -38,7 +38,7 @@ struct Answer {
 		this->answer = answer;
 		isAnswer = false; //NEEDS FIX
 		bitmap = al_load_bitmap("Resources/textures/Answer1.bmp");
-		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 255, 255));
+		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 	}
 
 	void draw()

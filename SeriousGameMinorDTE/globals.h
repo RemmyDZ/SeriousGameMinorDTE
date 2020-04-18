@@ -4,6 +4,16 @@
 const int DISPLAY_WIDTH = 1600;
 const int DISPLAY_HEIGHT = 900;
 
+//Coordinations
+const int BACKGROUND_X = 0;
+const int BACKGROUND_Y = 0;
+
+const int QUESTIONBOX_X = 0;
+const int QUESTIONBOX_Y = 0;
+
+const int ANSWER_X[4] = { 20, 20, DISPLAY_WIDTH - 20, DISPLAY_WIDTH - 20 };
+const int ANSWER_Y[4] = { 650, 650, DISPLAY_HEIGHT - 20, DISPLAY_HEIGHT - 20 };
+
 //Refresh rate
 const int FPS = 60;
 

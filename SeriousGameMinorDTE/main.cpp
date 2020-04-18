@@ -51,8 +51,8 @@ int main()
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
 	//Create objects
-	Question question(0, 0, questions[0]);
-	Background background(0, 0);
+	Question question(QUESTIONBOX_X, QUESTIONBOX_Y, questions[0]);
+	Background background(BACKGROUND_X, BACKGROUND_Y);
 
 	//Start timer
 	al_start_timer(timer);
