@@ -26,10 +26,17 @@ struct Question {
 	{
 		//this->question =
 	}
+
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
 		al_draw_text(font, al_map_rgb(0, 0, 0), textX, textY, NULL, question.c_str());
+	}
+
+	void clear() //Garbage control
+	{
+		al_destroy_bitmap(bitmap);
+		al_destroy_font(font);
 	}
 };
 
@@ -61,6 +68,11 @@ struct Answer {
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
 	}
+
+	void clear() //Garbage control
+	{
+		al_destroy_bitmap(bitmap);
+	}
 };
 
 struct MenuButton {
@@ -90,6 +102,11 @@ struct MenuButton {
 	{
 		//Draw bitmap + text
 	}
+
+	void clear() //Garbage control
+	{
+		al_destroy_bitmap(bitmap);
+	}
 };
 
 struct Background {
@@ -106,5 +123,10 @@ struct Background {
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
+	}
+
+	void clear() //Garbage control
+	{
+		al_destroy_bitmap(bitmap);
 	}
 };

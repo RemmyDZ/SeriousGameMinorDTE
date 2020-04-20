@@ -122,6 +122,14 @@ int main()
 		}
 	}
 
+	//Garbage control
+	question.clear();
+	background.clear();
+	for (int i = 0; i < MAX_ANSWERS; i++)
+	{
+		answer[i].clear();
+	}
+
 	al_destroy_display(display);
 	al_destroy_timer(timer);
 	al_destroy_event_queue(event_queue);
