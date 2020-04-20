@@ -4,22 +4,29 @@
 struct Question {
 	int x, y;
 	int textX, textY;
+	int nrTextX, nrTextY; //Coordinations for the question number
 	int fontSize;
+	int nrFontSize; //Font size for the question number
 	std::string question;
 	ALLEGRO_BITMAP* bitmap = NULL;
 	ALLEGRO_FONT* font = NULL;
+	ALLEGRO_FONT* nrFont = NULL; //Font for the question number
 
-	Question(int x, int y, int textX, int textY, std::string question, int fontSize) //Constructor
+	Question(int x, int y, int textX, int textY, int nrTextX, int nrTextY, std::string question, int fontSize, int nrFontSize) //Constructor
 	{
 		this->x = x;
 		this->y = y;
 		this->textX = textX;
 		this->textY = textY;
+		this->nrTextX = nrTextX;
+		this->nrTextY = nrTextY;
 		this->question = question;
 		this->fontSize = fontSize;
+		this->nrFontSize = nrFontSize;
 		bitmap = al_load_bitmap("Resources/Textures/Question_box.bmp");
 		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", fontSize, NULL);
+		nrFont = al_load_font("Resources/Fonts/GILLUBCD.ttf", nrFontSize, NULL); //CHANGE FONT, THIS ONE IS NOT SUITABLE FOR NUMBERS
 	}
 
 	void setNextQuestion()
@@ -31,12 +38,15 @@ struct Question {
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
 		al_draw_text(font, al_map_rgb(0, 0, 0), textX, textY, NULL, question.c_str());
+		al_draw_textf(nrFont, al_map_rgb(0, 0, 0), nrTextX, nrTextY, NULL, "%i", currentQuestion+1); //Plus 1, because currentQuestion is an index number, and we want to display a correct number
+		//ADD TOTAL QUESTIONS ABOVE
 	}
 
 	void clear() //Garbage control
 	{
 		al_destroy_bitmap(bitmap);
 		al_destroy_font(font);
+		al_destroy_font(nrFont);
 	}
 };
 

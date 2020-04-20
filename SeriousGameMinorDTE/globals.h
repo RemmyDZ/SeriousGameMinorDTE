@@ -15,8 +15,12 @@ const int QUESTIONBOX_X = 0;
 const int QUESTIONBOX_Y = 0;
 
 const int QUESTION_FONT_SIZE = 100;
+const int QUESTION_NUMBER_FONT_SIZE = 30;
+
 const int QUESTION_TEXT_X = 100;
 const int QUESTION_TEXT_Y = 100;
+const int QUESTION_NUMBER_TEXT_X = 200;
+const int QUESTION_NUMBER_TEXT_Y = 478;
 
 const int ANSWER_X[4] = { 2, DISPLAY_WIDTH - 802, 2, DISPLAY_WIDTH - 802 };
 const int ANSWER_Y[4] = { 550, 550, DISPLAY_HEIGHT - 175, DISPLAY_HEIGHT - 175 };
@@ -40,6 +44,7 @@ bool redraw = true; //Always start with 'true', otherwise nothing will be drawn 
 bool fullScreen = false; //Game starts in windowed mode, which can be toggled to fullscreen
 
 //Questions
+int currentQuestion = 0; //Starts at 0 because it acts as an index to the questions array below
 std::string questions[] = { "Question 1", "Question 2", "Question 3", "Question 4" };
 
 //Answers
