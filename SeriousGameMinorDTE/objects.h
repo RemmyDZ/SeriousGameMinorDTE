@@ -38,8 +38,8 @@ struct Question {
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
 		al_draw_text(font, al_map_rgb(0, 0, 0), textX, textY, NULL, question.c_str());
-		al_draw_textf(nrFont, al_map_rgb(0, 0, 0), nrTextX, nrTextY, NULL, "%i", currentQuestion+1); //Plus 1, because currentQuestion is an index number, and we want to display a correct number
-		//ADD TOTAL QUESTIONS ABOVE
+		al_draw_textf(nrFont, al_map_rgb(0, 0, 0), nrTextX, nrTextY, NULL, "%i/%j", currentQuestion+1, static_cast<int>(std::size(questions))); //Plus 1, because currentQuestion is an index number, and we want to display a correct number
+		//FIX TOTAL QUESTIONS NOT SHOWING
 	}
 
 	void clear() //Garbage control
