@@ -110,7 +110,7 @@ int main()
 			//Draw objects here
 			background.draw();
 			question.draw();
-			for (int i = 0; i < std::size(answer); i++) //FIX WARNING
+			for (size_t i = 0; i < std::size(answer); i++)
 			{
 				if (answer[i].isVisible) //Only draw answer if visible (non-visible if question has less answers than the max amount of answers)
 				{
