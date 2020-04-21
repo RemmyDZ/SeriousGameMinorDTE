@@ -58,8 +58,8 @@ int main()
 	//Create objects
 	Question question(QUESTIONBOX_X, QUESTIONBOX_Y, QUESTION_TEXT_X, QUESTION_TEXT_Y, QUESTION_NUMBER_TEXT_X, QUESTION_NUMBER_TEXT_Y, questions[0], QUESTION_FONT_SIZE, QUESTION_NUMBER_FONT_SIZE);
 	Background background(BACKGROUND_X, BACKGROUND_Y);
-	Answer answer[MAX_ANSWERS] = { Answer(ANSWER_X[0], "True", LEFT, TOP, question), Answer(ANSWER_X[1], "True", RIGHT, TOP, question),
-									Answer(ANSWER_X[2], "True", LEFT, BOTTOM, question), Answer(ANSWER_X[3], "True", RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
+	Answer answer[MAX_ANSWERS] = { Answer("True", LEFT, TOP, question), Answer("True", RIGHT, TOP, question),
+									Answer("True", LEFT, BOTTOM, question), Answer("True", RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
 
 	//Start timer
 	al_start_timer(timer);

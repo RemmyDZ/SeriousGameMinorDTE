@@ -61,17 +61,22 @@ struct Answer {
 	ALLEGRO_BITMAP* bitmap = NULL;
 	//Question &question;
 
-	Answer(int x, std::string answer, int positionV, int positionH, Question question) //Constructor (positionV = vertical, positionH = horizontal)
+	Answer(std::string answer, int positionV, int positionH, Question question) //Constructor (positionV = vertical, positionH = horizontal)
 	{
-		this->x = x;
 		this->answer = answer;
 		this->position = position;
 		isAnswer = false; //NEEDS FIX
 		isVisible = true; //NEEDS FIX
 		if (positionV == LEFT)
+		{
+			x = DISPLAY_WIDTH / 4;
 			bitmap = al_load_bitmap("Resources/Textures/Answer1.bmp"); //Load Answer1 bitmap for answers on the left
+		}
 		else if (positionV == RIGHT)
+		{
+			x = (DISPLAY_WIDTH / 4) * 3;
 			bitmap = al_load_bitmap("Resources/Textures/Answer2.bmp"); //Load Answer2 bitmap for answers on the right
+		}
 		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 		offsetX = al_get_bitmap_width(bitmap) / 2;
 		offsetY = al_get_bitmap_height(bitmap) / 2;
