@@ -46,7 +46,7 @@ bool fullScreen = false; //Game starts in windowed mode, which can be toggled to
 
 //Questions (CHANGE TO VECTORS)
 int currentQuestion = 0; //Starts at 0 because it acts as an index to the questions array below
-std::string questions[] = { "Question 1", "Question 2", "Question 3", "Question 4" };
+std::string questions[] = { "What will happen when I insert a very long question?", "Question 2", "Question 3", "Question 4" };
 
 //Answers (CHANGE TO VECTORS)
 std::string answers[][MAX_ANSWERS] = { {"Yes", "No", "Maybe", "I don't know"}, //Maximum of 4 answers for a single question

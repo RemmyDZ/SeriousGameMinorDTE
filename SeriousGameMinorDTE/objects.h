@@ -37,7 +37,8 @@ struct Question {
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
-		al_draw_text(font, al_map_rgb(0, 0, 0), textX, textY, NULL, question.c_str());
+		//al_draw_text(font, al_map_rgb(0, 0, 0), textX, textY, NULL, question.c_str());
+		al_draw_multiline_text(font, al_map_rgb(0, 0, 0), textX, textY, al_get_bitmap_width(bitmap) - 100, 0, NULL, question.c_str());
 		al_draw_textf(nrFont, al_map_rgb(0, 0, 0), nrTextX, nrTextY, NULL, "%i/%zu", currentQuestion+1, std::size(questions)); //Plus 1, because currentQuestion is an index number, and we want to display a correct number
 		//FIX TOTAL QUESTIONS NOT SHOWING
 	}
