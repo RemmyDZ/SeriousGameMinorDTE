@@ -7,7 +7,7 @@ const int DISPLAY_HEIGHT = 900;
 //Game states
 enum GAMESTATE { MAINMENU, QUIZ_ONE, QUIZ_TWO, QUIZ_THREE, QUIZ_FOUR, QUIZ_FIVE }; //Gameover maybe?
 
-//Coordinations
+//Coordinations and font sizes
 const int BACKGROUND_X = 0;
 const int BACKGROUND_Y = 0;
 
@@ -22,6 +22,7 @@ const int QUESTION_TEXT_Y = 100;
 const int QUESTION_NUMBER_TEXT_X = 200;
 const int QUESTION_NUMBER_TEXT_Y = 478;
 
+const int ANSWER_FONT_SIZE = 30;
 //const int ANSWER_X[4] = { DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3, DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3 }; --> OBSOLETE
 //const int ANSWER_Y[4] = { 550, 550, DISPLAY_HEIGHT - 175, DISPLAY_HEIGHT - 175 }; --> NOT NEEDED ANYMORE
 
@@ -45,10 +46,10 @@ bool fullScreen = false; //Game starts in windowed mode, which can be toggled to
 
 //Questions
 int currentQuestion = 0; //Starts at 0 because it acts as an index to the questions array below
-std::string questions[] = { "Question 1", "Question 2", "Question 3", "Question 4" };
+std::string questions[] = { "Is 'No u!' a strong comeback?", "Question 2", "Question 3", "Question 4" };
 
 //Answers
-std::string answers[][MAX_ANSWERS] = { {"A", "B", "C", "D"}, //Maximum of 4 answers for a single question
+std::string answers[][MAX_ANSWERS] = { {"Yes", "No", "Maybe", "I don't know"}, //Maximum of 4 answers for a single question
 							{"AA", "BB", "CC", "DD"},
 							{"AAA", "BBB", "CCC", "DDD"},
 							{"AAAA", "BBBB", "CCCC", "DDDD"} };

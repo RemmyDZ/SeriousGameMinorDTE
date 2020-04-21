@@ -54,17 +54,22 @@ struct Answer {
 	int x, y;
 	int offsetX, offsetY; //Make the 0,0 point in the middle of the texture instead of the top left
 	//Add text coordinates here
+	int textOffset;
 	std::string answer;
 	bool isAnswer; //True if it's the correct answer, false if not
 	bool isVisible;
-	int position; //Left or right
+	int positionV, positionH;
 	ALLEGRO_BITMAP* bitmap = NULL;
+	ALLEGRO_FONT* font = NULL;
 	//Question &question;
 
 	Answer(std::string answer, int positionV, int positionH, Question question) //Constructor (positionV = vertical, positionH = horizontal)
 	{
-		this->answer = answer;
-		this->position = position;
+		textOffset = ANSWER_FONT_SIZE / 2;
+		//this->answer = answer;
+		this->answer = answers[currentQuestion][1];
+		this->positionV = positionV;
+		this->positionH = positionH;
 		isAnswer = false; //NEEDS FIX
 		isVisible = true; //NEEDS FIX
 		if (positionV == LEFT)
@@ -84,11 +89,13 @@ struct Answer {
 			y = ((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 4) + al_get_bitmap_height(question.bitmap);
 		else if (positionH == BOTTOM)
 			y = (((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 4) * 3) + al_get_bitmap_height(question.bitmap);
+		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", ANSWER_FONT_SIZE, NULL);
 	}
 
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x-offsetX, y-offsetY, NULL);
+		al_draw_text(font, al_map_rgb(0, 0, 0), x, y-textOffset, ALLEGRO_ALIGN_CENTER, answer.c_str());
 		//al_draw_textf(NULL, al_map_rgb(0, 0, 0), 10, 10, NULL, "y: %i", y);
 	}
 
