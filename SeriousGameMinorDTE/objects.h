@@ -3,7 +3,7 @@
 //Question object
 struct Question {
 	int x, y;
-	int textX, textY;
+	int textX, textY; //TextX won't be needed as the text is being drawn in the center, so 'x' can be used for that
 	int nrTextX, nrTextY; //Coordinations for the question number
 	int fontSize;
 	int nrFontSize; //Font size for the question number
@@ -53,8 +53,8 @@ struct Question {
 struct Answer {
 	int x, y;
 	int offsetX, offsetY; //Make the 0,0 point in the middle of the texture instead of the top left
-	//Add text coordinates here
 	int textOffset;
+	int answersAmount; //The amount of answers to the current question
 	std::string answer;
 	bool isAnswer; //True if it's the correct answer, false if not
 	bool isVisible;
@@ -63,15 +63,14 @@ struct Answer {
 	ALLEGRO_FONT* font = NULL;
 	//Question &question;
 
-	Answer(std::string answer, int positionV, int positionH, Question question) //Constructor (positionV = vertical, positionH = horizontal)
-	{
+	Answer(int positionV, int positionH, Question question) //Constructor (positionV = vertical, positionH = horizontal)
+	{ //FIX 'Answer::y is unitialized' WARING
 		textOffset = ANSWER_FONT_SIZE / 2;
-		//this->answer = answer;
-		this->answer = answers[currentQuestion][1];
+		answersAmount = std::size(questions[currentQuestion]);
 		this->positionV = positionV;
 		this->positionH = positionH;
 		isAnswer = false; //NEEDS FIX
-		isVisible = true; //NEEDS FIX
+		isVisible = false; //NEEDS FIX
 		if (positionV == LEFT)
 		{
 			x = DISPLAY_WIDTH / 4;
@@ -85,18 +84,27 @@ struct Answer {
 		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 		offsetX = al_get_bitmap_width(bitmap) / 2;
 		offsetY = al_get_bitmap_height(bitmap) / 2;
-		if (positionH == TOP)
+		if (positionH == TOP) 
 			y = ((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 4) + al_get_bitmap_height(question.bitmap);
 		else if (positionH == BOTTOM)
 			y = (((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 4) * 3) + al_get_bitmap_height(question.bitmap);
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", ANSWER_FONT_SIZE, NULL);
 	}
 
+	void setAnswer(int questionNumber, int answerIndex) //Set the answers corresponding to the current question
+	{
+		answer = answers[questionNumber][answerIndex];
+		isVisible = true;
+	}
+
 	void draw()
 	{
-		al_draw_bitmap(bitmap, x-offsetX, y-offsetY, NULL);
-		al_draw_text(font, al_map_rgb(0, 0, 0), x, y-textOffset, ALLEGRO_ALIGN_CENTER, answer.c_str());
-		//al_draw_textf(NULL, al_map_rgb(0, 0, 0), 10, 10, NULL, "y: %i", y);
+		if (isVisible)
+		{
+			al_draw_bitmap(bitmap, x - offsetX, y - offsetY, NULL);
+			al_draw_text(font, al_map_rgb(0, 0, 0), x, y - textOffset, ALLEGRO_ALIGN_CENTER, answer.c_str());
+			//al_draw_textf(NULL, al_map_rgb(0, 0, 0), 10, 10, NULL, "y: %i", y);
+		}
 	}
 
 	void clear() //Garbage control

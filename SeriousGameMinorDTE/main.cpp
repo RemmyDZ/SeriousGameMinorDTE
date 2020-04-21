@@ -58,8 +58,21 @@ int main()
 	//Create objects
 	Question question(QUESTIONBOX_X, QUESTIONBOX_Y, QUESTION_TEXT_X, QUESTION_TEXT_Y, QUESTION_NUMBER_TEXT_X, QUESTION_NUMBER_TEXT_Y, questions[0], QUESTION_FONT_SIZE, QUESTION_NUMBER_FONT_SIZE);
 	Background background(BACKGROUND_X, BACKGROUND_Y);
-	Answer answer[MAX_ANSWERS] = { Answer("True", LEFT, TOP, question), Answer("True", RIGHT, TOP, question),
-									Answer("True", LEFT, BOTTOM, question), Answer("True", RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
+	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
+									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
+
+	//TEST (REMOVE LATER)
+	/*for (size_t i = 0; i < (std::size(questions[currentQuestion])) - 1; i++)
+	{
+		answer[static_cast<int>(i)].setAnswer(currentQuestion, static_cast<int>(i));
+	}*/
+	int answersAmount = (sizeof(answers) / sizeof(answers[0]));
+	
+	for (int i = 0; i < answersAmount; i++)
+	{
+		if(! std::empty(answers[currentQuestion][i]))
+			answer[i].setAnswer(currentQuestion, i);
+	}
 
 	//Start timer
 	al_start_timer(timer);

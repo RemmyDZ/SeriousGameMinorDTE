@@ -44,11 +44,11 @@ bool redraw = true; //Always start with 'true', otherwise nothing will be drawn 
 //Windowed/fullscreen switch
 bool fullScreen = false; //Game starts in windowed mode, which can be toggled to fullscreen
 
-//Questions
+//Questions (CHANGE TO VECTORS)
 int currentQuestion = 0; //Starts at 0 because it acts as an index to the questions array below
-std::string questions[] = { "Is 'No u!' a strong comeback?", "Question 2", "Question 3", "Question 4" };
+std::string questions[] = { "Question 1", "Question 2", "Question 3", "Question 4" };
 
-//Answers
+//Answers (CHANGE TO VECTORS)
 std::string answers[][MAX_ANSWERS] = { {"Yes", "No", "Maybe", "I don't know"}, //Maximum of 4 answers for a single question
 							{"AA", "BB", "CC", "DD"},
 							{"AAA", "BBB", "CCC", "DDD"},
