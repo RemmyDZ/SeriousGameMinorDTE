@@ -22,14 +22,14 @@ const int QUESTION_TEXT_Y = 100;
 const int QUESTION_NUMBER_TEXT_X = 200;
 const int QUESTION_NUMBER_TEXT_Y = 478;
 
-const int ANSWER_X[4] = { 2, DISPLAY_WIDTH - 802, 2, DISPLAY_WIDTH - 802 };
-const int ANSWER_Y[4] = { 550, 550, DISPLAY_HEIGHT - 175, DISPLAY_HEIGHT - 175 };
+const int ANSWER_X[4] = { DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3, DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3 };
+//const int ANSWER_Y[4] = { 550, 550, DISPLAY_HEIGHT - 175, DISPLAY_HEIGHT - 175 }; --> NOT NEEDED ANYMORE
 
 //Maximum amount of possible answers per question
 const int MAX_ANSWERS = 4;
 
 //Answer left or right --> This decides what bitmap to load
-enum POSITION { LEFT, RIGHT};
+enum POSITION { LEFT, RIGHT, TOP, BOTTOM};
 
 //Refresh rate
 const int FPS = 60;

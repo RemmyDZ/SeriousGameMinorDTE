@@ -52,31 +52,39 @@ struct Question {
 
 struct Answer {
 	int x, y;
+	int offsetX, offsetY; //Make the 0,0 point in the middle of the texture instead of the top left
 	//Add text coordinates here
 	std::string answer;
 	bool isAnswer; //True if it's the correct answer, false if not
 	bool isVisible;
 	int position; //Left or right
 	ALLEGRO_BITMAP* bitmap = NULL;
+	//Question &question;
 
-	Answer(int x, int y, std::string answer, int position) //Constructor
+	Answer(int x, std::string answer, int positionV, int positionH, Question question) //Constructor (positionV = vertical, positionH = horizontal)
 	{
 		this->x = x;
-		this->y = y;
 		this->answer = answer;
 		this->position = position;
 		isAnswer = false; //NEEDS FIX
 		isVisible = true; //NEEDS FIX
-		if (position == LEFT)
+		if (positionV == LEFT)
 			bitmap = al_load_bitmap("Resources/Textures/Answer1.bmp"); //Load Answer1 bitmap for answers on the left
-		else if (position == RIGHT)
+		else if (positionV == RIGHT)
 			bitmap = al_load_bitmap("Resources/Textures/Answer2.bmp"); //Load Answer2 bitmap for answers on the right
 		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
+		offsetX = al_get_bitmap_width(bitmap) / 2;
+		offsetY = al_get_bitmap_height(bitmap) / 2;
+		if (positionH == TOP)
+			y = ((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 4) + al_get_bitmap_height(question.bitmap);
+		else if (positionH == BOTTOM)
+			y = (((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 4) * 3) + al_get_bitmap_height(question.bitmap);
 	}
 
 	void draw()
 	{
-		al_draw_bitmap(bitmap, x, y, NULL);
+		al_draw_bitmap(bitmap, x-offsetX, y-offsetY, NULL);
+		//al_draw_textf(NULL, al_map_rgb(0, 0, 0), 10, 10, NULL, "y: %i", y);
 	}
 
 	void clear() //Garbage control
