@@ -115,9 +115,9 @@ struct Answer {
 		isVisible = true;
 	}
 
-	void setCorrectAnswer()
+	void setCorrectAnswer(bool correct)
 	{
-		isAnswer = true;
+		isAnswer = correct;
 	}
 
 	void draw()

@@ -71,14 +71,12 @@ int main()
 	{
 		answer[static_cast<int>(i)].setAnswer(currentQuestion, static_cast<int>(i));
 	}*/
-	int answersAmount = (sizeof(answers) / sizeof(answers[0]));
+	//int answersAmount = (sizeof(answers) / sizeof(answers[0]));
+	//size_t result = std::size(answers[0]);
+	//int answersAmount = static_cast<int>(result);
 	
-	for (int i = 0; i < answersAmount; i++)
-	{
-		if(! std::empty(answers[currentQuestion][i]))
-			answer[i].setAnswer(currentQuestion, i);
-	}
-	answer[std::stoi(answers[currentQuestion][4])].setCorrectAnswer();
+	//Go to the first question
+	goToNextQuestion(question, answer, currentQuiz, currentQuestion);
 
 	//Start timer
 	al_start_timer(timer);
@@ -119,7 +117,9 @@ int main()
 				}
 				break;
 			case ALLEGRO_KEY_T:
-				goToNextQuestion(question, answer, 0, 2);
+				currentQuestion++;
+				resetAnswers(answer);
+				goToNextQuestion(question, answer, currentQuiz, currentQuestion);
 				//question.setQuestion(2);
 				break;
 			}

@@ -5,7 +5,7 @@ const int DISPLAY_WIDTH = 1600;
 const int DISPLAY_HEIGHT = 900;
 
 //Game states
-enum GAMESTATE { MAINMENU, QUIZ_ONE, QUIZ_TWO, QUIZ_THREE, QUIZ_FOUR, QUIZ_FIVE }; //Gameover maybe?
+enum GAMESTATE { QUIZ_ONE, QUIZ_TWO, QUIZ_THREE, QUIZ_FOUR, QUIZ_FIVE }; //Gameover maybe?
 
 //Coordinations and font sizes
 const int BACKGROUND_X = 0;
@@ -52,7 +52,9 @@ bool redraw = true; //Always start with 'true', otherwise nothing will be drawn 
 bool fullScreen = false; //Game starts in windowed mode, which can be toggled to fullscreen
 
 //Questions (CHANGE TO VECTORS)
+int currentQuiz = QUIZ_ONE; //Change this later to be dynamic
 int currentQuestion = 0; //Starts at 0 because it acts as an index to the questions array below
+
 std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characteristics does a modelling tool need for modelling LiDAR data?", 
 																"What are possible candidates for modelling LiDAR data?", 
 																"Entity Relationship Modelling produces databases with as less redundancy (double values) as possible.", 
@@ -100,7 +102,7 @@ std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characterist
 																{"", "", "", "", "", "", "", "", "", "" } };
 
 //Answers (CHANGE TO VECTORS)
-std::string answers[][MAX_ANSWERS + 1] = { {"Able to handle large amounts of data and easy to produce new queries.", "Widely used and easy to understand", "", "", "0"}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
+std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"Able to handle large amounts of data and easy to produce new queries.", "Widely used and easy to understand", "", "", "0"}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
 											{"Entity Relationship Modelling.", "Multidimensional Modelling.", "Fact-Oriented Modelling.", "All of the above.", "3"},
 											{"Correct", "Incorrect", "", "", "0"}, 
 											{"Correct", "Incorrect", "", "", "1"}, 
