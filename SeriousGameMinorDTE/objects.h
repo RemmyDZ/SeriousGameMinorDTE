@@ -31,7 +31,7 @@ struct Question {
 
 	void setQuestion(int questionNumber)
 	{
-		this->question = questions[currentQuestion];
+		this->question = questions[questionNumber];
 	}
 
 	void draw()

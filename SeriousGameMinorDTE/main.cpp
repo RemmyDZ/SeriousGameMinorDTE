@@ -10,6 +10,7 @@
 #include<allegro5/allegro_ttf.h>
 #include"globals.h"
 #include"objects.h"
+#include"functions.h"
 
 //Main function
 int main()
@@ -116,6 +117,10 @@ int main()
 					fullScreen = true;
 					al_toggle_display_flag(display, ALLEGRO_FULLSCREEN_WINDOW, true);
 				}
+				break;
+			case ALLEGRO_KEY_T:
+				goToNextQuestion(question, answer, 2);
+				//question.setQuestion(2);
 				break;
 			}
 		}
