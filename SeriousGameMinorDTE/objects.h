@@ -190,17 +190,23 @@ struct Background {
 	}
 };
 
-struct Controller {
-	//Question* question;
-	//Answer* answer[MAX_ANSWERS];
-	//MenuButton* menuButton;
-	//Background* background;
-
-	Controller() //Constructor
-	{
-		//this->question = question;
-		//this->answer = answer;
-		//this->menuButton = menuButton;
-		//this->background = background;
-	}
-};
+//struct Controller {
+//	Question question;
+//	//Answer* answer[MAX_ANSWERS];
+//	//MenuButton* menuButton;
+//	//Background* background;
+//
+//	Controller(const Question &question_) : question(question_) //Constructor
+//	{
+//		//this->question = question_;
+//		//this->answer = answer;
+//		//this->menuButton = menuButton;
+//		//this->background = background;
+//	}
+//
+//	void test()
+//	{
+//		//question.fontSize = 1;
+//		question.setQuestion(3);
+//	}
+//};

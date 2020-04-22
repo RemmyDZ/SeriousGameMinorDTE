@@ -64,7 +64,6 @@ int main()
 	Question question(questions[0]);
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
-	//Controller controller(&question, &answer, &menuButton, &background);
 
 	//TEST (REMOVE LATER)
 	/*for (size_t i = 0; i < (std::size(questions[currentQuestion])) - 1; i++)
