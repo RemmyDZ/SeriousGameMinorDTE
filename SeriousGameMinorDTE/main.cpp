@@ -56,10 +56,12 @@ int main()
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
 	//Create objects
-	Question question(questions[0]);
 	Background background(BACKGROUND_X, BACKGROUND_Y);
+	MenuButton menuButton(10, 10, "Test");
+	Question question(questions[0]);
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
+	//Controller controller(&question, &answer, &menuButton, &background);
 
 	//TEST (REMOVE LATER)
 	/*for (size_t i = 0; i < (std::size(questions[currentQuestion])) - 1; i++)

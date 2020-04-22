@@ -29,9 +29,9 @@ struct Question {
 		nrFont = al_load_font("Resources/Fonts/GILLUBCD.ttf", nrFontSize, NULL); //CHANGE FONT, THIS ONE IS NOT SUITABLE FOR NUMBERS
 	}
 
-	void setNextQuestion()
+	void setQuestion(int questionNumber)
 	{
-		//this->question =
+		this->question = questions[currentQuestion];
 	}
 
 	void draw()
@@ -167,5 +167,20 @@ struct Background {
 	void clear() //Garbage control
 	{
 		al_destroy_bitmap(bitmap);
+	}
+};
+
+struct Controller {
+	Question* question;
+	Answer* answer[MAX_ANSWERS];
+	MenuButton* menuButton;
+	Background* background;
+
+	Controller(Question *question, Answer *answer[MAX_ANSWERS], MenuButton *menuButton, Background *background) //Constructor
+	{
+		this->question = question;
+		//this->answer = answer;
+		this->menuButton = menuButton;
+		this->background = background;
 	}
 };
