@@ -92,6 +92,21 @@ struct Answer {
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", ANSWER_FONT_SIZE, NULL);
 	}
 
+	void onClick()
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		if (state.x > (x - offsetX) && state.x < (x + offsetX)
+			&& state.y >(y - offsetY) && state.y < (y + offsetY)
+			&& isVisible) //If this is true, the mouse cursor is within the bitmap. Also, the answer has to be visible
+		{
+			if (isAnswer)
+				al_show_native_message_box(NULL, "Correct!", "Correct!", "Correct!", NULL, NULL);
+			else
+				al_show_native_message_box(NULL, "False!", "False!", "False!", NULL, NULL);
+		}
+	}
+
 	void setAnswer(int questionNumber, int answerIndex) //Set the answers corresponding to the current question
 	{
 		answer = answers[questionNumber][answerIndex];

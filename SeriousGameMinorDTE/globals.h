@@ -49,7 +49,7 @@ int currentQuestion = 0; //Starts at 0 because it acts as an index to the questi
 std::string questions[] = { "What will happen when I insert a very long question? Like really really long, very loooooong", "Question 2", "Question 3", "Question 4" };
 
 //Answers (CHANGE TO VECTORS)
-std::string answers[][MAX_ANSWERS + 1] = { {"Yes", "No", "", "", "1"}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
+std::string answers[][MAX_ANSWERS + 1] = { {"Yes", "No", "", "", "0"}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
 							{"AA", "BB", "CC", "DD"},
 							{"AAA", "BBB", "CCC", "DDD"},
 							{"AAAA", "BBBB", "CCCC", "DDDD"} };

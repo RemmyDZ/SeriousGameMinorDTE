@@ -44,6 +44,7 @@ int main()
 	al_init_font_addon();
 	al_init_ttf_addon();
 	al_install_keyboard();
+	al_install_mouse();
 
 	//Create timer
 	ALLEGRO_TIMER* timer = NULL;
@@ -54,6 +55,7 @@ int main()
 	event_queue = al_create_event_queue();
 	al_register_event_source(event_queue, al_get_display_event_source(display));
 	al_register_event_source(event_queue, al_get_keyboard_event_source());
+	al_register_event_source(event_queue, al_get_mouse_event_source());
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
 	//Create objects
@@ -119,6 +121,17 @@ int main()
 			}
 		}
 
+		if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
+		{
+			if (event.mouse.button == 1) //Left click
+			{
+				for (int i = 0; i < MAX_ANSWERS; i++)
+				{
+					answer[i].onClick();
+				}
+			}
+		}
+
 		if (redraw && al_is_event_queue_empty(event_queue)) //Only redraw when variable is 'true' and there are no events being handled
 		{
 			redraw = false;
@@ -152,4 +165,5 @@ int main()
 	al_destroy_event_queue(event_queue);
 	al_shutdown_primitives_addon();
 	al_uninstall_keyboard();
+	al_uninstall_mouse();
 }
