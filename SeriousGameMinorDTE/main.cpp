@@ -1,5 +1,6 @@
 //Libraries
 #include<iostream>
+#include<string>
 #include<iterator>
 #include<allegro5/allegro.h>
 #include<allegro5/allegro_native_dialog.h>
@@ -9,6 +10,7 @@
 #include<allegro5/allegro_ttf.h>
 #include"globals.h"
 #include"objects.h"
+#include"functions.h"
 
 //Main function
 int main()
@@ -43,6 +45,7 @@ int main()
 	al_init_font_addon();
 	al_init_ttf_addon();
 	al_install_keyboard();
+	al_install_mouse();
 
 	//Create timer
 	ALLEGRO_TIMER* timer = NULL;
@@ -53,13 +56,29 @@ int main()
 	event_queue = al_create_event_queue();
 	al_register_event_source(event_queue, al_get_display_event_source(display));
 	al_register_event_source(event_queue, al_get_keyboard_event_source());
+	al_register_event_source(event_queue, al_get_mouse_event_source());
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
 	//Create objects
-	Question question(QUESTIONBOX_X, QUESTIONBOX_Y, QUESTION_TEXT_X, QUESTION_TEXT_Y, questions[0], QUESTION_FONT_SIZE);
 	Background background(BACKGROUND_X, BACKGROUND_Y);
-	Answer answer[MAX_ANSWERS] = { Answer(ANSWER_X[0], ANSWER_Y[0], "True", LEFT), Answer(ANSWER_X[1], ANSWER_Y[1], "False", RIGHT), 
-									Answer(ANSWER_X[2], ANSWER_Y[2], "Haha", LEFT), Answer(ANSWER_X[3], ANSWER_Y[3], "Hoho", RIGHT) }; //Change text once text coordinates are implemented and update draw()
+	MenuButton menuButton(10, 10, "Test");
+	Question question(questions[0][0]);
+	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
+									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
+
+	//TEST (REMOVE LATER)
+	/*for (size_t i = 0; i < (std::size(questions[currentQuestion])) - 1; i++)
+	{
+		answer[static_cast<int>(i)].setAnswer(currentQuestion, static_cast<int>(i));
+	}*/
+	int answersAmount = (sizeof(answers) / sizeof(answers[0]));
+	
+	for (int i = 0; i < answersAmount; i++)
+	{
+		if(! std::empty(answers[currentQuestion][i]))
+			answer[i].setAnswer(currentQuestion, i);
+	}
+	answer[std::stoi(answers[currentQuestion][4])].setCorrectAnswer();
 
 	//Start timer
 	al_start_timer(timer);
@@ -99,6 +118,21 @@ int main()
 					al_toggle_display_flag(display, ALLEGRO_FULLSCREEN_WINDOW, true);
 				}
 				break;
+			case ALLEGRO_KEY_T:
+				goToNextQuestion(question, answer, 0, 2);
+				//question.setQuestion(2);
+				break;
+			}
+		}
+
+		if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
+		{
+			if (event.mouse.button == 1) //Left click
+			{
+				for (int i = 0; i < MAX_ANSWERS; i++)
+				{
+					answer[i].onClick();
+				}
 			}
 		}
 
@@ -110,7 +144,7 @@ int main()
 			//Draw objects here
 			background.draw();
 			question.draw();
-			for (int i = 0; i < std::size(answer); i++) //FIX WARNING
+			for (size_t i = 0; i < std::size(answer); i++)
 			{
 				if (answer[i].isVisible) //Only draw answer if visible (non-visible if question has less answers than the max amount of answers)
 				{
@@ -122,9 +156,18 @@ int main()
 		}
 	}
 
+	//Garbage control
+	question.clear();
+	background.clear();
+	for (int i = 0; i < MAX_ANSWERS; i++)
+	{
+		answer[i].clear();
+	}
+
 	al_destroy_display(display);
 	al_destroy_timer(timer);
 	al_destroy_event_queue(event_queue);
 	al_shutdown_primitives_addon();
 	al_uninstall_keyboard();
+	al_uninstall_mouse();
 }
