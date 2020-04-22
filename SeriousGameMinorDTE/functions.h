@@ -8,7 +8,7 @@ void goToNextQuestion(Question &question, Answer answer[], int questionNumber)
 
 	for (int i = 0; i < answersAmount; i++)
 	{
-		if (!std::empty(answers[currentQuestion][i]))
-			answer[i].setAnswer(currentQuestion, i);
+		if (!std::empty(answers[questionNumber][i]))
+			answer[i].setAnswer(questionNumber, i);
 	}
 }

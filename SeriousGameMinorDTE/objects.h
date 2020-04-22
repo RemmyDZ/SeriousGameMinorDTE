@@ -191,14 +191,14 @@ struct Background {
 };
 
 //struct Controller {
-//	Question question;
+//	//Question &question;
 //	//Answer* answer[MAX_ANSWERS];
 //	//MenuButton* menuButton;
 //	//Background* background;
 //
-//	Controller(const Question &question_) : question(question_) //Constructor
+//	Controller(const Question &question) //Constructor
 //	{
-//		//this->question = question_;
+//		//this->question = question;
 //		//this->answer = answer;
 //		//this->menuButton = menuButton;
 //		//this->background = background;
