@@ -14,11 +14,11 @@ const int BACKGROUND_Y = 0;
 const int QUESTIONBOX_X = 0;
 const int QUESTIONBOX_Y = 0;
 
-const int QUESTION_FONT_SIZE = 100;
+const int QUESTION_FONT_SIZE = 70;
 const int QUESTION_NUMBER_FONT_SIZE = 30;
 
-const int QUESTION_TEXT_X = 100;
-const int QUESTION_TEXT_Y = 100;
+const int QUESTION_TEXT_X = 50;
+const int QUESTION_TEXT_Y = 30;
 const int QUESTION_NUMBER_TEXT_X = 200;
 const int QUESTION_NUMBER_TEXT_Y = 478;
 
@@ -46,7 +46,7 @@ bool fullScreen = false; //Game starts in windowed mode, which can be toggled to
 
 //Questions (CHANGE TO VECTORS)
 int currentQuestion = 0; //Starts at 0 because it acts as an index to the questions array below
-std::string questions[] = { "What will happen when I insert a very long question?", "Question 2", "Question 3", "Question 4" };
+std::string questions[] = { "What will happen when I insert a very long question? Like really really long, very loooooong", "Question 2", "Question 3", "Question 4" };
 
 //Answers (CHANGE TO VECTORS)
 std::string answers[][MAX_ANSWERS] = { {"Yes", "No", "Maybe", "I don't know"}, //Maximum of 4 answers for a single question

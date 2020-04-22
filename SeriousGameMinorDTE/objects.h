@@ -12,17 +12,17 @@ struct Question {
 	ALLEGRO_FONT* font = NULL;
 	ALLEGRO_FONT* nrFont = NULL; //Font for the question number
 
-	Question(int x, int y, int textX, int textY, int nrTextX, int nrTextY, std::string question, int fontSize, int nrFontSize) //Constructor
+	Question(std::string question) //Constructor
 	{
-		this->x = x;
-		this->y = y;
-		this->textX = textX;
-		this->textY = textY;
-		this->nrTextX = nrTextX;
-		this->nrTextY = nrTextY;
 		this->question = question;
-		this->fontSize = fontSize;
-		this->nrFontSize = nrFontSize;
+		x = QUESTIONBOX_X;
+		y = QUESTIONBOX_Y;
+		textX = QUESTION_TEXT_X;
+		textY = QUESTION_TEXT_Y;
+		nrTextX = QUESTION_NUMBER_TEXT_X;
+		nrTextY = QUESTION_NUMBER_TEXT_Y;
+		fontSize = QUESTION_FONT_SIZE;
+		nrFontSize = QUESTION_NUMBER_FONT_SIZE;
 		bitmap = al_load_bitmap("Resources/Textures/Question_box.bmp");
 		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", fontSize, NULL);

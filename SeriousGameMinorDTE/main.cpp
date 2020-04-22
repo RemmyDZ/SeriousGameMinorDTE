@@ -56,7 +56,7 @@ int main()
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
 	//Create objects
-	Question question(QUESTIONBOX_X, QUESTIONBOX_Y, QUESTION_TEXT_X, QUESTION_TEXT_Y, QUESTION_NUMBER_TEXT_X, QUESTION_NUMBER_TEXT_Y, questions[0], QUESTION_FONT_SIZE, QUESTION_NUMBER_FONT_SIZE);
+	Question question(questions[0]);
 	Background background(BACKGROUND_X, BACKGROUND_Y);
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
