@@ -4,6 +4,7 @@
 struct Question {
 	int x, y;
 	int textX, textY; //TextX won't be needed as the text is being drawn in the center, so 'x' can be used for that
+	int textMaxWidth;
 	int nrTextX, nrTextY; //Coordinations for the question number
 	int fontSize;
 	int nrFontSize; //Font size for the question number
@@ -19,6 +20,7 @@ struct Question {
 		y = QUESTIONBOX_Y;
 		textX = QUESTION_TEXT_X;
 		textY = QUESTION_TEXT_Y;
+		textMaxWidth = QUESTION_TEXT_MAX_WIDTH;
 		nrTextX = QUESTION_NUMBER_TEXT_X;
 		nrTextY = QUESTION_NUMBER_TEXT_Y;
 		fontSize = QUESTION_FONT_SIZE;
@@ -29,17 +31,17 @@ struct Question {
 		nrFont = al_load_font("Resources/Fonts/GILLUBCD.ttf", nrFontSize, NULL); //CHANGE FONT, THIS ONE IS NOT SUITABLE FOR NUMBERS
 	}
 
-	void setQuestion(int questionNumber)
+	void setQuestion(int quizNumber, int questionNumber)
 	{
-		this->question = questions[questionNumber];
+		this->question = questions[quizNumber][questionNumber];
 	}
 
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
 		//al_draw_text(font, al_map_rgb(0, 0, 0), textX, textY, NULL, question.c_str());
-		al_draw_multiline_text(font, al_map_rgb(0, 0, 0), textX, textY, al_get_bitmap_width(bitmap) - 100, 0, NULL, question.c_str());
-		al_draw_textf(nrFont, al_map_rgb(0, 0, 0), nrTextX, nrTextY, NULL, "%i/%zu", currentQuestion+1, std::size(questions)); //Plus 1, because currentQuestion is an index number, and we want to display a correct number
+		al_draw_multiline_text(font, al_map_rgb(0, 0, 0), textX, textY, textMaxWidth, 0, NULL, question.c_str());
+		al_draw_textf(nrFont, al_map_rgb(0, 0, 0), nrTextX, nrTextY, NULL, "%i/%zu", currentQuestion+1, std::size(questions[0])); //Plus 1, because currentQuestion is an index number, and we want to display a correct number
 		//FIX TOTAL QUESTIONS NOT SHOWING
 	}
 

@@ -62,7 +62,7 @@ int main()
 	//Create objects
 	Background background(BACKGROUND_X, BACKGROUND_Y);
 	MenuButton menuButton(10, 10, "Test");
-	Question question(questions[0]);
+	Question question(questions[0][0]);
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
 
@@ -119,7 +119,7 @@ int main()
 				}
 				break;
 			case ALLEGRO_KEY_T:
-				goToNextQuestion(question, answer, 2);
+				goToNextQuestion(question, answer, 0, 2);
 				//question.setQuestion(2);
 				break;
 			}
