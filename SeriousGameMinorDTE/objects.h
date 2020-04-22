@@ -112,12 +112,17 @@ struct Answer {
 	void setAnswer(int questionNumber, int answerIndex) //Set the answers corresponding to the current question
 	{
 		answer = answers[questionNumber][answerIndex];
-		isVisible = true;
+		setVisibility(true);
 	}
 
 	void setCorrectAnswer(bool correct)
 	{
 		isAnswer = correct;
+	}
+
+	void setVisibility(bool visible)
+	{
+		isVisible = visible;
 	}
 
 	void draw()

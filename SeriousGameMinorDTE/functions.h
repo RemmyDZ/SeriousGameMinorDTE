@@ -6,6 +6,7 @@ void resetAnswers(Answer answer[])
 	for (int i = 0; i < MAX_ANSWERS; i++)
 	{
 		answer[i].setCorrectAnswer(false);
+		answer[i].setVisibility(false);
 	}
 }
 
