@@ -1,5 +1,6 @@
 //Libraries
 #include<iostream>
+#include<string>
 #include<iterator>
 #include<allegro5/allegro.h>
 #include<allegro5/allegro_native_dialog.h>
@@ -75,6 +76,7 @@ int main()
 		if(! std::empty(answers[currentQuestion][i]))
 			answer[i].setAnswer(currentQuestion, i);
 	}
+	answer[std::stoi(answers[currentQuestion][4])].setCorrectAnswer();
 
 	//Start timer
 	al_start_timer(timer);

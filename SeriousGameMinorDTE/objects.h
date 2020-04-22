@@ -71,7 +71,7 @@ struct Answer {
 		this->positionV = positionV;
 		this->positionH = positionH;
 		isAnswer = false; //NEEDS FIX
-		isVisible = false; //NEEDS FIX
+		isVisible = false; 
 		if (positionV == LEFT)
 		{
 			x = DISPLAY_WIDTH / 4;
@@ -96,6 +96,11 @@ struct Answer {
 	{
 		answer = answers[questionNumber][answerIndex];
 		isVisible = true;
+	}
+
+	void setCorrectAnswer()
+	{
+		isAnswer = true;
 	}
 
 	void draw()
@@ -171,16 +176,16 @@ struct Background {
 };
 
 struct Controller {
-	Question* question;
-	Answer* answer[MAX_ANSWERS];
-	MenuButton* menuButton;
-	Background* background;
+	//Question* question;
+	//Answer* answer[MAX_ANSWERS];
+	//MenuButton* menuButton;
+	//Background* background;
 
-	Controller(Question *question, Answer *answer[MAX_ANSWERS], MenuButton *menuButton, Background *background) //Constructor
+	Controller() //Constructor
 	{
-		this->question = question;
+		//this->question = question;
 		//this->answer = answer;
-		this->menuButton = menuButton;
-		this->background = background;
+		//this->menuButton = menuButton;
+		//this->background = background;
 	}
 };
