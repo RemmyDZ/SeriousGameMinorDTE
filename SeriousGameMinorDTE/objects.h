@@ -186,12 +186,12 @@ struct MenuButton {
 	ALLEGRO_BITMAP* bitmap;
 	ALLEGRO_FONT* font;
 
-	MenuButton(int x, int index, std::string text) //Index acts as a multiplier for the y position
+	MenuButton(int index, std::string text, MenuBox menuBox) //Index acts as a multiplier for the y position
 	{
 		this->text = text;
 		bitmap = al_load_bitmap("Resources/Textures/menu_option.bmp");
-		this->x = x;
-		y = al_get_bitmap_height(bitmap) * index;
+		x = (al_get_bitmap_width(menuBox.bitmap) - al_get_bitmap_width(bitmap)) / 2;
+		y = (al_get_bitmap_height(bitmap) * index) + MENU_BUTTON_START_Y;
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", MENU_BUTTON_FONT_SIZE, NULL);
 	}
 

@@ -62,13 +62,12 @@ int main()
 	//Create objects
 	Background background(BACKGROUND_X, BACKGROUND_Y);
 	MenuBox menuBox("Test");
-	int menuButtonX = al_get_bitmap_width(menuBox.bitmap);
-	MenuButton startQuiz(menuButtonX, 0, "Start quizzing!");
-	MenuButton checkSource(menuButtonX, 1, "View sources");
-	MenuButton quitGame(menuButtonX, 2, "Quit");
-	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(menuButtonX, 0, "Quiz 1"), MenuButton(menuButtonX, 1, "Quiz 2"),
-										MenuButton(menuButtonX, 2, "Quiz 3"), MenuButton(menuButtonX, 3, "Quiz 4"),
-										MenuButton(menuButtonX, 4, "Quiz 5") };
+	MenuButton startQuiz(0, "Start quizzing!", menuBox);
+	MenuButton checkSource(1, "View sources", menuBox);
+	MenuButton quitGame(2, "Quit", menuBox);
+	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Quiz 1", menuBox), MenuButton(1, "Quiz 2", menuBox),
+										MenuButton(2, "Quiz 3", menuBox), MenuButton(3, "Quiz 4", menuBox),
+										MenuButton(4, "Quiz 5", menuBox) };
 	Question question(questions[0][0]);
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()

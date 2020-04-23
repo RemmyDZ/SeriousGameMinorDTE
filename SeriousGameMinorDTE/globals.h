@@ -30,6 +30,7 @@ const int QUESTION_NUMBER_TEXT_X = 200;
 const int QUESTION_NUMBER_TEXT_Y = 478;
 
 const int MENU_BUTTON_FONT_SIZE = 35;
+const int MENU_BUTTON_START_Y = 35;
 
 const int ANSWER_RESIZE_LENGTH = 60; //The size at which a question gets the smaller font
 const int ANSWER_FONT_SIZE = 30; 
