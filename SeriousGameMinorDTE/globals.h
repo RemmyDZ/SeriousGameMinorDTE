@@ -23,6 +23,7 @@ const int QUESTION_TEXT_MAX_WIDTH = DISPLAY_WIDTH - 30;
 const int QUESTION_NUMBER_TEXT_X = 200;
 const int QUESTION_NUMBER_TEXT_Y = 478;
 
+const int ANSWER_RESIZE_LENGTH = 60; //The size at which a question gets the smaller font
 const int ANSWER_FONT_SIZE = 30; 
 const int ANSWER_LONG_FONT_SIZE = 25; //For long answers so it doesn't go out of boundaries
 //const int ANSWER_X[4] = { DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3, DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3 }; --> OBSOLETE
@@ -71,8 +72,8 @@ std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characterist
 																"What visual distortion is characteristic of the rolling shutter effect?", 
 																"Which of these is the correct definition of the doppler effect?", 
 																"What type of weather can cause inaccurate readings?", 
-																"True or false: “The doppler effect causes inaccuracy in the measurement of the distance between the camera and a stationary object?”", 
-																"True or false: “Noisy data is data that doesn\'t fit your beliefs”.", 
+																"True or false: \"The doppler effect causes inaccuracy in the measurement of the distance between the camera and a stationary object?\"", 
+																"True or false: \"Noisy data is data that doesn\'t fit your beliefs\".", 
 																"Which two schools of thought are the most common for the removal of data noise?", 
 																"Are outlying data points considered data noise?", 
 																"What does the acronym INFFC stand for?", 
@@ -93,7 +94,7 @@ std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characterist
 																"Which of the following subjects are utilizing LiDAR either in product or research?", 
 																"How much is expected data creation in 2030 ( in zettabytes, approx)?", 
 																"Companies should think of data as an asset.", 
-																"According to MIT-Sloan research “what\'s your data worth” data can be divided into three different categories, which category doesn\'t belong here? (1)?", 
+																"According to MIT-Sloan research \"what\'s your data worth\" data can be divided into three different categories, which category doesn\'t belong here? (1)?", 
 																"The data strategy is not important when a company wants to utilize data better.", 
 																"What benefits the data strategy provides? ( choose the INCORRECT option) ", 
 																"There are usually three different paths to data monetizations.", 

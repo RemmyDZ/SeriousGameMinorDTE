@@ -7,6 +7,7 @@ void resetAnswers(Answer answer[])
 	{
 		answer[i].setCorrectAnswer(false);
 		answer[i].setVisibility(false);
+		answer[i].setFont(true);
 	}
 }
 
@@ -20,6 +21,9 @@ void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int q
 	{
 		if (!std::empty(answers[questionNumber][i]))
 			answer[i].setAnswer(questionNumber, i);
+		if (answers[questionNumber][i].length() > ANSWER_RESIZE_LENGTH)
+			answer[i].setFont(false); //False means small font
+		printf("%i\n", answers[questionNumber][i].length());
 	}
 	answer[std::stoi(answers[questionNumber][4])].setCorrectAnswer(true);
 }

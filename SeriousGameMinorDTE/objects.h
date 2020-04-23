@@ -26,7 +26,7 @@ struct Question {
 		fontSize = QUESTION_FONT_SIZE;
 		nrFontSize = QUESTION_NUMBER_FONT_SIZE;
 		bitmap = al_load_bitmap("Resources/Textures/Question_box.bmp");
-		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
+		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", fontSize, NULL);
 		nrFont = al_load_font("Resources/Fonts/GILLUBCD.ttf", nrFontSize, NULL); //CHANGE FONT, THIS ONE IS NOT SUITABLE FOR NUMBERS
 	}
@@ -63,11 +63,13 @@ struct Answer {
 	bool isVisible;
 	int positionV, positionH;
 	ALLEGRO_BITMAP* bitmap = NULL;
+	ALLEGRO_FONT* fontSmall = NULL;
+	ALLEGRO_FONT* fontLarge = NULL;
 	ALLEGRO_FONT* font = NULL;
 	//Question &question;
 
 	Answer(int positionV, int positionH, Question question) //Constructor (positionV = vertical, positionH = horizontal)
-	{ //FIX 'Answer::y is unitialized' WARING
+	{ //FIX 'Answer::y is unitialized' WARNING
 		textOffset = ANSWER_FONT_SIZE * 2;
 		answersAmount = std::size(questions[currentQuestion]);
 		this->positionV = positionV;
@@ -84,14 +86,16 @@ struct Answer {
 			x = (DISPLAY_WIDTH / 4) * 3;
 			bitmap = al_load_bitmap("Resources/Textures/Answer2.bmp"); //Load Answer2 bitmap for answers on the right
 		}
-		al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
+		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 		offsetX = al_get_bitmap_width(bitmap) / 2;
 		offsetY = al_get_bitmap_height(bitmap) / 2;
 		if (positionH == TOP) 
 			y = ((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 4) + al_get_bitmap_height(question.bitmap);
 		else if (positionH == BOTTOM)
 			y = (((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 4) * 3) + al_get_bitmap_height(question.bitmap);
-		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", ANSWER_FONT_SIZE, NULL);
+		fontLarge = al_load_font("Resources/Fonts/GILLUBCD.ttf", ANSWER_FONT_SIZE, NULL);
+		fontSmall = al_load_font("Resources/Fonts/GILLUBCD.ttf", ANSWER_LONG_FONT_SIZE, NULL);
+		font = fontLarge;
 	}
 
 	void onClick()
@@ -123,6 +127,14 @@ struct Answer {
 	void setVisibility(bool visible)
 	{
 		isVisible = visible;
+	}
+
+	void setFont(bool large)
+	{
+		if (large)
+			font = fontLarge;
+		else
+			font = fontSmall;
 	}
 
 	void draw()
