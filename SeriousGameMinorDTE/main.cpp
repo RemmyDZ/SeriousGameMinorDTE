@@ -82,7 +82,7 @@ int main()
 	//int answersAmount = static_cast<int>(result);
 	
 	//Go to the first question
-	goToNextQuestion(question, answer, currentQuiz, currentQuestion);
+	goToNextQuestion(question, answer, gameState, currentQuestion);
 
 	//Start timer
 	al_start_timer(timer);
@@ -125,7 +125,7 @@ int main()
 			case ALLEGRO_KEY_T:
 				currentQuestion++;
 				resetAnswers(answer);
-				goToNextQuestion(question, answer, currentQuiz, currentQuestion);
+				goToNextQuestion(question, answer, gameState, currentQuestion);
 				//question.setQuestion(2);
 				break;
 			}
@@ -158,18 +158,23 @@ int main()
 						{
 						case 0:
 							setGameState(QUIZ_ONE);
+							currentQuestion = QUIZ_INDEX_ONE;
 							break;
 						case 1:
 							setGameState(QUIZ_TWO);
+							currentQuestion = QUIZ_INDEX_TWO;
 							break;
 						case 2:
 							setGameState(QUIZ_THREE);
+							currentQuestion = QUIZ_INDEX_THREE;
 							break;
 						case 3:
 							setGameState(QUIZ_FOUR);
+							currentQuestion = QUIZ_INDEX_FOUR;
 							break;
 						case 4:
 							setGameState(QUIZ_FIVE);
+							currentQuestion = QUIZ_INDEX_FIVE;
 							break;
 						default: 
 							break;

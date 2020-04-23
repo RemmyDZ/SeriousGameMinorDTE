@@ -12,9 +12,35 @@ void resetAnswers(Answer answer[])
 }
 
 //Go to the next question in the current quiz
-void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int questionNumber)
+void goToNextQuestion(Question &question, Answer answer[], int gameState, int questionNumber)
 {
-	question.setQuestion(quizNumber, questionNumber);
+	int quizIndex = 0;
+	switch (gameState)
+	{
+	case QUIZ_ONE:
+		quizIndex = 0;
+		questionNumber *= QUIZ_INDEX_ONE;
+		break;
+	case QUIZ_TWO:
+		quizIndex = 1; 
+		questionNumber *= QUIZ_INDEX_TWO;
+		break;
+	case QUIZ_THREE:
+		quizIndex = 2;
+		questionNumber *= QUIZ_INDEX_THREE;
+		break;
+	case QUIZ_FOUR:
+		quizIndex = 3;
+		questionNumber *= QUIZ_INDEX_FOUR;
+		break;
+	case QUIZ_FIVE:
+		quizIndex = 4;
+		questionNumber *= QUIZ_INDEX_FIVE;
+		break;
+	default:
+		break;
+	}
+	question.setQuestion(quizIndex, questionNumber);
 	int answersAmount = (sizeof(answers) / sizeof(answers[questionNumber]));
 
 	for (int i = 0; i < MAX_ANSWERS; i++)

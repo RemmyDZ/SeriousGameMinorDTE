@@ -63,7 +63,6 @@ bool redraw = true; //Always start with 'true', otherwise nothing will be drawn 
 bool fullScreen = false; //Game starts in windowed mode, which can be toggled to fullscreen
 
 //Questions (CHANGE TO VECTORS)
-int currentQuiz = QUIZ_ONE; //Change this later to be dynamic
 int currentQuestion = 0; //Starts at 0 because it acts as an index to the questions array below
 
 std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characteristics does a modelling tool need for modelling LiDAR data?", 
