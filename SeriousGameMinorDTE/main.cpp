@@ -179,6 +179,7 @@ int main()
 						default: 
 							break;
 						}
+						goToNextQuestion(question, answer, gameState, currentQuestion);
 					}
 				}
 			}
