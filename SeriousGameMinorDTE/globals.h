@@ -8,9 +8,14 @@ const int DISPLAY_HEIGHT = 900;
 enum GAMESTATE { MAIN_MENU, QUIZ_MENU, QUIZ_ONE, QUIZ_TWO, QUIZ_THREE, QUIZ_FOUR, QUIZ_FIVE, SCORE_MENU }; //Gameover maybe?
 enum QUIZ_INDEX { QUIZ_INDEX_ONE = 0, QUIZ_INDEX_TWO = 10, QUIZ_INDEX_THREE = 20, QUIZ_INDEX_FOUR = 30, QUIZ_INDEX_FIVE = 40 };
 
+int gameState = MAIN_MENU; //Start in main menu
+
 //Coordinations and font sizes
 const int BACKGROUND_X = 0;
 const int BACKGROUND_Y = 0;
+
+const int MENU_BOX_X = 0;
+const int MENU_BOX_Y = 0;
 
 const int QUESTIONBOX_X = 0;
 const int QUESTIONBOX_Y = 0;
@@ -23,6 +28,8 @@ const int QUESTION_TEXT_Y = 30;
 const int QUESTION_TEXT_MAX_WIDTH = DISPLAY_WIDTH - 30;
 const int QUESTION_NUMBER_TEXT_X = 200;
 const int QUESTION_NUMBER_TEXT_Y = 478;
+
+const int MENU_BUTTON_FONT_SIZE = 35;
 
 const int ANSWER_RESIZE_LENGTH = 60; //The size at which a question gets the smaller font
 const int ANSWER_FONT_SIZE = 30; 

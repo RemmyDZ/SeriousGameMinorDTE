@@ -61,7 +61,14 @@ int main()
 
 	//Create objects
 	Background background(BACKGROUND_X, BACKGROUND_Y);
-	MenuButton menuButton(10, 10, "Test");
+	MenuBox menuBox("Test");
+	int menuButtonX = al_get_bitmap_width(menuBox.bitmap);
+	MenuButton startQuiz(menuButtonX, 0, "Start quizzing!");
+	MenuButton checkSource(menuButtonX, 1, "View sources");
+	MenuButton quitGame(menuButtonX, 2, "Quit");
+	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(menuButtonX, 0, "Quiz 1"), MenuButton(menuButtonX, 1, "Quiz 2"),
+										MenuButton(menuButtonX, 2, "Quiz 3"), MenuButton(menuButtonX, 3, "Quiz 4"),
+										MenuButton(menuButtonX, 4, "Quiz 5") };
 	Question question(questions[0][0]);
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
@@ -127,11 +134,58 @@ int main()
 
 		if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
 		{
-			if (event.mouse.button == 1) //Left click
+			if (gameState == MAIN_MENU)
 			{
-				for (int i = 0; i < MAX_ANSWERS; i++)
+				if (startQuiz.onClick())
 				{
-					answer[i].onClick();
+					setGameState(QUIZ_MENU);
+				}
+				else if (checkSource.onClick())
+				{
+					//
+				}
+				else if (quitGame.onClick())
+				{
+					isGameFinished = true;
+				}
+			}
+			else if (gameState == QUIZ_MENU)
+			{
+				for (int i = 0; i < AMOUNT_OF_SUBJECTS; i++)
+				{
+					if (quizButton[i].onClick()) //Check if button is clicked
+					{
+						switch (i)
+						{
+						case 0:
+							setGameState(QUIZ_ONE);
+							break;
+						case 1:
+							setGameState(QUIZ_TWO);
+							break;
+						case 2:
+							setGameState(QUIZ_THREE);
+							break;
+						case 3:
+							setGameState(QUIZ_FOUR);
+							break;
+						case 4:
+							setGameState(QUIZ_FIVE);
+							break;
+						default: 
+							break;
+						}
+					}
+				}
+			}
+			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
+			{
+				if (event.mouse.button == 1) //Left click
+				{
+					for (int i = 0; i < MAX_ANSWERS; i++)
+					{
+						answer[i].onClick();
+					}
 				}
 			}
 		}
@@ -141,14 +195,34 @@ int main()
 			redraw = false;
 			al_clear_to_color(BLACK); //Set background to black
 
-			//Draw objects here
+			//Draw background
 			background.draw();
-			question.draw();
-			for (size_t i = 0; i < std::size(answer); i++)
+
+			//Draw objects here
+			if (gameState == MAIN_MENU)
 			{
-				if (answer[i].isVisible) //Only draw answer if visible (non-visible if question has less answers than the max amount of answers)
+				menuBox.draw();
+				startQuiz.draw();
+				checkSource.draw();
+				quitGame.draw();
+			}
+			else if (gameState == QUIZ_MENU)
+			{
+				menuBox.draw();
+				for (int i = 0; i < AMOUNT_OF_SUBJECTS; i++)
 				{
-					answer[i].draw();
+					quizButton[i].draw();
+				}
+			}
+			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
+			{
+				question.draw();
+				for (size_t i = 0; i < std::size(answer); i++)
+				{
+					if (answer[i].isVisible) //Only draw answer if visible (non-visible if question has less answers than the max amount of answers)
+					{
+						answer[i].draw();
+					}
 				}
 			}
 
@@ -162,6 +236,14 @@ int main()
 	for (int i = 0; i < MAX_ANSWERS; i++)
 	{
 		answer[i].clear();
+	}
+	menuBox.clear();
+	startQuiz.clear();
+	checkSource.clear();
+	quitGame.clear();
+	for (int i = 0; i < AMOUNT_OF_SUBJECTS; i++)
+	{
+		quizButton[i].clear();
 	}
 
 	al_destroy_display(display);

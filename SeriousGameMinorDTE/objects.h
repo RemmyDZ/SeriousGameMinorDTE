@@ -74,7 +74,7 @@ struct Answer {
 		answersAmount = std::size(questions[currentQuestion]);
 		this->positionV = positionV;
 		this->positionH = positionH;
-		isAnswer = false; //NEEDS FIX
+		isAnswer = false;
 		isVisible = false; 
 		if (positionV == LEFT)
 		{
@@ -163,13 +163,15 @@ struct MenuBox {
 
 	MenuBox(std::string text)
 	{
+		x = MENU_BOX_X;
+		y = MENU_BOX_Y;
 		this->text = text;
 		bitmap = al_load_bitmap("Resources/Textures/menu_box.bmp");
 	}
 
 	void draw()
 	{
-
+		al_draw_bitmap(bitmap, x, y, NULL);
 	}
 
 	void clear()
@@ -182,13 +184,15 @@ struct MenuButton {
 	int x, y;
 	std::string text;
 	ALLEGRO_BITMAP* bitmap;
+	ALLEGRO_FONT* font;
 
-	MenuButton(int x, int y, std::string text)
+	MenuButton(int x, int index, std::string text) //Index acts as a multiplier for the y position
 	{
-		this->x = x;
-		this->y = y;
 		this->text = text;
 		bitmap = al_load_bitmap("Resources/Textures/menu_option.bmp");
+		this->x = x;
+		y = al_get_bitmap_height(bitmap) * index;
+		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", MENU_BUTTON_FONT_SIZE, NULL);
 	}
 
 	void onMouseHover()
@@ -196,14 +200,25 @@ struct MenuButton {
 		//Change color?
 	}
 
-	void onClick()
+	bool onClick() //Returns true if clicked
 	{
-		//Redirect to quiz
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x && state.x < (x + width)
+			&& state.y > y && state.y < (y + height))//If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
 	}
 
 	void draw()
 	{
-		//Draw bitmap + text
+		al_draw_bitmap(bitmap, x, y, NULL);
+		al_draw_text(font, al_map_rgb(0, 0, 0), x + 20, y + 20, NULL, text.c_str());
 	}
 
 	void clear() //Garbage control

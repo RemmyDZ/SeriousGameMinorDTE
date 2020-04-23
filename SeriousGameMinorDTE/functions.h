@@ -27,3 +27,8 @@ void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int q
 	}
 	answer[std::stoi(answers[questionNumber][4])].setCorrectAnswer(true);
 }
+
+void setGameState(int newGameState)
+{
+	gameState = newGameState;
+}
