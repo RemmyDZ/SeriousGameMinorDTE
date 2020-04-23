@@ -151,7 +151,6 @@ struct Answer {
 	void clear() //Garbage control
 	{
 		al_destroy_bitmap(bitmap);
-		al_destroy_font(font);
 		al_destroy_font(fontSmall);
 		al_destroy_font(fontLarge);
 	}
