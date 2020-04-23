@@ -165,6 +165,7 @@ struct MenuBox {
 	MenuBox(std::string text)
 	{
 		this->text = text;
+		bitmap = al_load_bitmap("Resources/Textures/menu_box.bmp");
 	}
 
 	void draw()
@@ -188,7 +189,7 @@ struct MenuButton {
 		this->x = x;
 		this->y = y;
 		this->text = text;
-		//bitmap = ...
+		bitmap = al_load_bitmap("Resources/Textures/menu_option.bmp");
 	}
 
 	void onMouseHover()
