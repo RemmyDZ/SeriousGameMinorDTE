@@ -68,7 +68,7 @@ struct Answer {
 
 	Answer(int positionV, int positionH, Question question) //Constructor (positionV = vertical, positionH = horizontal)
 	{ //FIX 'Answer::y is unitialized' WARING
-		textOffset = ANSWER_FONT_SIZE / 2;
+		textOffset = ANSWER_FONT_SIZE * 2;
 		answersAmount = std::size(questions[currentQuestion]);
 		this->positionV = positionV;
 		this->positionH = positionH;
@@ -130,7 +130,8 @@ struct Answer {
 		if (isVisible)
 		{
 			al_draw_bitmap(bitmap, x - offsetX, y - offsetY, NULL);
-			al_draw_text(font, al_map_rgb(0, 0, 0), x, y - textOffset, ALLEGRO_ALIGN_CENTER, answer.c_str());
+			//al_draw_text(font, al_map_rgb(0, 0, 0), x, y - textOffset, ALLEGRO_ALIGN_CENTER, answer.c_str());
+			al_draw_multiline_text(font, al_map_rgb(0, 0, 0), x, y-textOffset, al_get_bitmap_width(bitmap) - 350, 0, ALLEGRO_ALIGN_CENTER, answer.c_str());
 			//al_draw_textf(NULL, al_map_rgb(0, 0, 0), 10, 10, NULL, "y: %i", y);
 		}
 	}

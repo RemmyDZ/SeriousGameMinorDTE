@@ -23,7 +23,8 @@ const int QUESTION_TEXT_MAX_WIDTH = DISPLAY_WIDTH - 30;
 const int QUESTION_NUMBER_TEXT_X = 200;
 const int QUESTION_NUMBER_TEXT_Y = 478;
 
-const int ANSWER_FONT_SIZE = 30;
+const int ANSWER_FONT_SIZE = 30; 
+const int ANSWER_LONG_FONT_SIZE = 25; //For long answers so it doesn't go out of boundaries
 //const int ANSWER_X[4] = { DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3, DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3 }; --> OBSOLETE
 //const int ANSWER_Y[4] = { 550, 550, DISPLAY_HEIGHT - 175, DISPLAY_HEIGHT - 175 }; --> NOT NEEDED ANYMORE
 
@@ -71,7 +72,7 @@ std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characterist
 																"Which of these is the correct definition of the doppler effect?", 
 																"What type of weather can cause inaccurate readings?", 
 																"True or false: “The doppler effect causes inaccuracy in the measurement of the distance between the camera and a stationary object?”", 
-																"True or false: “Noisy data is data that doesn’t fit your beliefs”.", 
+																"True or false: “Noisy data is data that doesn\'t fit your beliefs”.", 
 																"Which two schools of thought are the most common for the removal of data noise?", 
 																"Are outlying data points considered data noise?", 
 																"What does the acronym INFFC stand for?", 
@@ -92,7 +93,7 @@ std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characterist
 																"Which of the following subjects are utilizing LiDAR either in product or research?", 
 																"How much is expected data creation in 2030 ( in zettabytes, approx)?", 
 																"Companies should think of data as an asset.", 
-																"According to MIT-Sloan research “what’s your data worth” data can be divided into three different categories, which category doesn’t belong here? (1)?", 
+																"According to MIT-Sloan research “what\'s your data worth” data can be divided into three different categories, which category doesn\'t belong here? (1)?", 
 																"The data strategy is not important when a company wants to utilize data better.", 
 																"What benefits the data strategy provides? ( choose the INCORRECT option) ", 
 																"There are usually three different paths to data monetizations.", 
@@ -114,13 +115,13 @@ std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"A
 											{"Entity Relationship Diagram.", "STAR schema (Multidimensional Modelling).", "Snowflake schema (Multidimensional Modelling).", "Object Role schema.", "1"},
 											{"The recorded distance may be larger than the actual distance.", "The data becomes corrupted.", "The rain may break the camera.", "The recorded distance may be shorter than the actual distance.", "3"}, 
 											{"Wrong colours.", "Malformed objects.", "Blurriness.", "Corrupted image files.", "1"},
-											{"The Doppler effect is the change in frequency of a wave in relation to an observer who is moving relative to the wave source", "The Doppler effect is the change in wavelength of a wave in relation to an observer who is moving relative to the wave source", "The doppler effect is a malformation of fast moving objects caused by the mechanics of a rolling shutter camera.", "The doppler effect doesn’t exist.", "0"},
+											{"The Doppler effect is the change in frequency of a wave in relation to an observer who is moving relative to the wave source", "The Doppler effect is the change in wavelength of a wave in relation to an observer who is moving relative to the wave source", "The doppler effect is a malformation of fast moving objects caused by the mechanics of a rolling shutter camera.", "The doppler effect doesn\'t exist.", "0"},
 											{"Harsh sunlight", "Rain", "Fog", "All of the above", "3"},
 											{"True", "False", "", "", "1"},
 											{"True", "False", "", "", "1"}, 
 											{"Algorithmic and Data based.", "Algorithmic and physical removal.", "Only algorithmic.", "Only data based.", "0"},
 											{"Yes", "No", "", "", "1"},
-											{"Iterative Nose Filter based on the Fusion of Classifiers.", "International Noise Filter based on the Fusion of Classifications.", "I don’t know", "Internal Nighttime Final Finger Classroom.", "0"},
+											{"Iterative Nose Filter based on the Fusion of Classifiers.", "International Noise Filter based on the Fusion of Classifications.", "I don\'t know", "Internal Nighttime Final Finger Classroom.", "0"},
 											{"The rolling shutter effect.", "The doppler effect", "The weather", "Atmospheric noise.", "3"},
 											{"Web processing", "Chunk processing", "Stream processing", "Batch processing", "3"}, 
 											{"Batch processing", "Service processing", "Stream processing", "Web processing", "2"},
@@ -130,7 +131,7 @@ std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"A
 											{"Hash partitioning, because each hash uniquely identifies each record", "Key range partitioning, because each record is easily found by its key", "", "", "1"}, 
 											{"Increase the performance by acquiring more potent hardware", "Increase the performance by acquiring more machines", "", "", "0"},
 											{"An object, accessible by pointers stored in memory", "A sequence of bytes", "", "", "1"},
-											{"Language specific, so that it matches the language used to build the web application", "JSON, because it’s supported by most web browsers", "CSV, because there is little markup", "Apache thrift, because it’s very compact", "1"},
+											{"Language specific, so that it matches the language used to build the web application", "JSON, because it\'s supported by most web browsers", "CSV, because there is little markup", "Apache thrift, because it\'s very compact", "1"},
 											{"Replication", "Partitioning", "Operability", "Binary Encoding", "0"},
 											{"Yes", "No", "", "", "0"},
 											{"Self-driving vehicles", "Terrain scan", "Atmosphere research", "All above", "3"},
