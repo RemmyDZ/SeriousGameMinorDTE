@@ -109,7 +109,16 @@ std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characterist
 																"Externally there are 3 different paths of data monetization. Choose the correct paths", 
 																"Data as a service is the simplest of the three paths and has the lowest business potential." },
 		
-																{"", "", "", "", "", "", "", "", "", "" } };
+																{"Which of the following parts is NOT present in a LiDAR camera?", 
+																"What is the correct formula a LiDAR camera uses to measure distance?", 
+																"\"When using a Class 1 laser, no safety precautions are needed\"", 
+																"Does collecting LiDAR data comply with the GDPR?", 
+																"Is the simulated data accurate enough to work with?", 
+																"What is the maximum scanning range of the LiDAR used by NS?", 
+																"If you want to see what personal data a company has stored about you, which GDPR law could you use?", 
+																"At what speed does a LiDAR laser travel?", 
+																"Is a laser with a wavelength of 1550nm considered 'eye-safe'?", 
+																"Who wrote the Spoorwegwet (Railroad law)?" } };
 
 //Answers (CHANGE TO VECTORS)
 std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"Able to handle large amounts of data and easy to produce new queries.", "Widely used and easy to understand", "", "", "0"}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
@@ -152,13 +161,13 @@ std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"A
 											{"True", "False", "", "", "1"},
 											{"Data as a service", "Insight as a service", "Analytics-enabled platform as a service", "All above", "3"},
 											{"True", "False", "", "", "0"},
-											{"", "", "", "", ""}, 
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
-											{"", "", "", "", ""}, 
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
-											{"", "", "", "", ""} };
+											{"Laser(s)", "Scanners and Optics", "Antenna", "Photodetector", "2"}, 
+											{"Distance = (Speed of Sound * Time of Flight) / 2", "Distance = (Speed of Light * Time of Flight) / 2", "Distance = (Speed of Sound * Time of Flight) * 2", "Distance = (Speed of Light * Time of Flight) * 2", "1"},
+											{"True", "False", "", "", "1"},
+											{"Yes", "No", "", "", "0"},
+											{"Yes, simulations nowadays are very accurate", "Yes, every variable can be simulated", "No, but with different software it should be possible", "No, because some variables cannot be simulated", "3"},
+											{"10m", "30m", "60m", "100m", "2"}, 
+											{"The right to be informed", "The right to erasure", "The right to object", "The right of access", "3"},
+											{"About 10.000 km/h", "About 50.000 km/h", "About 100.000 km/h", "About 300.000 km/h", "3"},
+											{"Yes", "No", "", "", "0"},
+											{"NS", "Dutch government", "European Union", "United Nations", "1"} };
