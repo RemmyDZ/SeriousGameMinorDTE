@@ -247,4 +247,5 @@ int main()
 	al_shutdown_primitives_addon();
 	al_uninstall_keyboard();
 	al_uninstall_mouse();
+	al_uninstall_system();
 }

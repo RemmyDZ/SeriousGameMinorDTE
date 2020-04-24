@@ -66,7 +66,7 @@ struct Answer {
 	std::string answer;
 	bool isAnswer; //True if it's the correct answer, false if not
 	bool isVisible;
-	int positionV, positionH;
+	int positionH, positionV;
 	ALLEGRO_BITMAP* bitmap = NULL;
 	ALLEGRO_BITMAP* bitmapNormal = NULL;
 	ALLEGRO_BITMAP* bitmapGreen = NULL; //For correct answers
@@ -76,27 +76,31 @@ struct Answer {
 	ALLEGRO_FONT* font = NULL;
 	//Question &question;
 
-	Answer(int positionV, int positionH, Question question) //Constructor (positionV = vertical, positionH = horizontal)
+	Answer(int positionV, int positionH, Question question) //Constructor
 	{ //FIX 'Answer::y is unitialized' WARNING
 		textOffset = ANSWER_FONT_SIZE * 2;
 		answersAmount = std::size(questions[currentQuestion]);
-		this->positionV = positionV;
+		//this->positionV = positionV;
 		this->positionH = positionH;
+		this->positionV = positionV;
 		isAnswer = false;
 		isVisible = false; 
+		bitmapNormal = al_load_bitmap("Resources/Textures/Answer.bmp");
+		bitmapGreen = al_load_bitmap("Resources/Textures/Answer_right.bmp");
+		bitmapRed = al_load_bitmap("Resources/Textures/Answer_wrong.bmp");
 		if (positionV == LEFT)
 		{
 			x = DISPLAY_WIDTH / 4;
-			bitmapNormal = al_load_bitmap("Resources/Textures/Answer1.bmp"); //Load Answer1 bitmap for answers on the left
-			bitmapGreen = al_load_bitmap("Resources/Textures/Answer1_right.bmp");
-			bitmapRed = al_load_bitmap("Resources/Textures/Answer1_wrong.bmp");
+		//	bitmapNormal = al_load_bitmap("Resources/Textures/Answer1.bmp"); //Load Answer1 bitmap for answers on the left
+		//	bitmapGreen = al_load_bitmap("Resources/Textures/Answer1_right.bmp");
+		//	bitmapRed = al_load_bitmap("Resources/Textures/Answer1_wrong.bmp");
 		}
 		else if (positionV == RIGHT)
 		{
 			x = (DISPLAY_WIDTH / 4) * 3;
-			bitmapNormal = al_load_bitmap("Resources/Textures/Answer2.bmp"); //Load Answer2 bitmap for answers on the right
-			bitmapGreen = al_load_bitmap("Resources/Textures/Answer2_right.bmp");
-			bitmapRed = al_load_bitmap("Resources/Textures/Answer2_wrong.bmp");
+		//	bitmapNormal = al_load_bitmap("Resources/Textures/Answer2.bmp"); //Load Answer2 bitmap for answers on the right
+		//	bitmapGreen = al_load_bitmap("Resources/Textures/Answer2_right.bmp");
+		//	bitmapRed = al_load_bitmap("Resources/Textures/Answer2_wrong.bmp");
 		}
 		bitmap = bitmapNormal; //Start with the normal bitmap
 		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
@@ -181,6 +185,9 @@ struct Answer {
 	void clear() //Garbage control
 	{
 		al_destroy_bitmap(bitmap);
+		al_destroy_bitmap(bitmapNormal);
+		al_destroy_bitmap(bitmapGreen);
+		al_destroy_bitmap(bitmapRed);
 		al_destroy_font(fontSmall);
 		al_destroy_font(fontLarge);
 	}

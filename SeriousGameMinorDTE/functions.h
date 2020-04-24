@@ -15,7 +15,7 @@ void resetAnswers(Answer answer[])
 //Go to the next question in the current quiz
 void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int questionNumber)
 {
-	int quizStartIndex;
+	int quizStartIndex = 0; //Give it a value so the code below doesn't use uninitialized memory FIX WARNING
 	switch (quizNumber)
 	{
 	case 0:
