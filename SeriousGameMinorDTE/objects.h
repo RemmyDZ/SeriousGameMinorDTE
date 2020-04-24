@@ -36,6 +36,11 @@ struct Question {
 		this->question = questions[quizNumber][questionNumber];
 	}
 
+	void setExplaination(int quizNumber, int questionNumber)
+	{
+		this->question = explainations[quizNumber][questionNumber];
+	}
+
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);

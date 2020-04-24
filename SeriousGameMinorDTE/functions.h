@@ -49,6 +49,11 @@ void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int q
 	answer[std::stoi(answers[questionNumber+quizStartIndex][4])].setCorrectAnswer(true);
 }
 
+void showExplaination(Question question, int quizNumber, int questionNumber)
+{
+	question.setExplaination(quizNumber, questionNumber);
+}
+
 void setGameState(int newGameState)
 {
 	gameState = newGameState;
