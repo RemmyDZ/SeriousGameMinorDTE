@@ -184,7 +184,7 @@ struct Answer {
 
 	void clear() //Garbage control
 	{
-		al_destroy_bitmap(bitmap);
+		//al_destroy_bitmap(bitmap);
 		al_destroy_bitmap(bitmapNormal);
 		al_destroy_bitmap(bitmapGreen);
 		al_destroy_bitmap(bitmapRed);
