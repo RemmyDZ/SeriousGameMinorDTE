@@ -9,6 +9,7 @@ struct Question {
 	int fontSize;
 	int nrFontSize; //Font size for the question number
 	std::string question;
+	ALLEGRO_COLOR fontColor;
 	ALLEGRO_BITMAP* bitmap = NULL;
 	ALLEGRO_FONT* font = NULL;
 	ALLEGRO_FONT* nrFont = NULL; //Font for the question number
@@ -23,6 +24,7 @@ struct Question {
 		textMaxWidth = QUESTION_TEXT_MAX_WIDTH;
 		nrTextX = QUESTION_NUMBER_TEXT_X;
 		nrTextY = QUESTION_NUMBER_TEXT_Y;
+		fontColor = al_map_rgb(0, 0, 0);
 		fontSize = QUESTION_FONT_SIZE;
 		nrFontSize = QUESTION_NUMBER_FONT_SIZE;
 		bitmap = al_load_bitmap("Resources/Textures/Question_box.bmp");
@@ -33,11 +35,13 @@ struct Question {
 
 	void setQuestion(int quizNumber, int questionNumber)
 	{
+		fontColor = al_map_rgb(0, 0, 0);
 		this->question = questions[quizNumber][questionNumber];
 	}
 
 	void setExplaination(int quizNumber, int questionNumber)
 	{
+		fontColor = al_map_rgb(0, 255, 0);
 		this->question = explainations[quizNumber][questionNumber];
 	}
 
@@ -45,7 +49,7 @@ struct Question {
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
 		//al_draw_text(font, al_map_rgb(0, 0, 0), textX, textY, NULL, question.c_str());
-		al_draw_multiline_text(font, al_map_rgb(0, 0, 0), textX, textY, textMaxWidth, 0, NULL, question.c_str());
+		al_draw_multiline_text(font, fontColor, textX, textY, textMaxWidth, 0, NULL, question.c_str());
 		al_draw_textf(nrFont, al_map_rgb(0, 0, 0), nrTextX, nrTextY, NULL, "%i/%zu", currentQuestion+1, std::size(questions[0])); //Plus 1, because currentQuestion is an index number, and we want to display a correct number
 		//FIX TOTAL QUESTIONS NOT SHOWING
 	}
