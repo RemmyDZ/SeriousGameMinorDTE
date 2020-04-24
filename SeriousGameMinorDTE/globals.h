@@ -50,6 +50,9 @@ const int AMOUNT_OF_SUBJECTS = 5;
 //Answer left or right --> This decides what bitmap to load
 enum POSITION { LEFT, RIGHT, TOP, BOTTOM};
 
+//Answer colors
+enum COLORS { DEFAULT, GREEN, RED };
+
 //Refresh rate
 const int FPS = 60;
 

@@ -68,6 +68,9 @@ struct Answer {
 	bool isVisible;
 	int positionV, positionH;
 	ALLEGRO_BITMAP* bitmap = NULL;
+	ALLEGRO_BITMAP* bitmapNormal = NULL;
+	ALLEGRO_BITMAP* bitmapGreen = NULL; //For correct answers
+	ALLEGRO_BITMAP* bitmapRed = NULL; //For wrong answers
 	ALLEGRO_FONT* fontSmall = NULL;
 	ALLEGRO_FONT* fontLarge = NULL;
 	ALLEGRO_FONT* font = NULL;
@@ -84,13 +87,18 @@ struct Answer {
 		if (positionV == LEFT)
 		{
 			x = DISPLAY_WIDTH / 4;
-			bitmap = al_load_bitmap("Resources/Textures/Answer1.bmp"); //Load Answer1 bitmap for answers on the left
+			bitmapNormal = al_load_bitmap("Resources/Textures/Answer1.bmp"); //Load Answer1 bitmap for answers on the left
+			bitmapGreen = al_load_bitmap("Resources/Textures/Answer1_right.bmp");
+			bitmapRed = al_load_bitmap("Resources/Textures/Answer1_wrong.bmp");
 		}
 		else if (positionV == RIGHT)
 		{
 			x = (DISPLAY_WIDTH / 4) * 3;
-			bitmap = al_load_bitmap("Resources/Textures/Answer2.bmp"); //Load Answer2 bitmap for answers on the right
+			bitmapNormal = al_load_bitmap("Resources/Textures/Answer2.bmp"); //Load Answer2 bitmap for answers on the right
+			bitmapGreen = al_load_bitmap("Resources/Textures/Answer2_right.bmp");
+			bitmapRed = al_load_bitmap("Resources/Textures/Answer2_wrong.bmp");
 		}
+		bitmap = bitmapNormal; //Start with the normal bitmap
 		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 		offsetX = al_get_bitmap_width(bitmap) / 2;
 		offsetY = al_get_bitmap_height(bitmap) / 2;
@@ -103,7 +111,7 @@ struct Answer {
 		font = fontLarge;
 	}
 
-	void onClick()
+	bool onClick()
 	{
 		ALLEGRO_MOUSE_STATE state;
 		al_get_mouse_state(&state);
@@ -111,11 +119,10 @@ struct Answer {
 			&& state.y >(y - offsetY) && state.y < (y + offsetY)
 			&& isVisible) //If this is true, the mouse cursor is within the bitmap. Also, the answer has to be visible
 		{
-			if (isAnswer)
-				al_show_native_message_box(NULL, "Correct!", "Correct!", "Correct!", NULL, NULL);
-			else
-				al_show_native_message_box(NULL, "False!", "False!", "False!", NULL, NULL);
+			return true;
+			//al_show_native_message_box(NULL, "False!", "False!", "False!", NULL, NULL);
 		}
+		return false;
 	}
 
 	void setAnswer(int questionNumber, int answerIndex) //Set the answers corresponding to the current question
@@ -140,6 +147,24 @@ struct Answer {
 			font = fontLarge;
 		else
 			font = fontSmall;
+	}
+
+	void setBitmap(int bitmap) //0 = default, 1 = green, 2 = red
+	{
+		switch (bitmap)
+		{
+		case 0:
+			this->bitmap = bitmapNormal;
+			break;
+		case 1:
+			this->bitmap = bitmapGreen;
+			break;
+		case 2:
+			this->bitmap = bitmapRed;
+			break;
+		default:
+			break;
+		}
 	}
 
 	void draw()

@@ -8,6 +8,7 @@ void resetAnswers(Answer answer[])
 		answer[i].setCorrectAnswer(false);
 		answer[i].setVisibility(false);
 		answer[i].setFont(true);
+		answer[i].setBitmap(DEFAULT);
 	}
 }
 
@@ -47,6 +48,31 @@ void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int q
 		//printf("%i\n", answers[questionNumber][i].length());
 	}
 	answer[std::stoi(answers[questionNumber+quizStartIndex][4])].setCorrectAnswer(true);
+}
+
+void checkForAnswers(Answer answer[])
+{
+	for (int i = 0; i < MAX_ANSWERS; i++)
+	{
+		if (answer[i].onClick())
+		{
+			if (answer[i].isAnswer)
+			{
+				answer[i].setBitmap(GREEN);
+			}
+			else if (!answer[i].isAnswer)
+			{
+				answer[i].setBitmap(RED);
+				for (int i = 0; i < MAX_ANSWERS; i++)
+				{
+					if (answer[i].isAnswer)
+					{
+						answer[i].setBitmap(GREEN);
+					}
+				}
+			}
+		}
+	}
 }
 
 void showExplaination(Question question, int quizNumber, int questionNumber)

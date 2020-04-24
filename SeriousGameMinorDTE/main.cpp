@@ -34,10 +34,6 @@ int main()
 
 	//Define standard colors
 	ALLEGRO_COLOR BLACK = al_map_rgb(0, 0, 0);
-	ALLEGRO_COLOR WHITE = al_map_rgb(255, 255, 255);
-	ALLEGRO_COLOR RED = al_map_rgb(255, 0, 0);
-	ALLEGRO_COLOR GREEN = al_map_rgb(0, 255, 0);
-	ALLEGRO_COLOR BLUE = al_map_rgb(0, 0, 255);
 
 	//Initialize addons
 	al_init_primitives_addon();
@@ -184,10 +180,7 @@ int main()
 			{
 				if (event.mouse.button == 1) //Left click
 				{
-					for (int i = 0; i < MAX_ANSWERS; i++)
-					{
-						answer[i].onClick();
-					}
+					checkForAnswers(answer);
 				}
 			}
 		}
