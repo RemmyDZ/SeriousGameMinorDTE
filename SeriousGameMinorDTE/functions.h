@@ -1,5 +1,12 @@
 #pragma once
 
+//Forward declerations
+void resetAnswers(Answer answer[]);
+void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int questionNumber);
+void checkForAnswers(Question &question, Answer answer[]);
+void showExplaination(Question &question, int quizNumber, int questionNumber);
+void setGameState(int newGameState);
+
 //Reset all answers to false (NEEDED BEFORE MOVING ON TO NEXT QUESTION)
 void resetAnswers(Answer answer[])
 {
@@ -50,7 +57,7 @@ void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int q
 	answer[std::stoi(answers[questionNumber+quizStartIndex][4])].setCorrectAnswer(true);
 }
 
-void checkForAnswers(Answer answer[])
+void checkForAnswers(Question &question, Answer answer[])
 {
 	for (int i = 0; i < MAX_ANSWERS; i++)
 	{
@@ -71,11 +78,12 @@ void checkForAnswers(Answer answer[])
 					}
 				}
 			}
+			showExplaination(question, gameState, currentQuestion);
 		}
 	}
 }
 
-void showExplaination(Question question, int quizNumber, int questionNumber)
+void showExplaination(Question &question, int quizNumber, int questionNumber)
 {
 	question.setExplaination(quizNumber, questionNumber);
 }

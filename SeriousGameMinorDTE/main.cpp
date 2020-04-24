@@ -118,11 +118,21 @@ int main()
 					al_toggle_display_flag(display, ALLEGRO_FULLSCREEN_WINDOW, true);
 				}
 				break;
-			case ALLEGRO_KEY_T:
-				currentQuestion++;
-				resetAnswers(answer);
-				goToNextQuestion(question, answer, gameState, currentQuestion);
-				//question.setQuestion(2);
+			case ALLEGRO_KEY_SPACE:
+				if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
+				{
+					if (currentQuestion < 9)
+					{
+						currentQuestion++;
+						resetAnswers(answer);
+						goToNextQuestion(question, answer, gameState, currentQuestion);
+						//question.setQuestion(2);
+					}
+					else if (currentQuestion == 9)
+					{
+						setGameState(MAIN_MENU);
+					}
+				}
 				break;
 			}
 		}
@@ -180,7 +190,7 @@ int main()
 			{
 				if (event.mouse.button == 1) //Left click
 				{
-					checkForAnswers(answer);
+					checkForAnswers(question, answer);
 				}
 			}
 		}
