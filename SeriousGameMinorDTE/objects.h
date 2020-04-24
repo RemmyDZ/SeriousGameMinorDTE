@@ -177,7 +177,7 @@ struct Answer {
 		{
 			al_draw_bitmap(bitmap, x - offsetX, y - offsetY, NULL);
 			//al_draw_text(font, al_map_rgb(0, 0, 0), x, y - textOffset, ALLEGRO_ALIGN_CENTER, answer.c_str());
-			al_draw_multiline_text(font, al_map_rgb(0, 0, 0), x, y-textOffset, al_get_bitmap_width(bitmap) - 350, 0, ALLEGRO_ALIGN_CENTER, answer.c_str());
+			al_draw_multiline_text(font, al_map_rgb(0, 0, 0), x, y-textOffset, al_get_bitmap_width(bitmap) - 50, 0, ALLEGRO_ALIGN_CENTER, answer.c_str());
 			//al_draw_textf(NULL, al_map_rgb(0, 0, 0), 10, 10, NULL, "y: %i", y);
 		}
 	}
