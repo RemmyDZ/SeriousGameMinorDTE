@@ -137,6 +137,9 @@ int main()
 			}
 		}
 
+		//if(event.type == ALLEGRO_EVENT_MOUSE_AXES)
+		
+
 		if (event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN)
 		{
 			if (gameState == MAIN_MENU)

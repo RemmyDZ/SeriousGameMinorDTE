@@ -119,6 +119,20 @@ struct Answer {
 		font = fontLarge;
 	}
 
+	bool onHover()
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		if (state.x > (x - offsetX) && state.x < (x + offsetX)
+			&& state.y >(y - offsetY) && state.y < (y + offsetY)
+			&& isVisible) //If this is true, the mouse cursor is within the bitmap. Also, the answer has to be visible
+		{
+			return true;
+			//al_show_native_message_box(NULL, "False!", "False!", "False!", NULL, NULL);
+		}
+		return false;
+	}
+
 	bool onClick()
 	{
 		ALLEGRO_MOUSE_STATE state;
@@ -277,6 +291,7 @@ struct Background {
 		this->x = x;
 		this->y = y;
 		bitmap = al_load_bitmap("Resources/Textures/Background_quiz.bmp");
+		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 255));
 	}
 
 	void draw()
