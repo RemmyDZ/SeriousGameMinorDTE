@@ -11,6 +11,7 @@ struct Question {
 	std::string question;
 	ALLEGRO_COLOR fontColor;
 	ALLEGRO_BITMAP* bitmap = NULL;
+	ALLEGRO_BITMAP* bitmapCounter = NULL;
 	ALLEGRO_FONT* font = NULL;
 	ALLEGRO_FONT* nrFont = NULL; //Font for the question number
 
@@ -28,6 +29,7 @@ struct Question {
 		fontSize = QUESTION_FONT_SIZE;
 		nrFontSize = QUESTION_NUMBER_FONT_SIZE;
 		bitmap = al_load_bitmap("Resources/Textures/Question_box.bmp");
+		bitmapCounter = al_load_bitmap("Resources/Textures/Question_counter.bmp");
 		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", fontSize, NULL);
 		nrFont = al_load_font("Resources/Fonts/GILLUBCD.ttf", nrFontSize, NULL); //CHANGE FONT, THIS ONE IS NOT SUITABLE FOR NUMBERS
@@ -48,9 +50,10 @@ struct Question {
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
+		al_draw_bitmap(bitmapCounter, x, 456, NULL);
 		//al_draw_text(font, al_map_rgb(0, 0, 0), textX, textY, NULL, question.c_str());
 		al_draw_multiline_text(font, fontColor, textX, textY, textMaxWidth, 0, NULL, question.c_str());
-		al_draw_textf(nrFont, al_map_rgb(0, 0, 0), nrTextX, nrTextY, NULL, "%i/%zu", currentQuestion+1, std::size(questions[0])); //Plus 1, because currentQuestion is an index number, and we want to display a correct number
+		al_draw_textf(nrFont, al_map_rgb(0, 0, 0), nrTextX, nrTextY, NULL, "Question: %i/%zu", currentQuestion+1, std::size(questions[0])); //Plus 1, because currentQuestion is an index number, and we want to display a correct number
 		//FIX TOTAL QUESTIONS NOT SHOWING
 	}
 
@@ -111,7 +114,7 @@ struct Answer {
 		offsetX = al_get_bitmap_width(bitmap) / 2;
 		offsetY = al_get_bitmap_height(bitmap) / 2;
 		if (positionH == TOP) 
-			y = ((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 4) + al_get_bitmap_height(question.bitmap);
+			y = ((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 2.5) + al_get_bitmap_height(question.bitmap);
 		else if (positionH == BOTTOM)
 			y = (((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 4) * 3) + al_get_bitmap_height(question.bitmap);
 		fontLarge = al_load_font("Resources/Fonts/GILLUBCD.ttf", ANSWER_FONT_SIZE, NULL);

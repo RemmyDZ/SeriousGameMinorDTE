@@ -14,11 +14,11 @@ int gameState = MAIN_MENU; //Start in main menu
 const int BACKGROUND_X = 0;
 const int BACKGROUND_Y = 0;
 
-const int MENU_BOX_X = 0;
-const int MENU_BOX_Y = 0;
+const int MENU_BOX_X = 5;
+const int MENU_BOX_Y = 10;
 
-const int QUESTIONBOX_X = 0;
-const int QUESTIONBOX_Y = 0;
+const int QUESTIONBOX_X = 10;
+const int QUESTIONBOX_Y = 5;
 
 const int QUESTION_FONT_SIZE = 70;
 const int QUESTION_NUMBER_FONT_SIZE = 30;
@@ -26,11 +26,11 @@ const int QUESTION_NUMBER_FONT_SIZE = 30;
 const int QUESTION_TEXT_X = 30;
 const int QUESTION_TEXT_Y = 30;
 const int QUESTION_TEXT_MAX_WIDTH = DISPLAY_WIDTH - 45;
-const int QUESTION_NUMBER_TEXT_X = 195;
-const int QUESTION_NUMBER_TEXT_Y = 478;
+const int QUESTION_NUMBER_TEXT_X = 45;
+const int QUESTION_NUMBER_TEXT_Y = 468;
 
 const int MENU_BUTTON_FONT_SIZE = 35;
-const int MENU_BUTTON_START_Y = 35;
+const int MENU_BUTTON_START_Y = 60;
 
 const int ANSWER_RESIZE_LENGTH = 150; //The size at which a question gets the smaller font
 const int ANSWER_FONT_SIZE = 30; 
