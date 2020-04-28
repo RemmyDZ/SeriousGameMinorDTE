@@ -10,6 +10,7 @@ void setGameState(int newGameState);
 //Reset all answers to false (NEEDED BEFORE MOVING ON TO NEXT QUESTION)
 void resetAnswers(Answer answer[])
 {
+	isAnswerGiven = false;
 	for (int i = 0; i < MAX_ANSWERS; i++)
 	{
 		answer[i].setCorrectAnswer(false);
@@ -59,26 +60,30 @@ void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int q
 
 void checkForAnswers(Question &question, Answer answer[])
 {
-	for (int i = 0; i < MAX_ANSWERS; i++)
+	if (!isAnswerGiven) //Only proceed with the code if an answer hasn't been given yet
 	{
-		if (answer[i].onClick())
+		for (int i = 0; i < MAX_ANSWERS; i++)
 		{
-			if (answer[i].isAnswer)
+			if (answer[i].onClick())
 			{
-				answer[i].setBitmap(GREEN);
-			}
-			else if (!answer[i].isAnswer)
-			{
-				answer[i].setBitmap(RED);
-				for (int i = 0; i < MAX_ANSWERS; i++)
+				if (answer[i].isAnswer)
 				{
-					if (answer[i].isAnswer)
+					answer[i].setBitmap(GREEN);
+				}
+				else if (!answer[i].isAnswer)
+				{
+					answer[i].setBitmap(RED);
+					for (int i = 0; i < MAX_ANSWERS; i++)
 					{
-						answer[i].setBitmap(GREEN);
+						if (answer[i].isAnswer)
+						{
+							answer[i].setBitmap(GREEN);
+						}
 					}
 				}
+				isAnswerGiven = true;
+				showExplaination(question, gameState, currentQuestion);
 			}
-			showExplaination(question, gameState, currentQuestion);
 		}
 	}
 }

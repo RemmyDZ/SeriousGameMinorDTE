@@ -59,6 +59,9 @@ const int FPS = 60;
 //Main loop condition
 bool isGameFinished = false; //Main loop will break once this turns 'true'
 
+//Go to next question condition
+bool isAnswerGiven = false; //Only proceed to next question when true
+
 //Draw condition
 bool redraw = true; //Always start with 'true', otherwise nothing will be drawn in the first frame
 
