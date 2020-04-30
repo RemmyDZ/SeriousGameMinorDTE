@@ -142,20 +142,45 @@ int main()
 
 		if (event.type == ALLEGRO_EVENT_MOUSE_AXES)
 		{
-			if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
+			if (gameState == MAIN_MENU)
+			{
+				if (startQuiz.onHover())
+					startQuiz.setBitmap(1); //HOVER doesn't work here, as its value is '3'
+				else
+					startQuiz.setBitmap(DEFAULT);
+
+				if (checkSource.onHover())
+					checkSource.setBitmap(1);
+				else
+					checkSource.setBitmap(DEFAULT);
+
+				if (quitGame.onHover())
+					quitGame.setBitmap(1);
+				else
+					quitGame.setBitmap(DEFAULT);
+			}
+
+			else if (gameState == QUIZ_MENU)
+			{
+				for (int i = 0; i < AMOUNT_OF_SUBJECTS; i++)
+				{
+					if (quizButton[i].onHover())
+						quizButton[i].setBitmap(1); //Hover bitmap
+					else
+						quizButton[i].setBitmap(DEFAULT);
+				}
+			}
+
+			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
 			{
 				if (!isAnswerGiven) //Only change bitmaps when the answer hasn't been given yet
 				{
 					for (int i = 0; i < MAX_ANSWERS; i++)
 					{
 						if (answer[i].onHover())
-						{
 							answer[i].setBitmap(HOVER); //Set the bitmap to the hover bitmap when the mouse is hovering over the answer box
-						}
 						else
-						{
 							answer[i].setBitmap(DEFAULT); //Set bitmap back to default when the mouse is no longer hovering over the answer box
-						}
 					}
 				}
 			}

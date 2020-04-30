@@ -176,7 +176,7 @@ struct Answer {
 			font = fontSmall;
 	}
 
-	void setBitmap(int bitmap) //0 = default, 1 = green, 2 = red
+	void setBitmap(int bitmap) //0 = default, 1 = green, 2 = red, 3 = hover
 	{
 		switch (bitmap)
 		{
@@ -247,20 +247,34 @@ struct MenuButton {
 	int x, y;
 	std::string text;
 	ALLEGRO_BITMAP* bitmap;
+	ALLEGRO_BITMAP* bitmapNormal;
+	ALLEGRO_BITMAP* bitmapHover;
 	ALLEGRO_FONT* font;
 
 	MenuButton(int index, std::string text, MenuBox menuBox) //Index acts as a multiplier for the y position
 	{
 		this->text = text;
-		bitmap = al_load_bitmap("Resources/Textures/menu_option.bmp");
+		bitmapNormal = al_load_bitmap("Resources/Textures/menu_option.bmp");
+		bitmapHover = al_load_bitmap("Resources/Textures/menu_option_hover.bmp");
+		bitmap = bitmapNormal; //Start with the default bitmap
 		x = (al_get_bitmap_width(menuBox.bitmap) - al_get_bitmap_width(bitmap)) / 2;
 		y = (al_get_bitmap_height(bitmap) * index) + MENU_BUTTON_START_Y;
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", MENU_BUTTON_FONT_SIZE, NULL);
 	}
 
-	void onMouseHover()
+	bool onHover() //Same code as "onClick()", but better for readability
 	{
-		//Change color?
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x&& state.x < (x + width)
+			&& state.y > y&& state.y < (y + height))//If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
 	}
 
 	bool onClick() //Returns true if clicked
@@ -276,6 +290,21 @@ struct MenuButton {
 			return true;
 		}
 		return false;
+	}
+
+	void setBitmap(int bitmap) //0 = default, 1 = hover
+	{
+		switch (bitmap)
+		{
+		case 0:
+			this->bitmap = bitmapNormal;
+			break;
+		case 1:
+			this->bitmap = bitmapHover;
+			break;
+		default:
+			break;
+		}
 	}
 
 	void draw()
