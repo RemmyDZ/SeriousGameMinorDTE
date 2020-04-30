@@ -114,7 +114,7 @@ struct Answer {
 		offsetX = al_get_bitmap_width(bitmap) / 2;
 		offsetY = al_get_bitmap_height(bitmap) / 2;
 		if (positionH == TOP) 
-			y = ((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 2.5) + al_get_bitmap_height(question.bitmap);
+			y = (((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 5) * 2) + al_get_bitmap_height(question.bitmap);
 		else if (positionH == BOTTOM)
 			y = (((DISPLAY_HEIGHT - al_get_bitmap_height(question.bitmap)) / 4) * 3) + al_get_bitmap_height(question.bitmap);
 		fontLarge = al_load_font("Resources/Fonts/GILLUBCD.ttf", ANSWER_FONT_SIZE, NULL);
