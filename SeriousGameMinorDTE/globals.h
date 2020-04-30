@@ -23,8 +23,8 @@ const int QUESTIONBOX_Y = 5;
 const int QUESTION_FONT_SIZE = 70;
 const int QUESTION_NUMBER_FONT_SIZE = 30;
 
-const int QUESTION_TEXT_X = 30;
-const int QUESTION_TEXT_Y = 30;
+const int QUESTION_TEXT_X = 25;
+const int QUESTION_TEXT_Y = 5;
 const int QUESTION_TEXT_MAX_WIDTH = DISPLAY_WIDTH - 45;
 const int QUESTION_NUMBER_TEXT_X = 45;
 const int QUESTION_NUMBER_TEXT_Y = 468;
