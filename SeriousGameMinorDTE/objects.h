@@ -78,6 +78,7 @@ struct Answer {
 	ALLEGRO_BITMAP* bitmapNormal = NULL;
 	ALLEGRO_BITMAP* bitmapGreen = NULL; //For correct answers
 	ALLEGRO_BITMAP* bitmapRed = NULL; //For wrong answers
+	ALLEGRO_BITMAP* bitmapHover = NULL; //For mouse hovering
 	ALLEGRO_FONT* fontSmall = NULL;
 	ALLEGRO_FONT* fontLarge = NULL;
 	ALLEGRO_FONT* font = NULL;
@@ -95,6 +96,7 @@ struct Answer {
 		bitmapNormal = al_load_bitmap("Resources/Textures/Answer.bmp");
 		bitmapGreen = al_load_bitmap("Resources/Textures/Answer_right.bmp");
 		bitmapRed = al_load_bitmap("Resources/Textures/Answer_wrong.bmp");
+		bitmapHover = al_load_bitmap("Resources/Textures/Answer_hover.bmp");
 		if (positionV == LEFT)
 		{
 			x = DISPLAY_WIDTH / 4;
@@ -122,7 +124,7 @@ struct Answer {
 		font = fontLarge;
 	}
 
-	bool onHover()
+	bool onHover() //Same code as "onClick()", but better to have both for code readability
 	{
 		ALLEGRO_MOUSE_STATE state;
 		al_get_mouse_state(&state);
@@ -186,6 +188,9 @@ struct Answer {
 			break;
 		case 2:
 			this->bitmap = bitmapRed;
+			break;
+		case 3:
+			this->bitmap = bitmapHover;
 			break;
 		default:
 			break;

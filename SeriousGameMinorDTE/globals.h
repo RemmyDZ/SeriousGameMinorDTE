@@ -51,7 +51,7 @@ const int AMOUNT_OF_SUBJECTS = 5;
 enum POSITION { LEFT, RIGHT, TOP, BOTTOM};
 
 //Answer colors
-enum COLORS { DEFAULT, GREEN, RED };
+enum COLORS { DEFAULT, GREEN, RED, HOVER }; //For Answer bitmaps
 
 //Refresh rate
 const int FPS = 60;
