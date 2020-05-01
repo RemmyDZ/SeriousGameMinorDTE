@@ -199,7 +199,7 @@ struct Answer {
 
 	void draw()
 	{
-		if (isVisible)
+		if (isVisible) //Only draw bitmap when visible
 		{
 			al_draw_bitmap(bitmap, x - offsetX, y - offsetY, NULL);
 			//al_draw_text(font, al_map_rgb(0, 0, 0), x, y - textOffset, ALLEGRO_ALIGN_CENTER, answer.c_str());
@@ -339,6 +339,38 @@ struct Background {
 	void clear() //Garbage control
 	{
 		al_destroy_bitmap(bitmap);
+	}
+};
+
+struct NextQuestionButton {
+	int x, y;
+	ALLEGRO_BITMAP* bitmap;
+
+	NextQuestionButton()
+	{
+		x = NEXT_QUESTION_BUTTON_X;
+		y = NEXT_QUESTION_BUTTON_Y;
+		bitmap = al_load_bitmap("Resources/Textures/Next_question.bmp");
+	}
+
+	bool onClick() //NEEDS FIX, AS BUTTON IS ALOT SMALLER THAN BITMAP
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x&& state.x < (x + width)
+			&& state.y > y&& state.y < (y + height)) //If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
+	}
+
+	void draw()
+	{
+		al_draw_bitmap(bitmap, x, y, NULL);
 	}
 };
 

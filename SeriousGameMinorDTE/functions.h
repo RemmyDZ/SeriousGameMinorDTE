@@ -44,6 +44,7 @@ void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int q
 	default:
 		break;
 	}
+
 	question.setQuestion(quizNumber, questionNumber);
 	//int answersAmount = (sizeof(answers) / sizeof(answers[questionNumber]));
 

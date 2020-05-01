@@ -57,6 +57,7 @@ int main()
 
 	//Create objects
 	Background background(BACKGROUND_X, BACKGROUND_Y);
+	NextQuestionButton nextQuestionButton;
 	MenuBox menuBox("Test");
 	MenuButton startQuiz(0, "Start quizzing!", menuBox);
 	MenuButton checkSource(1, "View sources", menuBox);
@@ -118,25 +119,25 @@ int main()
 					al_toggle_display_flag(display, ALLEGRO_FULLSCREEN_WINDOW, true);
 				}
 				break;
-			case ALLEGRO_KEY_SPACE:
-				if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
-				{
-					if (isAnswerGiven) //Only go to the next question when an answer has been given
-					{
-						if (currentQuestion < 9)
-						{
-							currentQuestion++;
-							resetAnswers(answer);
-							goToNextQuestion(question, answer, gameState, currentQuestion);
-							//question.setQuestion(2);
-						}
-						else if (currentQuestion == 9)
-						{
-							setGameState(MAIN_MENU);
-						}
-					}
-				}
-				break;
+			//case ALLEGRO_KEY_SPACE:
+			//	if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
+			//	{
+			//		if (isAnswerGiven) //Only go to the next question when an answer has been given
+			//		{
+			//			if (currentQuestion < 9)
+			//			{
+			//				currentQuestion++;
+			//				resetAnswers(answer);
+			//				goToNextQuestion(question, answer, gameState, currentQuestion);
+			//				//question.setQuestion(2);
+			//			}
+			//			else if (currentQuestion == 9)
+			//			{
+			//				setGameState(MAIN_MENU);
+			//			}
+			//		}
+			//	}
+			//	break;
 			}
 		}
 
@@ -241,6 +242,20 @@ int main()
 				if (event.mouse.button == 1) //Left click
 				{
 					checkForAnswers(question, answer);
+					if (isAnswerGiven && nextQuestionButton.onClick()) //Only go to the next question when an answer has been given and the button has been pressed
+					{
+						if (currentQuestion < 9)
+						{
+							currentQuestion++;
+							resetAnswers(answer);
+							goToNextQuestion(question, answer, gameState, currentQuestion);
+							//question.setQuestion(2);
+						}
+						else if (currentQuestion == 9)
+						{
+							setGameState(MAIN_MENU);
+						}
+					}
 				}
 			}
 		}
@@ -272,12 +287,11 @@ int main()
 			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
 			{
 				question.draw();
+				if(isAnswerGiven)
+					nextQuestionButton.draw(); //Only shows when answer has been given
 				for (size_t i = 0; i < std::size(answer); i++)
 				{
-					if (answer[i].isVisible) //Only draw answer if visible (non-visible if question has less answers than the max amount of answers)
-					{
 						answer[i].draw();
-					}
 				}
 			}
 
