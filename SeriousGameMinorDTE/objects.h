@@ -344,13 +344,40 @@ struct Background {
 
 struct NextQuestionButton {
 	int x, y;
+	int fontSize;
+	int textX;
+	int textY;
 	ALLEGRO_BITMAP* bitmap;
+	ALLEGRO_BITMAP* bitmapNormal;
+	ALLEGRO_BITMAP* bitmapHover;
+	ALLEGRO_FONT* font = NULL;
 
 	NextQuestionButton()
 	{
 		x = NEXT_QUESTION_BUTTON_X;
 		y = NEXT_QUESTION_BUTTON_Y;
-		bitmap = al_load_bitmap("Resources/Textures/Next_question.bmp");
+		textX = NEXT_QUESTION_BUTTON_X + 10;
+		textY = NEXT_QUESTION_BUTTON_Y + 10;
+		bitmapNormal = al_load_bitmap("Resources/Textures/Next_question.bmp");
+		bitmapHover = al_load_bitmap("Resources/Textures/Next_question_hover.bmp");
+		bitmap = bitmapNormal; //Start with the default bitmap
+		fontSize = NEXT_QUESTION_FONT_SIZE;
+		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", fontSize, NULL);
+	}
+
+	bool onHover() //Same code as "onClick()", but better for readability
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x && state.x < (x + width)
+			&& state.y > y && state.y < (y + height))//If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
 	}
 
 	bool onClick() //NEEDS FIX, AS BUTTON IS ALOT SMALLER THAN BITMAP
@@ -368,9 +395,26 @@ struct NextQuestionButton {
 		return false;
 	}
 
+	void setBitmap(int bitmap) //0 = default, 1 = hover
+	{
+		switch (bitmap)
+		{
+		case 0:
+			this->bitmap = bitmapNormal;
+			break;
+		case 1:
+			this->bitmap = bitmapHover;
+			break;
+		default:
+			break;
+		}
+	}
+
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
+		al_draw_textf(font, al_map_rgb(0, 0, 0), textX, textY, NULL, "Next question");
+
 	}
 };
 

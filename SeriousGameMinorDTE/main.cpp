@@ -184,6 +184,14 @@ int main()
 							answer[i].setBitmap(DEFAULT); //Set bitmap back to default when the mouse is no longer hovering over the answer box
 					}
 				}
+				else if (isAnswerGiven) 
+				{
+					if (nextQuestionButton.onHover())
+						nextQuestionButton.setBitmap(1);
+					else
+						nextQuestionButton.setBitmap(DEFAULT);
+					
+				}
 			}
 		}
 		

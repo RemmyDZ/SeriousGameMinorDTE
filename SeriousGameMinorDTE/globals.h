@@ -14,8 +14,9 @@ int gameState = MAIN_MENU; //Start in main menu
 const int BACKGROUND_X = 0;
 const int BACKGROUND_Y = 0;
 
-const int NEXT_QUESTION_BUTTON_X = 1326;
-const int NEXT_QUESTION_BUTTON_Y = 440;
+const int NEXT_QUESTION_BUTTON_X = 1354;
+const int NEXT_QUESTION_BUTTON_Y = 480;
+const int NEXT_QUESTION_FONT_SIZE = 30;
 
 const int MENU_BOX_X = 5;
 const int MENU_BOX_Y = 10;
