@@ -257,6 +257,7 @@ int main()
 							currentQuestion++;
 							resetAnswers(answer);
 							goToNextQuestion(question, answer, gameState, currentQuestion);
+							nextQuestionButton.setBitmap(DEFAULT);
 							//question.setQuestion(2);
 						}
 						else if (currentQuestion == 9)
