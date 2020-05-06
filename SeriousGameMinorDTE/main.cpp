@@ -262,7 +262,8 @@ int main()
 						}
 						else if (currentQuestion == 9)
 						{
-							setGameState(MAIN_MENU);
+							background.setBitmap(1); //Set background to score screen
+							setGameState(END_SCREEN);
 						}
 					}
 				}
@@ -285,6 +286,7 @@ int main()
 				checkSource.draw();
 				quitGame.draw();
 			}
+
 			else if (gameState == QUIZ_MENU)
 			{
 				menuBox.draw();
@@ -293,6 +295,12 @@ int main()
 					quizButton[i].draw();
 				}
 			}
+
+			else if (gameState == END_SCREEN)
+			{
+				//Draw score here
+			}
+
 			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
 			{
 				question.draw();

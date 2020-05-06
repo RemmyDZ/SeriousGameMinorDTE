@@ -322,13 +322,32 @@ struct MenuButton {
 struct Background {
 	int x, y;
 	ALLEGRO_BITMAP* bitmap;
+	ALLEGRO_BITMAP* bitmapNormal;
+	ALLEGRO_BITMAP* bitmapEnd;
 
 	Background(int x, int y) //Constructor
 	{
 		this->x = x;
 		this->y = y;
-		bitmap = al_load_bitmap("Resources/Textures/Background_quiz.bmp");
+		bitmapNormal = al_load_bitmap("Resources/Textures/Background_quiz.bmp");
+		bitmapEnd = al_load_bitmap("Resources/Textures/Score_screen.bmp");
+		bitmap = bitmapNormal; //Start with normal background
 		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 255));
+	}
+
+	void setBitmap(int bitmap) //0 = default, 1 = end screen
+	{
+		switch (bitmap)
+		{
+		case 0:
+			this->bitmap = bitmapNormal;
+			break;
+		case 1:
+			this->bitmap = bitmapEnd;
+			break;
+		default:
+			break;
+		}
 	}
 
 	void draw()
