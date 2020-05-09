@@ -451,6 +451,23 @@ struct NextQuestionButton {
 	}
 };
 
+struct Source {
+	int x, y;
+	ALLEGRO_FONT* font;
+
+	Source()
+	{
+		//x = 
+		//y = 
+		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", SOURCE_FONT_SIZE, NULL);
+	}
+
+	void draw()
+	{
+		//Draw text here
+	}
+};
+
 //struct Controller {
 //	//Question &question;
 //	//Answer* answer[MAX_ANSWERS];

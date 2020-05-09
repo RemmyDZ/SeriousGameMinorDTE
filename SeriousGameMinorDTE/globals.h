@@ -44,6 +44,8 @@ const int ANSWER_FONT_SIZE = 30;
 const int ANSWER_LONG_FONT_SIZE = 25; //For long answers so it doesn't go out of boundaries
 
 const int SCORE_FONT_SIZE = 60;
+
+const int SOURCE_FONT_SIZE = 30;
 //const int ANSWER_X[4] = { DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3, DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3 }; --> OBSOLETE
 //const int ANSWER_Y[4] = { 550, 550, DISPLAY_HEIGHT - 175, DISPLAY_HEIGHT - 175 }; --> NOT NEEDED ANYMORE
 
