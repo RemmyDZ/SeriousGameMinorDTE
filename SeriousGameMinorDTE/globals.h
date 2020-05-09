@@ -207,10 +207,10 @@ std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"LiDAR data co
 																"Harsh sunlight may cause more reflection than normal on already reflective surfaces. Rain may cause distances to be measured incorrectly. Fog may impede the waves of the LiDAR camera.", 
 																"The doppler effect does not affect measurements regarding stationary objects, but rather objects that are approaching or receding from the camera.", 
 																"Noisy data is data that does not provide useful information to a research.", 
-																"Removing noise with an algorithmic approach means to use algorithms to remove data points based on classifiers for what is and isn’t data noise. Removing data noise on a data level means to apply filters to a dataset to limit the insertion of data that does not fit the filter’s criteria.", 
+																"Removing noise with an algorithmic approach means to use algorithms to remove data points based on classifiers for what is and isn\'t data noise. Removing data noise on a data level means to apply filters to a dataset to limit the insertion of data that does not fit the filter\'s criteria.", 
 																"Outliers may be considered data noise in a certain context, but they are actually two separate things. noise can be defined as mislabeled examples or errors in the values of attributes, whereas outliers are defined as abnormalities or anomalies.", 
 																"INFFC is a noise removal method that is based on a fusion of multiple classifiers to detect noise. The use of multiple classifiers in an iterative way makes this a very accurate way of removing data noise, but also a very time consuming one.", 
-																"While atmospheric noise can be a source of data noise in certain specific contexts it isn’t applicable to our context."},
+																"While atmospheric noise can be a source of data noise in certain specific contexts it isn\'t applicable to our context."},
 
 																{"Batch processing presupposes a stored dataset and performs large queries on it.", 
 																"Stream processing takes an incoming flow of data and performs operations on it.", 
@@ -242,5 +242,5 @@ std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"LiDAR data co
 																"The maximum scanning range of the LiDAR (UTM-30LX-EW) is specified as 60 meters.", 
 																"The right to be informed only tells you if a company has data stored about you. If you want to see the actual data, you need the right of access.", 
 																"The laser moves as the speed of light, which is roughly 300.000 km/h.", 
-																"Yes, 1550nm falls within the bandwidth of ‘eye-safe’ wavelengths.", 
+																"Yes, 1550nm falls within the bandwidth of \'eye-safe\' wavelengths.", 
 																"The Dutch government created the Spoorwegwet on April 23th of 2003."} };
