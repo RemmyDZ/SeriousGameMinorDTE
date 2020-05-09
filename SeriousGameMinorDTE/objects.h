@@ -6,13 +6,14 @@ struct Question {
 	int textX, textY; //TextX won't be needed as the text is being drawn in the center, so 'x' can be used for that
 	int textMaxWidth;
 	int nrTextX, nrTextY; //Coordinations for the question number
-	int fontSize;
 	int nrFontSize; //Font size for the question number
 	std::string question;
 	ALLEGRO_COLOR fontColor;
 	ALLEGRO_BITMAP* bitmap = NULL;
 	ALLEGRO_BITMAP* bitmapCounter = NULL;
 	ALLEGRO_FONT* font = NULL;
+	ALLEGRO_FONT* fontNormal = NULL;
+	ALLEGRO_FONT* fontLong = NULL;
 	ALLEGRO_FONT* nrFont = NULL; //Font for the question number
 
 	Question(std::string question) //Constructor
@@ -26,25 +27,34 @@ struct Question {
 		nrTextX = QUESTION_NUMBER_TEXT_X;
 		nrTextY = QUESTION_NUMBER_TEXT_Y;
 		fontColor = al_map_rgb(0, 0, 0);
-		fontSize = QUESTION_FONT_SIZE;
 		nrFontSize = QUESTION_NUMBER_FONT_SIZE;
 		bitmap = al_load_bitmap("Resources/Textures/Question_box.bmp");
 		bitmapCounter = al_load_bitmap("Resources/Textures/Question_counter.bmp");
 		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
-		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", fontSize, NULL);
+		fontNormal = al_load_font("Resources/Fonts/GILLUBCD.ttf", QUESTION_FONT_SIZE, NULL);
+		fontLong = al_load_font("Resources/Fonts/GILLUBCD.ttf", QUESTION_FONT_SIZE_LONG, NULL);
+		font = fontNormal; //Start with default font size
 		nrFont = al_load_font("Resources/Fonts/GILLUBCD.ttf", nrFontSize, NULL); //CHANGE FONT, THIS ONE IS NOT SUITABLE FOR NUMBERS
 	}
 
 	void setQuestion(int quizNumber, int questionNumber)
 	{
 		fontColor = al_map_rgb(0, 0, 0);
-		this->question = questions[quizNumber][questionNumber];
+		question = questions[quizNumber][questionNumber];
+		if (question.length() > QUESTION_LONG_FONT_TRESHOLD)
+			font = fontLong;
+		else
+			font = fontNormal;
 	}
 
 	void setExplaination(int quizNumber, int questionNumber)
 	{
 		fontColor = al_map_rgb(0, 255, 0);
-		this->question = explainations[quizNumber][questionNumber];
+		question = explainations[quizNumber][questionNumber];
+		if (question.length() > QUESTION_LONG_FONT_TRESHOLD)
+			font = fontLong;
+		else
+			font = fontNormal;
 	}
 
 	void draw()
