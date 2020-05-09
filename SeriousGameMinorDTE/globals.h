@@ -25,7 +25,7 @@ const int QUESTIONBOX_X = 10;
 const int QUESTIONBOX_Y = 5;
 
 const int QUESTION_FONT_SIZE = 70; //Default font size
-const int QUESTION_FONT_SIZE_LONG = 50; //Font size for long questions/explainations
+const int QUESTION_FONT_SIZE_LONG = 55; //Font size for long questions/explainations
 const int QUESTION_NUMBER_FONT_SIZE = 30;
 
 const int QUESTION_LONG_FONT_TRESHOLD = 200; //Maximum length of a question to use the default font, everything above will use smaller font size
