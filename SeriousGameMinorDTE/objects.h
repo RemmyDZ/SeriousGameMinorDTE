@@ -324,6 +324,7 @@ struct Background {
 	ALLEGRO_BITMAP* bitmap;
 	ALLEGRO_BITMAP* bitmapNormal;
 	ALLEGRO_BITMAP* bitmapEnd;
+	ALLEGRO_FONT* font; //For showing score on endscreen
 
 	Background(int x, int y) //Constructor
 	{
@@ -332,6 +333,7 @@ struct Background {
 		bitmapNormal = al_load_bitmap("Resources/Textures/Background_quiz.bmp");
 		bitmapEnd = al_load_bitmap("Resources/Textures/Score_screen.bmp");
 		bitmap = bitmapNormal; //Start with normal background
+		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", SCORE_FONT_SIZE, NULL);
 		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 255));
 	}
 
@@ -353,6 +355,8 @@ struct Background {
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
+		if (gameState == END_SCREEN)
+			al_draw_textf(font, al_map_rgb(0, 0, 0), DISPLAY_WIDTH / 2, (DISPLAY_HEIGHT / 2) - 40, ALLEGRO_ALIGN_CENTER, "Score: %i", playerScore);
 	}
 
 	void clear() //Garbage control

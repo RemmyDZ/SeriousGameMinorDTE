@@ -119,6 +119,9 @@ int main()
 					al_toggle_display_flag(display, ALLEGRO_FULLSCREEN_WINDOW, true);
 				}
 				break;
+			case ALLEGRO_KEY_SPACE:
+				setGameState(MAIN_MENU);
+				break;
 			//case ALLEGRO_KEY_SPACE:
 			//	if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
 			//	{
@@ -240,6 +243,7 @@ int main()
 							break;
 						}
 						currentQuestion = 0;
+						playerScore = 0; //Reset player score
 						resetAnswers(answer);
 						goToNextQuestion(question, answer, gameState, currentQuestion);
 					}

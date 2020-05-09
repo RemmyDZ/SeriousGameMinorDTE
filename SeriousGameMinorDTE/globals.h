@@ -39,6 +39,8 @@ const int MENU_BUTTON_START_Y = 60;
 const int ANSWER_RESIZE_LENGTH = 150; //The size at which a question gets the smaller font
 const int ANSWER_FONT_SIZE = 30; 
 const int ANSWER_LONG_FONT_SIZE = 25; //For long answers so it doesn't go out of boundaries
+
+const int SCORE_FONT_SIZE = 60;
 //const int ANSWER_X[4] = { DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3, DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3 }; --> OBSOLETE
 //const int ANSWER_Y[4] = { 550, 550, DISPLAY_HEIGHT - 175, DISPLAY_HEIGHT - 175 }; --> NOT NEEDED ANYMORE
 
@@ -65,6 +67,9 @@ bool isGameFinished = false; //Main loop will break once this turns 'true'
 
 //Go to next question condition
 bool isAnswerGiven = false; //Only proceed to next question when true
+
+//Score
+int playerScore = 0;
 
 //Draw condition
 bool redraw = true; //Always start with 'true', otherwise nothing will be drawn in the first frame

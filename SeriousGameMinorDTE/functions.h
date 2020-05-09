@@ -67,11 +67,12 @@ void checkForAnswers(Question &question, Answer answer[])
 		{
 			if (answer[i].onClick())
 			{
-				if (answer[i].isAnswer)
+				if (answer[i].isAnswer) //Player answered right
 				{
 					answer[i].setBitmap(GREEN);
+					playerScore++; //Increase score by 1
 				}
-				else if (!answer[i].isAnswer)
+				else if (!answer[i].isAnswer) //Player answered wrong
 				{
 					answer[i].setBitmap(RED);
 					for (int i = 0; i < MAX_ANSWERS; i++)
