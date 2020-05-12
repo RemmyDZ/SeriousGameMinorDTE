@@ -69,7 +69,8 @@ int main()
 	Question question(questions[0][0]);
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
-
+	MainMenuButton mainMenuButton[2] = { MainMenuButton(MAIN_MENU_BUTTON_X, MAIN_MENU_BUTTON_Y), MainMenuButton(MAIN_MENU_BUTTON_X_QUIZ_MENU, MAIN_MENU_BUTTON_Y_QUIZ_MENU) };
+	//Two main menu buttons (with different coordinates), one for the quiz menu (which can also be used for the score screen) and one for the quiz itself
 	//TEST (REMOVE LATER)
 	/*for (size_t i = 0; i < (std::size(questions[currentQuestion])) - 1; i++)
 	{
@@ -305,11 +306,12 @@ int main()
 				{
 					quizButton[i].draw();
 				}
+				mainMenuButton[1].draw();
 			}
 
 			else if (gameState == END_SCREEN)
 			{
-				//Draw score here
+				//Draw score here (NO NEED, everything is done within the background)
 			}
 
 			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
@@ -343,7 +345,10 @@ int main()
 	{
 		quizButton[i].clear();
 	}
-
+	for (int i = 0; i < 2; i++)
+	{
+		mainMenuButton[i].clear();
+	}
 	al_destroy_display(display);
 	al_destroy_timer(timer);
 	al_destroy_event_queue(event_queue);

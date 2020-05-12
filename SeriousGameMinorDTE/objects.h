@@ -466,10 +466,10 @@ struct MainMenuButton {
 	ALLEGRO_BITMAP* bitmapHover;
 	ALLEGRO_FONT* font;
 
-	MainMenuButton()
+	MainMenuButton(int x, int y)
 	{
-		x = MAIN_MENU_BUTTON_X;
-		y = MAIN_MENU_BUTTON_Y;
+		this->x = x;
+		this->y = y;
 		bitmapNormal = al_load_bitmap("Resources/Textures/Back_to_start_button.bmp");
 		bitmapHover = al_load_bitmap("Resources/Textures/Back_to_start_button_hover.bmp");
 		bitmap = bitmapNormal; //Start with the default bitmap
@@ -523,8 +523,8 @@ struct MainMenuButton {
 
 	void draw()
 	{
-		//Draw button
-		//Draw text
+		al_draw_bitmap(bitmap, x, y, NULL);
+		al_draw_text(font, al_map_rgb(0, 0, 0), x + 47, y + 12, NULL, "Main Menu");
 	}
 
 	void clear()
