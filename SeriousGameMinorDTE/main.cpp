@@ -235,50 +235,61 @@ int main()
 		{
 			if (gameState == MAIN_MENU)
 			{
-				if (startQuiz.onClick())
+				if (event.mouse.button == 1)
 				{
-					setGameState(QUIZ_MENU);
-				}
-				else if (checkSource.onClick())
-				{
-					//
-				}
-				else if (quitGame.onClick())
-				{
-					isGameFinished = true;
+					if (startQuiz.onClick())
+					{
+						setGameState(QUIZ_MENU);
+					}
+					else if (checkSource.onClick())
+					{
+						//
+					}
+					else if (quitGame.onClick())
+					{
+						isGameFinished = true;
+					}
 				}
 			}
 			else if (gameState == QUIZ_MENU)
 			{
-				for (int i = 0; i < AMOUNT_OF_SUBJECTS; i++)
+				if (event.mouse.button == 1) //Left click
 				{
-					if (quizButton[i].onClick()) //Check if button is clicked
+					if (mainMenuButton[1].onClick())
 					{
-						switch (i)
+						background.setBitmap(DEFAULT);
+						setGameState(MAIN_MENU);
+					}
+					for (int i = 0; i < AMOUNT_OF_SUBJECTS; i++)
+					{
+						if (quizButton[i].onClick()) //Check if button is clicked
 						{
-						case 0:
-							setGameState(QUIZ_ONE);
-							break;
-						case 1:
-							setGameState(QUIZ_TWO);
-							break;
-						case 2:
-							setGameState(QUIZ_THREE);
-							break;
-						case 3:
-							setGameState(QUIZ_FOUR);
-							break;
-						case 4:
-							setGameState(QUIZ_FIVE);
-							break;
-						default: 
-							break;
+							switch (i)
+							{
+							case 0:
+								setGameState(QUIZ_ONE);
+								break;
+							case 1:
+								setGameState(QUIZ_TWO);
+								break;
+							case 2:
+								setGameState(QUIZ_THREE);
+								break;
+							case 3:
+								setGameState(QUIZ_FOUR);
+								break;
+							case 4:
+								setGameState(QUIZ_FIVE);
+								break;
+							default:
+								break;
+							}
+							currentQuestion = 0;
+							playerScore = 0; //Reset player score
+							resetAnswers(answer);
+							//goToNextQuestion(question, answer, gameState, currentQuestion);
+							goToNextQuestion(question, answer, gameState, -1); //Random question
 						}
-						currentQuestion = 0;
-						playerScore = 0; //Reset player score
-						resetAnswers(answer);
-						//goToNextQuestion(question, answer, gameState, currentQuestion);
-						goToNextQuestion(question, answer, gameState, -1); //Random question
 					}
 				}
 			}
@@ -303,6 +314,23 @@ int main()
 							background.setBitmap(1); //Set background to score screen
 							setGameState(END_SCREEN);
 						}
+					}
+					if (mainMenuButton[0].onClick())
+					{
+						background.setBitmap(DEFAULT);
+						setGameState(MAIN_MENU);
+					}
+				}
+			}
+
+			else if (gameState == END_SCREEN)
+			{
+				if (event.mouse.button == 1) //Left click
+				{
+					if (mainMenuButton[1].onClick())
+					{
+						background.setBitmap(DEFAULT);
+						setGameState(MAIN_MENU);
 					}
 				}
 			}
