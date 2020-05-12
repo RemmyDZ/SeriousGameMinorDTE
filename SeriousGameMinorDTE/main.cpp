@@ -190,6 +190,14 @@ int main()
 
 			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
 			{
+				for (int i = 0; i < 2; i++)
+				{
+					if (mainMenuButton[i].onHover())
+						mainMenuButton[i].setBitmap(1); //Hover bitmap
+					else
+						mainMenuButton[i].setBitmap(DEFAULT);
+				}
+
 				if (!isAnswerGiven) //Only change bitmaps when the answer hasn't been given yet
 				{
 					for (int i = 0; i < MAX_ANSWERS; i++)
@@ -342,6 +350,7 @@ int main()
 				{
 						answer[i].draw();
 				}
+				mainMenuButton[0].draw();
 			}
 
 			al_flip_display(); //Everything is drawn to a buffer. Once you flip the display, the buffer replaces the current screen composition
