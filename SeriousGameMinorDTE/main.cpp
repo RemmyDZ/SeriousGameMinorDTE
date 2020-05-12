@@ -124,6 +124,7 @@ int main()
 				}
 				break;
 			case ALLEGRO_KEY_SPACE:
+				background.setBitmap(DEFAULT);
 				setGameState(MAIN_MENU);
 				break;
 			//case ALLEGRO_KEY_SPACE:
