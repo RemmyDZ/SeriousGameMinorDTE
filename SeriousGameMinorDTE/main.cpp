@@ -179,6 +179,13 @@ int main()
 					else
 						quizButton[i].setBitmap(DEFAULT);
 				}
+				for (int i = 0; i < 2; i++)
+				{
+					if (mainMenuButton[i].onHover())
+						mainMenuButton[i].setBitmap(1); //Hover bitmap
+					else
+						mainMenuButton[i].setBitmap(DEFAULT);
+				}
 			}
 
 			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
@@ -200,6 +207,17 @@ int main()
 					else
 						nextQuestionButton.setBitmap(DEFAULT);
 					
+				}
+			}
+
+			else if (gameState == END_SCREEN)
+			{
+				for (int i = 0; i < 2; i++)
+				{
+					if (mainMenuButton[i].onHover())
+						mainMenuButton[i].setBitmap(1); //Hover bitmap
+					else
+						mainMenuButton[i].setBitmap(DEFAULT);
 				}
 			}
 		}
@@ -312,6 +330,7 @@ int main()
 			else if (gameState == END_SCREEN)
 			{
 				//Draw score here (NO NEED, everything is done within the background)
+				mainMenuButton[1].draw();
 			}
 
 			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
