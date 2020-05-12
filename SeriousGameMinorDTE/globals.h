@@ -73,6 +73,9 @@ bool isGameFinished = false; //Main loop will break once this turns 'true'
 //Go to next question condition
 bool isAnswerGiven = false; //Only proceed to next question when true
 
+//Vector for random questions (to check which ones have been given yet)
+std::vector<int> randomQuestions;
+
 //Score
 int playerScore = 0;
 

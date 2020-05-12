@@ -1,6 +1,7 @@
 //Libraries
 #include<iostream>
 #include<string>
+#include<vector>
 #include<iterator>
 #include<allegro5/allegro.h>
 #include<allegro5/allegro_native_dialog.h>
@@ -80,6 +81,9 @@ int main()
 	
 	//Go to the first question
 	//goToNextQuestion(question, answer, gameState, currentQuestion);
+
+	//Initialize random seed
+	srand(time(NULL));
 
 	//Start timer
 	al_start_timer(timer);
@@ -245,7 +249,8 @@ int main()
 						currentQuestion = 0;
 						playerScore = 0; //Reset player score
 						resetAnswers(answer);
-						goToNextQuestion(question, answer, gameState, currentQuestion);
+						//goToNextQuestion(question, answer, gameState, currentQuestion);
+						goToNextQuestion(question, answer, gameState, -1); //Random question
 					}
 				}
 			}
@@ -260,7 +265,8 @@ int main()
 						{
 							currentQuestion++;
 							resetAnswers(answer);
-							goToNextQuestion(question, answer, gameState, currentQuestion);
+							//goToNextQuestion(question, answer, gameState, currentQuestion);
+							goToNextQuestion(question, answer, gameState, -1); //Random question
 							nextQuestionButton.setBitmap(DEFAULT);
 							//question.setQuestion(2);
 						}

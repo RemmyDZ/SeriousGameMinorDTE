@@ -21,7 +21,7 @@ void resetAnswers(Answer answer[])
 }
 
 //Go to the next question in the current quiz
-void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int questionNumber)
+void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int questionNumber) //Questionnumber -1 means the question
 {
 	int quizStartIndex = 0; //Give it a value so the code below doesn't use uninitialized memory FIX WARNING
 	switch (quizNumber)
@@ -45,7 +45,20 @@ void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int q
 		break;
 	}
 
-	question.setQuestion(quizNumber, questionNumber);
+	if(questionNumber >= 0) //Question is NOT random
+		question.setQuestion(quizNumber, questionNumber);
+	else if (questionNumber == -1)
+	{
+		start: 
+		int random = rand() % MAX_QUESTIONS; //Random number between 0 and maximum amount of questions
+		if (std::find(randomQuestions.begin(), randomQuestions.end(), random) != randomQuestions.end()) //If this is true, the question has already been given
+			goto start;
+		else //Question hasn't been used yet
+		{
+			questionNumber = random;
+			question.setQuestion(quizNumber, questionNumber);
+		}
+	}
 	//int answersAmount = (sizeof(answers) / sizeof(answers[questionNumber]));
 
 	for (int i = 0; i < MAX_ANSWERS; i++)
