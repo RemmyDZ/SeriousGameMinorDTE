@@ -47,9 +47,10 @@ struct Question {
 			font = fontNormal;
 	}
 
-	void setExplaination(int quizNumber, int questionNumber)
+	void setExplaination(int quizNumber, int questionNumber, ALLEGRO_COLOR color)
 	{
-		fontColor = al_map_rgb(0, 255, 0);
+		//fontColor = al_map_rgb(0, 255, 0);
+		fontColor = color;
 		question = explainations[quizNumber][questionNumber];
 		if (question.length() > QUESTION_LONG_FONT_TRESHOLD)
 			font = fontLong;
@@ -60,6 +61,7 @@ struct Question {
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
+		//al_draw_tinted_bitmap(bitmap, al_map_rgba_f(1, 1, 1, 0.5), x, y, NULL);
 		al_draw_bitmap(bitmapCounter, x, 456, NULL);
 		//al_draw_text(font, al_map_rgb(0, 0, 0), textX, textY, NULL, question.c_str());
 		al_draw_multiline_text(font, fontColor, textX, textY, textMaxWidth, 0, NULL, question.c_str());
@@ -413,7 +415,7 @@ struct NextQuestionButton {
 		return false;
 	}
 
-	bool onClick() //NEEDS FIX, AS BUTTON IS ALOT SMALLER THAN BITMAP
+	bool onClick() 
 	{
 		ALLEGRO_MOUSE_STATE state;
 		al_get_mouse_state(&state);
@@ -448,6 +450,87 @@ struct NextQuestionButton {
 		al_draw_bitmap(bitmap, x, y, NULL);
 		al_draw_textf(font, al_map_rgb(0, 0, 0), textX, textY, NULL, "Next question");
 
+	}
+
+	void clear()
+	{
+		al_destroy_bitmap(bitmap);
+		al_destroy_font(font);
+	}
+};
+
+struct MainMenuButton {
+	int x, y;
+	ALLEGRO_BITMAP* bitmap;
+	ALLEGRO_BITMAP* bitmapNormal;
+	ALLEGRO_BITMAP* bitmapHover;
+	ALLEGRO_FONT* font;
+
+	MainMenuButton()
+	{
+		x = MAIN_MENU_BUTTON_X;
+		y = MAIN_MENU_BUTTON_Y;
+		bitmapNormal = al_load_bitmap("Resources/Textures/Back_to_start_button.bmp");
+		bitmapHover = al_load_bitmap("Resources/Textures/Back_to_start_button_hover.bmp");
+		bitmap = bitmapNormal; //Start with the default bitmap
+		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", MAIN_MENU_BUTTON_FONT_SIZE, NULL);
+	}
+
+	bool onClick()
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x&& state.x < (x + width)
+			&& state.y > y&& state.y < (y + height)) //If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
+	}
+
+	bool onHover() //Same code as "onClick()", but better for readability
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x&& state.x < (x + width)
+			&& state.y > y&& state.y < (y + height))//If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
+	}
+
+	void setBitmap(int bitmap) //0 = default, 1 = hover
+	{
+		switch (bitmap)
+		{
+		case 0:
+			this->bitmap = bitmapNormal;
+			break;
+		case 1:
+			this->bitmap = bitmapHover;
+			break;
+		default:
+			break;
+		}
+	}
+
+	void draw()
+	{
+		//Draw button
+		//Draw text
+	}
+
+	void clear()
+	{
+		al_destroy_bitmap(bitmap);
+		al_destroy_font(font);
 	}
 };
 

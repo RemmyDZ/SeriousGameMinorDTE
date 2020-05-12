@@ -4,7 +4,7 @@
 void resetAnswers(Answer answer[]);
 void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int questionNumber);
 void checkForAnswers(Question &question, Answer answer[]);
-void showExplaination(Question &question, int quizNumber, int questionNumber);
+void showExplaination(Question &question, int quizNumber, int questionNumber, ALLEGRO_COLOR color);
 void setGameState(int newGameState);
 
 //Reset all answers to false (NEEDED BEFORE MOVING ON TO NEXT QUESTION)
@@ -76,6 +76,7 @@ void checkForAnswers(Question &question, Answer answer[])
 {
 	if (!isAnswerGiven) //Only proceed with the code if an answer hasn't been given yet
 	{
+		ALLEGRO_COLOR color;
 		for (int i = 0; i < MAX_ANSWERS; i++)
 		{
 			if (answer[i].onClick())
@@ -84,10 +85,12 @@ void checkForAnswers(Question &question, Answer answer[])
 				{
 					answer[i].setBitmap(GREEN);
 					playerScore++; //Increase score by 1
+					color = al_map_rgb(0, 255, 0); //Set explaination to green for right answers
 				}
 				else if (!answer[i].isAnswer) //Player answered wrong
 				{
 					answer[i].setBitmap(RED);
+					color = al_map_rgb(255, 0, 0); //Set explaination to red for wrong answers
 					for (int i = 0; i < MAX_ANSWERS; i++)
 					{
 						if (answer[i].isAnswer)
@@ -97,15 +100,15 @@ void checkForAnswers(Question &question, Answer answer[])
 					}
 				}
 				isAnswerGiven = true;
-				showExplaination(question, gameState, currentQuestion);
+				showExplaination(question, gameState, currentQuestion, color);
 			}
 		}
 	}
 }
 
-void showExplaination(Question &question, int quizNumber, int questionNumber)
+void showExplaination(Question &question, int quizNumber, int questionNumber, ALLEGRO_COLOR color)
 {
-	question.setExplaination(quizNumber, questionNumber);
+	question.setExplaination(quizNumber, questionNumber, color);
 }
 
 void setGameState(int newGameState)

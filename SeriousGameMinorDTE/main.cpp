@@ -336,6 +336,7 @@ int main()
 	}
 	menuBox.clear();
 	startQuiz.clear();
+	nextQuestionButton.clear();
 	checkSource.clear();
 	quitGame.clear();
 	for (int i = 0; i < AMOUNT_OF_SUBJECTS; i++)
