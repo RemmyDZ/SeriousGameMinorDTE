@@ -60,7 +60,7 @@ int main()
 	Background background(BACKGROUND_X, BACKGROUND_Y);
 	NextQuestionButton nextQuestionButton;
 	MenuBox menuBox("Test");
-	MenuButton startQuiz(0, "Start quizzing!", menuBox);
+	MenuButton startQuiz(0, "Start quizzing!", menuBox); 
 	MenuButton checkSource(1, "View sources", menuBox);
 	MenuButton quitGame(2, "Quit", menuBox);
 	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Quiz 1", menuBox), MenuButton(1, "Quiz 2", menuBox),
@@ -83,6 +83,10 @@ int main()
 	
 	//Go to the first question
 	//goToNextQuestion(question, answer, gameState, currentQuestion);
+
+	//Load version font
+	ALLEGRO_FONT* versionFont;
+	versionFont = al_load_font("Resources/Fonts/GILLUBCD.ttf", VERSION_FONT_SIZE, NULL);
 
 	//Initialize random seed
 	srand(time(NULL));
@@ -353,6 +357,7 @@ int main()
 				checkSource.draw();
 				quitGame.draw();
 				credits.draw();
+				al_draw_textf(versionFont, BLACK, 800, 870, NULL, "Version: %s", VERSION.c_str());
 			}
 
 			else if (gameState == QUIZ_MENU)
