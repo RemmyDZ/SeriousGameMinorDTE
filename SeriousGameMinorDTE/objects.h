@@ -555,6 +555,30 @@ struct Source {
 	}
 };
 
+struct TextBox {
+	int x, y;
+	std::string text;
+	ALLEGRO_FONT* font;
+
+	TextBox(int x, int y, int fontSize, std::string text)
+	{
+		this->x = x;
+		this->y = y;
+		this->text = text;
+		font = al_load_font("Resources/Textures/GILLUBCD.ttf", fontSize, NULL);
+	}
+
+	void draw()
+	{
+		al_draw_text(font, al_map_rgb(0, 0, 0), x, y, NULL, text.c_str());
+	}
+
+	void clear()
+	{
+		al_destroy_font(font);
+	}
+};
+
 //struct Controller {
 //	//Question &question;
 //	//Answer* answer[MAX_ANSWERS];
