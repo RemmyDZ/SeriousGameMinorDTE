@@ -63,9 +63,9 @@ int main()
 	MenuButton startQuiz(0, "Start quizzing!", menuBox); 
 	MenuButton checkSource(1, "View sources", menuBox);
 	MenuButton quitGame(2, "Quit", menuBox);
-	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Quiz 1", menuBox), MenuButton(1, "Quiz 2", menuBox),
-										MenuButton(2, "Quiz 3", menuBox), MenuButton(3, "Quiz 4", menuBox),
-										MenuButton(4, "Quiz 5", menuBox) };
+	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Modelling LiDAR data", menuBox), MenuButton(1, "Data noise", menuBox),
+										MenuButton(2, "Creating and maintaining databases", menuBox), MenuButton(3, "What to do with modeled data", menuBox),
+										MenuButton(4, "Collecting LiDAR data", menuBox) };
 	Question question(questions[0][0]);
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
