@@ -3,7 +3,7 @@
 //Forward declerations
 void resetAnswers(Answer answer[]);
 void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int questionNumber);
-void checkForAnswers(Question &question, Answer answer[]);
+void checkForAnswers(Question &question, Answer answer[], bool randomized);
 void showExplaination(Question &question, int quizNumber, int questionNumber, ALLEGRO_COLOR color);
 void setGameState(int newGameState);
 
@@ -55,8 +55,10 @@ void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int q
 			goto start;
 		else //Question hasn't been used yet
 		{
-			questionNumber = random;
-			question.setQuestion(quizNumber, questionNumber);
+			questionNumber = random; //For setting the correct answers
+			currentRandomQuestion = random;
+			question.setQuestion(quizNumber, currentRandomQuestion);
+			randomQuestions.push_back(currentRandomQuestion);
 		}
 	}
 	//int answersAmount = (sizeof(answers) / sizeof(answers[questionNumber]));
@@ -72,7 +74,7 @@ void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int q
 	answer[std::stoi(answers[questionNumber+quizStartIndex][4])].setCorrectAnswer(true);
 }
 
-void checkForAnswers(Question &question, Answer answer[])
+void checkForAnswers(Question &question, Answer answer[], bool randomized) 
 {
 	if (!isAnswerGiven) //Only proceed with the code if an answer hasn't been given yet
 	{
@@ -100,7 +102,10 @@ void checkForAnswers(Question &question, Answer answer[])
 					}
 				}
 				isAnswerGiven = true;
-				showExplaination(question, gameState, currentQuestion, color);
+				if(randomized)
+					showExplaination(question, gameState, currentRandomQuestion, color);
+				else if(!randomized)
+					showExplaination(question, gameState, currentQuestion, color);
 			}
 		}
 	}

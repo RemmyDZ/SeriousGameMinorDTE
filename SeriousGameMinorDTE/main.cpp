@@ -69,6 +69,7 @@ int main()
 	Question question(questions[0][0]);
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
+	Source source;
 	MainMenuButton mainMenuButton[2] = { MainMenuButton(MAIN_MENU_BUTTON_X, MAIN_MENU_BUTTON_Y), MainMenuButton(MAIN_MENU_BUTTON_X_QUIZ_MENU, MAIN_MENU_BUTTON_Y_QUIZ_MENU) };
 	TextBox credits(1430, 750, 20, "Danny Zoetmulder\nIvo Kalverboer\nHicham Agzanay\nValtteri Rauhala\nRemco de Zeeuw", true, 200, 30);
 	//Two main menu buttons (with different coordinates), one for the quiz menu (which can also be used for the score screen) and one for the quiz itself
@@ -248,7 +249,7 @@ int main()
 					}
 					else if (checkSource.onClick())
 					{
-						//
+						setGameState(SOURCE_SCREEN);
 					}
 					else if (quitGame.onClick())
 					{
@@ -291,6 +292,7 @@ int main()
 							}
 							currentQuestion = 0;
 							playerScore = 0; //Reset player score
+							randomQuestions.clear(); //Reset the vector with random question numbers
 							resetAnswers(answer);
 							//goToNextQuestion(question, answer, gameState, currentQuestion);
 							goToNextQuestion(question, answer, gameState, -1); //Random question
@@ -302,7 +304,7 @@ int main()
 			{
 				if (event.mouse.button == 1) //Left click
 				{
-					checkForAnswers(question, answer);
+					checkForAnswers(question, answer, true);
 					if (isAnswerGiven && nextQuestionButton.onClick()) //Only go to the next question when an answer has been given and the button has been pressed
 					{
 						if (currentQuestion < 9)
@@ -339,6 +341,7 @@ int main()
 					}
 				}
 			}
+
 		}
 
 		if (redraw && al_is_event_queue_empty(event_queue)) //Only redraw when variable is 'true' and there are no events being handled
@@ -386,6 +389,11 @@ int main()
 						answer[i].draw();
 				}
 				mainMenuButton[0].draw();
+			}
+
+			else if (gameState == SOURCE_SCREEN)
+			{
+				source.draw();
 			}
 
 			al_flip_display(); //Everything is drawn to a buffer. Once you flip the display, the buffer replaces the current screen composition

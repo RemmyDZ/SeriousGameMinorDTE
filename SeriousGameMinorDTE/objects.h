@@ -372,7 +372,7 @@ struct Background {
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
 		if (gameState == END_SCREEN)
-			al_draw_textf(font, al_map_rgb(0, 0, 0), DISPLAY_WIDTH / 2, (DISPLAY_HEIGHT / 2) - 40, ALLEGRO_ALIGN_CENTER, "Score: %i", playerScore);
+			al_draw_textf(font, al_map_rgb(0, 0, 0), DISPLAY_WIDTH / 2, (DISPLAY_HEIGHT / 2) - 40, ALLEGRO_ALIGN_CENTER, "Score: %i\%%", playerScore*10);
 	}
 
 	void clear() //Garbage control
@@ -540,18 +540,20 @@ struct MainMenuButton {
 
 struct Source {
 	int x, y;
+	ALLEGRO_BITMAP* bitmap;
 	ALLEGRO_FONT* font;
 
 	Source()
 	{
-		//x = 
-		//y = 
+		x = (DISPLAY_WIDTH / 2) - 300;
+		y = (DISPLAY_HEIGHT / 2) - 400;
+		bitmap = al_load_bitmap("Resources/Textures/Source.bmp");
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", SOURCE_FONT_SIZE, NULL);
 	}
 
 	void draw()
 	{
-		//Draw text here
+		al_draw_bitmap(bitmap, x, y, NULL);
 	}
 };
 

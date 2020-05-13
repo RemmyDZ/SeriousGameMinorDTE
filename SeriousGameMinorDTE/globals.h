@@ -9,7 +9,7 @@ const int DISPLAY_WIDTH = 1600;
 const int DISPLAY_HEIGHT = 900;
 
 //Game states
-enum GAMESTATE { QUIZ_ONE, QUIZ_TWO, QUIZ_THREE, QUIZ_FOUR, QUIZ_FIVE, MAIN_MENU, QUIZ_MENU, END_SCREEN }; //Gameover maybe?
+enum GAMESTATE { QUIZ_ONE, QUIZ_TWO, QUIZ_THREE, QUIZ_FOUR, QUIZ_FIVE, MAIN_MENU, QUIZ_MENU, END_SCREEN, SOURCE_SCREEN }; //Gameover maybe?
 enum QUIZ_INDEX { QUIZ_INDEX_ONE = 0, QUIZ_INDEX_TWO = 10, QUIZ_INDEX_THREE = 20, QUIZ_INDEX_FOUR = 30, QUIZ_INDEX_FIVE = 40 };
 
 int gameState = MAIN_MENU; //Start in main menu
@@ -98,7 +98,8 @@ bool redraw = true; //Always start with 'true', otherwise nothing will be drawn 
 bool fullScreen = false; //Game starts in windowed mode, which can be toggled to fullscreen
 
 //Questions (CHANGE TO VECTORS)
-int currentQuestion = 0; //Starts at 0 because it acts as an index to the questions array below
+int currentQuestion = 0; //Starts at 0 because it acts as an index to the questions array below (except when questions are randomized)
+int currentRandomQuestion = 0; //Placeholder for real question number, currentQuestion is just linear when questions are randomized
 
 std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characteristics does a modelling tool need for modelling LiDAR data?", 
 																"What are possible candidates for modelling LiDAR data?", 
