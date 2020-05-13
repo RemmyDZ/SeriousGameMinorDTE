@@ -14,6 +14,7 @@ struct Question {
 	ALLEGRO_FONT* font = NULL;
 	ALLEGRO_FONT* fontNormal = NULL;
 	ALLEGRO_FONT* fontLong = NULL;
+	ALLEGRO_FONT* fontExtraLong = NULL;
 	ALLEGRO_FONT* nrFont = NULL; //Font for the question number
 
 	Question(std::string question) //Constructor
@@ -33,6 +34,7 @@ struct Question {
 		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 		fontNormal = al_load_font("Resources/Fonts/GILLUBCD.ttf", QUESTION_FONT_SIZE, NULL);
 		fontLong = al_load_font("Resources/Fonts/GILLUBCD.ttf", QUESTION_FONT_SIZE_LONG, NULL);
+		fontExtraLong = al_load_font("Resources/Fonts/GILLUBCD.ttf", QUESTION_FONT_SIZE_EXTRA_LONG, NULL);
 		font = fontNormal; //Start with default font size
 		nrFont = al_load_font("Resources/Fonts/GILLUBCD.ttf", nrFontSize, NULL); //CHANGE FONT, THIS ONE IS NOT SUITABLE FOR NUMBERS
 	}
@@ -52,7 +54,9 @@ struct Question {
 		//fontColor = al_map_rgb(0, 255, 0);
 		fontColor = color;
 		question = explainations[quizNumber][questionNumber];
-		if (question.length() > QUESTION_LONG_FONT_TRESHOLD)
+		if (question.length() > QUESTION_EXTRA_LONG_TRESHOLD)
+			font = fontExtraLong;
+		else if (question.length() > QUESTION_LONG_FONT_TRESHOLD)
 			font = fontLong;
 		else
 			font = fontNormal;
