@@ -412,6 +412,7 @@ int main()
 	nextQuestionButton.clear();
 	checkSource.clear();
 	quitGame.clear();
+	source.clear();
 	for (int i = 0; i < AMOUNT_OF_SUBJECTS; i++)
 	{
 		quizButton[i].clear();

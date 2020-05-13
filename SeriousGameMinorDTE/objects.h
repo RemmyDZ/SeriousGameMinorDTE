@@ -555,6 +555,12 @@ struct Source {
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
 	}
+
+	void clear()
+	{
+		al_destroy_bitmap(bitmap);
+		al_destroy_font(font);
+	}
 };
 
 struct TextBox {
