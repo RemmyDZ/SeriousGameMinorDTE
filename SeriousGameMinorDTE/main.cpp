@@ -70,6 +70,7 @@ int main()
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
 	MainMenuButton mainMenuButton[2] = { MainMenuButton(MAIN_MENU_BUTTON_X, MAIN_MENU_BUTTON_Y), MainMenuButton(MAIN_MENU_BUTTON_X_QUIZ_MENU, MAIN_MENU_BUTTON_Y_QUIZ_MENU) };
+	TextBox credits(1430, 750, 20, "Danny Zoetmulder\nIvo Kalverboer\nHicham Agzanay\nValtteri Rauhala\nRemco de Zeeuw", true, 200, 30);
 	//Two main menu buttons (with different coordinates), one for the quiz menu (which can also be used for the score screen) and one for the quiz itself
 	//TEST (REMOVE LATER)
 	/*for (size_t i = 0; i < (std::size(questions[currentQuestion])) - 1; i++)
@@ -351,6 +352,7 @@ int main()
 				startQuiz.draw();
 				checkSource.draw();
 				quitGame.draw();
+				credits.draw();
 			}
 
 			else if (gameState == QUIZ_MENU)
@@ -405,6 +407,7 @@ int main()
 	{
 		mainMenuButton[i].clear();
 	}
+	credits.clear();
 	al_destroy_display(display);
 	al_destroy_timer(timer);
 	al_destroy_event_queue(event_queue);

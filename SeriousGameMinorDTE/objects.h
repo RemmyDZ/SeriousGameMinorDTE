@@ -557,20 +557,28 @@ struct Source {
 
 struct TextBox {
 	int x, y;
+	bool multiline;
+	int maxWidth, lineHeight;
 	std::string text;
 	ALLEGRO_FONT* font;
 
-	TextBox(int x, int y, int fontSize, std::string text)
+	TextBox(int x, int y, int fontSize, std::string text, bool multiline, int maxWidth, int lineHeight)
 	{
 		this->x = x;
 		this->y = y;
 		this->text = text;
-		font = al_load_font("Resources/Textures/GILLUBCD.ttf", fontSize, NULL);
+		this->multiline = multiline;
+		this->maxWidth = maxWidth; //Only used when multiline is true, use "0" otherwise
+		this->lineHeight = lineHeight; //Only used when multiline is true, use "0 otherwise
+		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", fontSize, NULL);
 	}
 
 	void draw()
 	{
-		al_draw_text(font, al_map_rgb(0, 0, 0), x, y, NULL, text.c_str());
+		if (multiline)
+			al_draw_multiline_text(font, al_map_rgb(0, 0, 0), x, y, maxWidth, lineHeight, NULL, text.c_str());
+		else if(!multiline)
+			al_draw_text(font, al_map_rgb(0, 0, 0), x, y, NULL, text.c_str());
 	}
 
 	void clear()
