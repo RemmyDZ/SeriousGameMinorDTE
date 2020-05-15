@@ -454,7 +454,10 @@ struct NextQuestionButton {
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
-		al_draw_textf(font, al_map_rgb(0, 0, 0), textX, textY, NULL, "Next question");
+		if (currentQuestion < 9)
+			al_draw_textf(font, al_map_rgb(0, 0, 0), textX, textY, NULL, "Next question");
+		else if (currentQuestion == 9)
+			al_draw_textf(font, al_map_rgb(0, 0, 0), textX, textY, NULL, "Check results");
 
 	}
 
