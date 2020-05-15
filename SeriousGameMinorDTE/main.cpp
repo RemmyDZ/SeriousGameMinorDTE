@@ -33,6 +33,9 @@ int main()
 		al_show_native_message_box(0, "Error", "Error", "Could not create display", 0, 0);
 	}
 
+	//Set display title
+	al_set_window_title(display, DISPLAY_TITLE.c_str());
+
 	//Define standard colors
 	ALLEGRO_COLOR BLACK = al_map_rgb(0, 0, 0);
 
