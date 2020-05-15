@@ -120,9 +120,9 @@ int main()
 		{
 			switch (event.keyboard.keycode)
 			{
-			case ALLEGRO_KEY_ESCAPE:
+			/*case ALLEGRO_KEY_ESCAPE:
 				isGameFinished = true;
-				break;
+				break;*/
 			case ALLEGRO_KEY_F:
 				if (fullScreen)
 				{
