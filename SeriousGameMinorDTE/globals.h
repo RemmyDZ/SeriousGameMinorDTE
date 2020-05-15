@@ -156,6 +156,63 @@ std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characterist
 																"Is a laser with a wavelength of 1550nm considered 'eye-safe'?", 
 																"Who wrote the Spoorwegwet (Railroad law)?" } };
 
+
+//std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Which of the following parts is NOT present in a LiDAR camera?",
+//																"What is the correct formula a LiDAR camera uses to measure distance?",
+//																"\"When using a Class 1 laser, no safety precautions are needed\"",
+//																"Does collecting LiDAR data comply with the GDPR?",
+//																"Is the simulated data accurate enough to work with?",
+//																"What is the maximum scanning range of the LiDAR used by NS?",
+//																"If you want to see what personal data a company has stored about you, which GDPR law could you use?",
+//																"At what speed does a LiDAR laser travel?",
+//																"Is a laser with a wavelength of 1550nm considered 'eye-safe'?",
+//																"Who wrote the Spoorwegwet (Railroad law)?" },
+//
+//																{"What is a direct consequence of rain on LiDAR measurements?",
+//																"What visual distortion is characteristic of the rolling shutter effect?",
+//																"Which of these is the correct definition of the doppler effect?",
+//																"What type of weather can cause inaccurate readings?",
+//																"True or false: \"The doppler effect causes inaccuracy in the measurement of the distance between the camera and a stationary object?\"",
+//																"True or false: \"Noisy data is data that doesn\'t fit your beliefs\".",
+//																"Which two schools of thought are the most common for the removal of data noise?",
+//																"Are outlying data points considered data noise?",
+//																"What does the acronym INFFC stand for?",
+//																"Which of these is not a type of data noise within the context of a LiDAR?" },
+//
+//																{"What characteristics does a modelling tool need for modelling LiDAR data?",
+//																"What are possible candidates for modelling LiDAR data?",
+//																"Entity Relationship Modelling produces databases with as less redundancy (double values) as possible.",
+//																"Entity Relationship Modelling has a structure that makes producing new queries very simple.",
+//																"With Multidimensional Modelling every model is composed of 1 table with a multipart key, which is called a fact table.",
+//																"The difference between a STAR schema and a Snowflake schema is that a STAR schema contains more hierarchies, which make the schema more expansive.",
+//																"Using Document Oriented Modelling to make a NoSQL database can result in a database that can flexibly handle and process new and existing data.",
+//																"Which modelling method is the most readable for users?",
+//																"Which modelling method is most easy to perform?",
+//																"What is the best diagram for modelling LiDAR data (choose from the following answers)?" },
+//
+//																{"What method of processing data is most suitable for large, existing datasets?",
+//																"What method of processing data is most suitable for processing an incoming data flow?",
+//																"Which of these encoding formats reduce data to the smallest format?",
+//																"Which are the three most important requirements for data intensive applications?",
+//																"Partitioning of a data collection means:",
+//																"If you want to be able to retrieve your data as fast as possible you should opt for:",
+//																"When scaling vertically you:",
+//																"When stored on a machine, data is represented as:",
+//																"Which way of encoding is the most practical when you are sending data to/from a web application?",
+//																"Which measure helps improve data availability most?" },
+//
+//																{"Does raw LiDAR data need some kind of modifications to be user friendly?",
+//																"Which of the following subjects are utilizing LiDAR either in product or research?",
+//																"How much is expected data creation in 2030 ( in zettabytes, approx)?",
+//																"Companies should think of data as an asset.",
+//																"According to MIT-Sloan research \"what\'s your data worth\" data can be divided into three different categories, which category doesn\'t belong here? (1)?",
+//																"The data strategy is not important when a company wants to utilize data better.",
+//																"What benefits the data strategy provides? ( choose the INCORRECT option) ",
+//																"There are usually three different paths to data monetizations.",
+//																"Externally there are 3 different paths of data monetization. Choose the correct paths",
+//																"Data as a service is the simplest of the three paths and has the lowest business potential." } };
+
+
 //Answers (CHANGE TO VECTORS)
 std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"Able to handle large amounts of data and easy to produce new queries.", "Widely used and easy to understand", "", "", "0"}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
 											{"Entity Relationship Modelling.", "Multidimensional Modelling.", "Fact-Oriented Modelling.", "All of the above.", "3"},

@@ -261,15 +261,17 @@ struct MenuBox {
 
 struct MenuButton {
 	int x, y;
+	int quizNumber;
 	std::string text;
 	ALLEGRO_BITMAP* bitmap;
 	ALLEGRO_BITMAP* bitmapNormal;
 	ALLEGRO_BITMAP* bitmapHover;
 	ALLEGRO_FONT* font;
 
-	MenuButton(int index, std::string text, MenuBox menuBox) //Index acts as a multiplier for the y position
+	MenuButton(int index, std::string text, MenuBox menuBox, int quizNumber) //Index acts as a multiplier for the y position, quizNumber is the quiz it links to, for non-quiz buttons the value doesn't matter
 	{
 		this->text = text;
+		this->quizNumber = quizNumber; //0 to 4, acts as an index
 		bitmapNormal = al_load_bitmap("Resources/Textures/menu_option.bmp");
 		bitmapHover = al_load_bitmap("Resources/Textures/menu_option_hover.bmp");
 		bitmap = bitmapNormal; //Start with the default bitmap
