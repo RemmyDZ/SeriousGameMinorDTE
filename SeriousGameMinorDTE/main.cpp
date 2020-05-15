@@ -68,15 +68,15 @@ int main()
 	Background background(BACKGROUND_X, BACKGROUND_Y);
 	NextQuestionButton nextQuestionButton;
 	MenuBox menuBox("Test");
-	MenuButton startQuiz(0, "Start quizzing!", menuBox, 0); //Quiznumber doesn't matter here, any number will do 
-	MenuButton checkSource(1, "View sources", menuBox, 0); //Quiznumber doesn't matter here, any number will do
-	MenuButton quitGame(2, "Quit", menuBox, 0); //Quiznumber doesn't matter here, any number will do
+	MenuButton startQuiz(0, "Start quizzing!", menuBox, 0, ""); //Quiznumber doesn't matter here, any number will do 
+	MenuButton checkSource(1, "View sources", menuBox, 0, ""); //Quiznumber doesn't matter here, any number will do
+	MenuButton quitGame(2, "Quit", menuBox, 0, ""); //Quiznumber doesn't matter here, any number will do
 	//MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Modelling LiDAR data", menuBox), MenuButton(1, "Data noise", menuBox),
 	//									MenuButton(2, "Creating and maintaining databases", menuBox), MenuButton(3, "What to do with modeled data", menuBox),
 	//									MenuButton(4, "Collecting LiDAR data", menuBox) };
-	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Collecting LiDAR data", menuBox, 4), MenuButton(1, "Data noise", menuBox, 1),
-										MenuButton(2, "Modelling LiDAR data", menuBox, 0), MenuButton(3, "Creating and maintaining databases", menuBox, 2),
-										MenuButton(4, "What to do with modeled data", menuBox, 3) };
+	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Collecting LiDAR data", menuBox, 4, "Remco de Zeeuw"), MenuButton(1, "Data noise", menuBox, 1, "Hicham Agzanay"),
+										MenuButton(2, "Modelling LiDAR data", menuBox, 0, "Danny Zoetmulder"), MenuButton(3, "Creating and maintaining databases", menuBox, 2, "Ivo Kalverboer"),
+										MenuButton(4, "What to do with modeled data", menuBox, 3, "Valtteri Rauhala") };
 	Question question(questions[0][0]);
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()

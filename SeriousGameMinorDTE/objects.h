@@ -263,14 +263,17 @@ struct MenuButton {
 	int x, y;
 	int quizNumber;
 	std::string text;
+	std::string author;
 	ALLEGRO_BITMAP* bitmap;
 	ALLEGRO_BITMAP* bitmapNormal;
 	ALLEGRO_BITMAP* bitmapHover;
 	ALLEGRO_FONT* font;
+	ALLEGRO_FONT* authorFont;
 
-	MenuButton(int index, std::string text, MenuBox menuBox, int quizNumber) //Index acts as a multiplier for the y position, quizNumber is the quiz it links to, for non-quiz buttons the value doesn't matter
+	MenuButton(int index, std::string text, MenuBox menuBox, int quizNumber, std::string author) //Index acts as a multiplier for the y position, quizNumber is the quiz it links to, for non-quiz buttons the value doesn't matter
 	{
 		this->text = text;
+		this->author = author;
 		this->quizNumber = quizNumber; //0 to 4, acts as an index
 		bitmapNormal = al_load_bitmap("Resources/Textures/menu_option.bmp");
 		bitmapHover = al_load_bitmap("Resources/Textures/menu_option_hover.bmp");
@@ -278,6 +281,7 @@ struct MenuButton {
 		x = (al_get_bitmap_width(menuBox.bitmap) - al_get_bitmap_width(bitmap)) / 2;
 		y = (al_get_bitmap_height(bitmap) * index) + MENU_BUTTON_START_Y;
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", MENU_BUTTON_FONT_SIZE, NULL);
+		authorFont = al_load_font("Resources/Fonts/GILLUBCD.ttf", MENU_BUTTON_AUTHOR_FONT_SIZE, NULL);
 	}
 
 	bool onHover() //Same code as "onClick()", but better for readability
@@ -329,6 +333,8 @@ struct MenuButton {
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
 		al_draw_text(font, al_map_rgb(0, 0, 0), x + 20, y + 20, NULL, text.c_str());
+		if (!author.empty())
+			al_draw_text(authorFont, al_map_rgb(0, 0, 255), x + 520, y + 110, NULL, author.c_str());
 	}
 
 	void clear() //Garbage control
