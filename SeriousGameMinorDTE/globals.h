@@ -1,7 +1,7 @@
 #pragma once
 
 //Version
-const std::string VERSION = "2.0";
+const std::string VERSION = "2.1";
 const int VERSION_FONT_SIZE = 16;
 
 //Screen resolution
