@@ -47,6 +47,11 @@ int main()
 	al_install_keyboard();
 	al_install_mouse();
 
+	//Set display icon (after image addon loaded)
+	ALLEGRO_BITMAP* icon;
+	icon = al_load_bitmap("Resources/Icons/icon2.png");
+	al_set_display_icon(display, icon);
+
 	//Create timer
 	ALLEGRO_TIMER* timer = NULL;
 	timer = al_create_timer(1.0 / FPS);
