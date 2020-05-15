@@ -135,10 +135,10 @@ int main()
 					al_toggle_display_flag(display, ALLEGRO_FULLSCREEN_WINDOW, true);
 				}
 				break;
-			case ALLEGRO_KEY_SPACE:
+			/*case ALLEGRO_KEY_SPACE:
 				background.setBitmap(DEFAULT);
 				setGameState(MAIN_MENU);
-				break;
+				break;*/
 			//case ALLEGRO_KEY_SPACE:
 			//	if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
 			//	{
