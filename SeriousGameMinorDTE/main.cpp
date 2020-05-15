@@ -123,7 +123,7 @@ int main()
 			/*case ALLEGRO_KEY_ESCAPE:
 				isGameFinished = true;
 				break;*/
-			case ALLEGRO_KEY_F:
+			/*case ALLEGRO_KEY_F:
 				if (fullScreen)
 				{
 					fullScreen = false;
@@ -134,7 +134,7 @@ int main()
 					fullScreen = true;
 					al_toggle_display_flag(display, ALLEGRO_FULLSCREEN_WINDOW, true);
 				}
-				break;
+				break;*/
 			/*case ALLEGRO_KEY_SPACE:
 				background.setBitmap(DEFAULT);
 				setGameState(MAIN_MENU);
