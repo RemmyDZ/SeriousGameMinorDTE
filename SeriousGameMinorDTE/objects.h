@@ -389,6 +389,36 @@ struct Background {
 	}
 };
 
+struct Fadeout {
+	int x, y;
+	bool isVisible;
+	ALLEGRO_BITMAP* bitmap;
+
+	Fadeout()
+	{
+		x = BACKGROUND_X;
+		y = BACKGROUND_Y;
+		isVisible = false; //Only make this visible when player clicked "View source"
+		bitmap = al_load_bitmap("Resources/Textures/fadeout.bmp");
+	}
+
+	void setVisibility(bool visible)
+	{
+		isVisible = visible;
+	}
+
+	void draw()
+	{
+		if(isVisible)
+			al_draw_bitmap(bitmap, x, y, NULL);
+	}
+
+	void clear()
+	{
+		al_destroy_bitmap(bitmap);
+	}
+};
+
 struct NextQuestionButton {
 	int x, y;
 	int fontSize;
@@ -560,10 +590,83 @@ struct SourceButton {
 	{
 		x = SOURCE_BUTTON_X;
 		y = SOURCE_BUTTON_Y;
-		//bitmapNormal = al_load_bitmap.....
-		//bitmapHover = al_load_bitmap......
+		bitmapNormal = al_load_bitmap("Resources/Textures/Back_to_start_button.bmp");
+		bitmapHover = al_load_bitmap("Resources/Textures/Back_to_start_button_hover.bmp");
 		bitmap = bitmapNormal; //Start with default bitmap
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", SOURCE_BUTTON_FONT_SIZE, NULL);
+	}
+
+	bool onClick()
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x&& state.x < (x + width)
+			&& state.y > y&& state.y < (y + height)) //If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
+	}
+
+	bool onHover() //Same code as "onClick()", but better for readability
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x&& state.x < (x + width)
+			&& state.y > y&& state.y < (y + height))//If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
+	}
+
+	void setBitmap(int bitmap) //0 = default, 1 = hover
+	{
+		switch (bitmap)
+		{
+		case 0: 
+			this->bitmap = bitmapNormal;
+			break;
+		case 1:
+			this->bitmap = bitmapHover;
+			break;
+		default:
+			break;
+		}
+	}
+
+	void draw()
+	{
+		al_draw_bitmap(bitmap, x, y, NULL);
+		al_draw_text(font, al_map_rgb(0, 0, 0), x + 42, y + 12, NULL, "View source");
+	}
+
+	void clear()
+	{
+		al_destroy_bitmap(bitmap);
+		al_destroy_font(font);
+	}
+};
+
+struct CloseSourceButton {
+	int x, y;
+	ALLEGRO_BITMAP* bitmapNormal;
+	ALLEGRO_BITMAP* bitmapHover;
+	ALLEGRO_BITMAP* bitmap;
+
+	CloseSourceButton()
+	{
+		x = CLOSE_SOURCE_BUTTON_X;
+		y = CLOSE_SOURCE_BUTTON_Y;
+		bitmapNormal = al_load_bitmap("Resources/Textures/close.bmp");
+		bitmapHover = al_load_bitmap("Resources/Textures/close_hover.bmp");
+		bitmap = bitmapNormal; //Start with default bitmap
 	}
 
 	void draw()
@@ -574,7 +677,6 @@ struct SourceButton {
 	void clear()
 	{
 		al_destroy_bitmap(bitmap);
-		al_destroy_font(font);
 	}
 };
 
