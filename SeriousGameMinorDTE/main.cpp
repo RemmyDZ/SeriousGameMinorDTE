@@ -83,7 +83,7 @@ int main()
 	//Source source;
 	MainMenuButton mainMenuButton[2] = { MainMenuButton(MAIN_MENU_BUTTON_X, MAIN_MENU_BUTTON_Y), MainMenuButton(MAIN_MENU_BUTTON_X_QUIZ_MENU, MAIN_MENU_BUTTON_Y_QUIZ_MENU) };
 	TextBox credits(1430, 750, 20, "Danny Zoetmulder\nIvo Kalverboer\nHicham Agzanay\nValtteri Rauhala\nRemco de Zeeuw", true, 200, 30);
-	TextBox mainMenuInfo(850, 10, 60, "Welcome! This serious game will teach you a thing or two about our research. Please select what you want to do.", true, 750, 65);
+	TextBox mainMenuInfo(850, 10, 60, "Welcome to our serious game. This game is comprised of quizes pertaining to our research into LiDAR data. We hope you have fun and maybe learn something new.", true, 750, 65);
 	TextBox quizMenuInfo(850, 10, 60, "Please select the quiz you would like to play.", true, 750, 65);
 	//Two main menu buttons (with different coordinates), one for the quiz menu (which can also be used for the score screen) and one for the quiz itself
 	//TEST (REMOVE LATER)
