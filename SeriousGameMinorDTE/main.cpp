@@ -211,15 +211,18 @@ int main()
 
 			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
 			{
-				for (int i = 0; i < 2; i++)
+				if (!fadeout.isVisible) //Don't bother with hover animations while the fadeout is being drawn
 				{
-					if (mainMenuButton[i].onHover())
-						mainMenuButton[i].setBitmap(1); //Hover bitmap
-					else
-						mainMenuButton[i].setBitmap(DEFAULT);
+					for (int i = 0; i < 2; i++)
+					{
+						if (mainMenuButton[i].onHover())
+							mainMenuButton[i].setBitmap(1); //Hover bitmap
+						else
+							mainMenuButton[i].setBitmap(DEFAULT);
+					}
 				}
 
-				if (!isAnswerGiven) //Only change bitmaps when the answer hasn't been given yet
+				if (!isAnswerGiven) //Only change bitmaps when the answer hasn't been given yet (if answer hasn't been given yet, fadeout cannot possibly be visible, so no need to check for that)
 				{
 					for (int i = 0; i < MAX_ANSWERS; i++)
 					{
@@ -229,7 +232,7 @@ int main()
 							answer[i].setBitmap(DEFAULT); //Set bitmap back to default when the mouse is no longer hovering over the answer box
 					}
 				}
-				else if (isAnswerGiven) 
+				else if (isAnswerGiven && !fadeout.isVisible) //Don't bother with hover animations while the fadeout is being drawn
 				{
 					if (nextQuestionButton.onHover())
 						nextQuestionButton.setBitmap(1);
@@ -325,7 +328,7 @@ int main()
 				if (event.mouse.button == 1) //Left click
 				{
 					checkForAnswers(question, answer, true);
-					if (isAnswerGiven && nextQuestionButton.onClick()) //Only go to the next question when an answer has been given and the button has been pressed
+					if (isAnswerGiven && nextQuestionButton.onClick() && !fadeout.isVisible) //Only go to the next question when an answer has been given and the button has been pressed
 					{
 						if (currentQuestion < 9)
 						{
@@ -342,12 +345,12 @@ int main()
 							setGameState(END_SCREEN);
 						}
 					}
-					if (mainMenuButton[0].onClick())
+					if (mainMenuButton[0].onClick() && !fadeout.isVisible)
 					{
 						background.setBitmap(DEFAULT);
 						setGameState(MAIN_MENU);
 					}
-					if (isAnswerGiven && sourceButton.onClick())
+					if (isAnswerGiven && sourceButton.onClick() && !fadeout.isVisible)
 					{
 						fadeout.setVisibility(true);
 					}
