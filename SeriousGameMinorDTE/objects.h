@@ -582,8 +582,8 @@ struct SourceButton {
 	{
 		x = SOURCE_BUTTON_X;
 		y = SOURCE_BUTTON_Y;
-		//bitmapNormal = al_load_bitmap.....
-		//bitmapHover = al_load_bitmap......
+		bitmapNormal = al_load_bitmap("Resources/Textures/Back_to_start_button.bmp");
+		bitmapHover = al_load_bitmap("Resources/Textures/Back_to_start_button_hover.bmp");
 		bitmap = bitmapNormal; //Start with default bitmap
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", SOURCE_BUTTON_FONT_SIZE, NULL);
 	}
