@@ -83,6 +83,7 @@ int main()
 	//Source source;
 	MainMenuButton mainMenuButton[2] = { MainMenuButton(MAIN_MENU_BUTTON_X, MAIN_MENU_BUTTON_Y), MainMenuButton(MAIN_MENU_BUTTON_X_QUIZ_MENU, MAIN_MENU_BUTTON_Y_QUIZ_MENU) };
 	SourceButton sourceButton;
+	Fadeout fadeout;
 	TextBox credits(1430, 750, 20, "Danny Zoetmulder\nIvo Kalverboer\nHicham Agzanay\nValtteri Rauhala\nRemco de Zeeuw", true, 200, 30);
 	TextBox mainMenuInfo(850, 10, 60, "Welcome to our serious game. This game is comprised of quizes pertaining to our research into LiDAR data. We hope you have fun and maybe learn something new.", true, 750, 65);
 	TextBox quizMenuInfo(850, 10, 60, "Please select the quiz you would like to play.", true, 750, 65);
@@ -234,6 +235,11 @@ int main()
 						nextQuestionButton.setBitmap(1);
 					else
 						nextQuestionButton.setBitmap(DEFAULT);
+
+					if (sourceButton.onHover())
+						sourceButton.setBitmap(1);
+					else
+						sourceButton.setBitmap(DEFAULT);
 					
 				}
 			}
@@ -341,6 +347,10 @@ int main()
 						background.setBitmap(DEFAULT);
 						setGameState(MAIN_MENU);
 					}
+					if (isAnswerGiven && sourceButton.onClick())
+					{
+						fadeout.setVisibility(true);
+					}
 				}
 			}
 
@@ -408,6 +418,7 @@ int main()
 						answer[i].draw();
 				}
 				mainMenuButton[0].draw();
+				fadeout.draw();
 			}
 
 			/*else if (gameState == SOURCE_SCREEN)
@@ -441,6 +452,7 @@ int main()
 		mainMenuButton[i].clear();
 	}
 	sourceButton.clear();
+	fadeout.clear();
 	credits.clear();
 	mainMenuInfo.clear();
 	quizMenuInfo.clear();

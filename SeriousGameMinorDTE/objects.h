@@ -391,18 +391,26 @@ struct Background {
 
 struct Fadeout {
 	int x, y;
+	bool isVisible;
 	ALLEGRO_BITMAP* bitmap;
 
 	Fadeout()
 	{
 		x = BACKGROUND_X;
 		y = BACKGROUND_Y;
+		isVisible = false; //Only make this visible when player clicked "View source"
 		bitmap = al_load_bitmap("Resources/Textures/fadeout.bmp");
+	}
+
+	void setVisibility(bool visible)
+	{
+		isVisible = visible;
 	}
 
 	void draw()
 	{
-		al_draw_bitmap(bitmap, x, y, NULL);
+		if(isVisible)
+			al_draw_bitmap(bitmap, x, y, NULL);
 	}
 
 	void clear()
@@ -616,6 +624,21 @@ struct SourceButton {
 			return true;
 		}
 		return false;
+	}
+
+	void setBitmap(int bitmap) //0 = default, 1 = hover
+	{
+		switch (bitmap)
+		{
+		case 0: 
+			this->bitmap = bitmapNormal;
+			break;
+		case 1:
+			this->bitmap = bitmapHover;
+			break;
+		default:
+			break;
+		}
 	}
 
 	void draw()
