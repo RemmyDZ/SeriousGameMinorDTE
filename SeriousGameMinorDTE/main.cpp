@@ -69,8 +69,8 @@ int main()
 	NextQuestionButton nextQuestionButton;
 	MenuBox menuBox("Test");
 	MenuButton startQuiz(0, "Start quizzing!", menuBox, 0, ""); //Quiznumber doesn't matter here, any number will do 
-	MenuButton checkSource(1, "View sources", menuBox, 0, ""); //Quiznumber doesn't matter here, any number will do
-	MenuButton quitGame(2, "Quit", menuBox, 0, ""); //Quiznumber doesn't matter here, any number will do
+	//MenuButton checkSource(1, "View sources", menuBox, 0, ""); //Quiznumber doesn't matter here, any number will do
+	MenuButton quitGame(1, "Quit", menuBox, 0, ""); //Quiznumber doesn't matter here, any number will do
 	//MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Modelling LiDAR data", menuBox), MenuButton(1, "Data noise", menuBox),
 	//									MenuButton(2, "Creating and maintaining databases", menuBox), MenuButton(3, "What to do with modeled data", menuBox),
 	//									MenuButton(4, "Collecting LiDAR data", menuBox) };
@@ -80,7 +80,7 @@ int main()
 	Question question(questions[0][0]);
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
-	Source source;
+	//Source source;
 	MainMenuButton mainMenuButton[2] = { MainMenuButton(MAIN_MENU_BUTTON_X, MAIN_MENU_BUTTON_Y), MainMenuButton(MAIN_MENU_BUTTON_X_QUIZ_MENU, MAIN_MENU_BUTTON_Y_QUIZ_MENU) };
 	TextBox credits(1430, 750, 20, "Danny Zoetmulder\nIvo Kalverboer\nHicham Agzanay\nValtteri Rauhala\nRemco de Zeeuw", true, 200, 30);
 	TextBox mainMenuInfo(850, 10, 60, "Welcome! This serious game will teach you a thing or two about our research. Please select what you want to do.", true, 750, 65);
@@ -178,10 +178,10 @@ int main()
 				else
 					startQuiz.setBitmap(DEFAULT);
 
-				if (checkSource.onHover())
+				/*if (checkSource.onHover())
 					checkSource.setBitmap(1);
 				else
-					checkSource.setBitmap(DEFAULT);
+					checkSource.setBitmap(DEFAULT);*/
 
 				if (quitGame.onHover())
 					quitGame.setBitmap(1);
@@ -260,10 +260,10 @@ int main()
 					{
 						setGameState(QUIZ_MENU);
 					}
-					else if (checkSource.onClick())
+					/*else if (checkSource.onClick())
 					{
 						setGameState(SOURCE_SCREEN);
-					}
+					}*/
 					else if (quitGame.onClick())
 					{
 						isGameFinished = true;
@@ -370,7 +370,7 @@ int main()
 			{
 				menuBox.draw();
 				startQuiz.draw();
-				checkSource.draw();
+				//checkSource.draw();
 				quitGame.draw();
 				credits.draw();
 				mainMenuInfo.draw();
@@ -406,10 +406,10 @@ int main()
 				mainMenuButton[0].draw();
 			}
 
-			else if (gameState == SOURCE_SCREEN)
+			/*else if (gameState == SOURCE_SCREEN)
 			{
 				source.draw();
-			}
+			}*/
 
 			al_flip_display(); //Everything is drawn to a buffer. Once you flip the display, the buffer replaces the current screen composition
 		}
@@ -425,9 +425,9 @@ int main()
 	menuBox.clear();
 	startQuiz.clear();
 	nextQuestionButton.clear();
-	checkSource.clear();
+	//checkSource.clear();
 	quitGame.clear();
-	source.clear();
+	//source.clear();
 	for (int i = 0; i < AMOUNT_OF_SUBJECTS; i++)
 	{
 		quizButton[i].clear();
