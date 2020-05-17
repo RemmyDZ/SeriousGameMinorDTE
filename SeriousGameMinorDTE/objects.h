@@ -549,6 +549,35 @@ struct MainMenuButton {
 	}
 };
 
+struct SourceButton {
+	int x, y;
+	ALLEGRO_BITMAP* bitmapNormal;
+	ALLEGRO_BITMAP* bitmapHover;
+	ALLEGRO_BITMAP* bitmap;
+	ALLEGRO_FONT* font;
+
+	SourceButton()
+	{
+		x = SOURCE_BUTTON_X;
+		y = SOURCE_BUTTON_Y;
+		//bitmapNormal = al_load_bitmap.....
+		//bitmapHover = al_load_bitmap......
+		bitmap = bitmapNormal; //Start with default bitmap
+		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", SOURCE_BUTTON_FONT_SIZE, NULL);
+	}
+
+	void draw()
+	{
+		//
+	}
+
+	void clear()
+	{
+		al_destroy_bitmap(bitmap);
+		al_destroy_font(font);
+	}
+};
+
 struct Source {
 	int x, y;
 	ALLEGRO_BITMAP* bitmap;
