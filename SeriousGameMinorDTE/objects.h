@@ -389,6 +389,28 @@ struct Background {
 	}
 };
 
+struct Fadeout {
+	int x, y;
+	ALLEGRO_BITMAP* bitmap;
+
+	Fadeout()
+	{
+		x = BACKGROUND_X;
+		y = BACKGROUND_Y;
+		bitmap = al_load_bitmap("Resources/Textures/fadeout.bmp");
+	}
+
+	void draw()
+	{
+		al_draw_bitmap(bitmap, x, y, NULL);
+	}
+
+	void clear()
+	{
+		al_destroy_bitmap(bitmap);
+	}
+};
+
 struct NextQuestionButton {
 	int x, y;
 	int fontSize;
