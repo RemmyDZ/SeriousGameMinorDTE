@@ -578,6 +578,32 @@ struct SourceButton {
 	}
 };
 
+struct CloseSourceButton {
+	int x, y;
+	ALLEGRO_BITMAP* bitmapNormal;
+	ALLEGRO_BITMAP* bitmapHover;
+	ALLEGRO_BITMAP* bitmap;
+
+	CloseSourceButton()
+	{
+		x = CLOSE_SOURCE_BUTTON_X;
+		y = CLOSE_SOURCE_BUTTON_Y;
+		bitmapNormal = al_load_bitmap("Resources/Textures/close.bmp");
+		bitmapHover = al_load_bitmap("Resources/Textures/close_hover.bmp");
+		bitmap = bitmapNormal; //Start with default bitmap
+	}
+
+	void draw()
+	{
+		//
+	}
+
+	void clear()
+	{
+		al_destroy_bitmap(bitmap);
+	}
+};
+
 struct Source {
 	int x, y;
 	ALLEGRO_BITMAP* bitmap;
