@@ -588,9 +588,40 @@ struct SourceButton {
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", SOURCE_BUTTON_FONT_SIZE, NULL);
 	}
 
+	bool onClick()
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x&& state.x < (x + width)
+			&& state.y > y&& state.y < (y + height)) //If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
+	}
+
+	bool onHover() //Same code as "onClick()", but better for readability
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x&& state.x < (x + width)
+			&& state.y > y&& state.y < (y + height))//If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
+	}
+
 	void draw()
 	{
-		//
+		al_draw_bitmap(bitmap, x, y, NULL);
+		al_draw_text(font, al_map_rgb(0, 0, 0), x + 42, y + 12, NULL, "View source");
 	}
 
 	void clear()

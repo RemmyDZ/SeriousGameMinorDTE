@@ -56,9 +56,9 @@ const int SCORE_FONT_SIZE = 60;
 
 const int SOURCE_FONT_SIZE = 30;
 
-const int SOURCE_BUTTON_X = 500;
-const int SOURCE_BUTTON_Y = 500;
-const int SOURCE_BUTTON_FONT_SIZE = 25;
+const int SOURCE_BUTTON_X = 1060;
+const int SOURCE_BUTTON_Y = 480;
+const int SOURCE_BUTTON_FONT_SIZE = 30;
 
 const int CLOSE_SOURCE_BUTTON_X = 1000;
 const int CLOSE_SOURCE_BUTTON_Y = 200;
