@@ -84,6 +84,7 @@ int main()
 	MainMenuButton mainMenuButton[2] = { MainMenuButton(MAIN_MENU_BUTTON_X, MAIN_MENU_BUTTON_Y), MainMenuButton(MAIN_MENU_BUTTON_X_QUIZ_MENU, MAIN_MENU_BUTTON_Y_QUIZ_MENU) };
 	SourceButton sourceButton;
 	SourceBox sourceBox;
+	CloseSourceButton closeSourceButton;
 	Fadeout fadeout;
 	TextBox credits(1430, 750, 20, "Danny Zoetmulder\nIvo Kalverboer\nHicham Agzanay\nValtteri Rauhala\nRemco de Zeeuw", true, 200, 30);
 	TextBox mainMenuInfo(850, 10, 60, "Welcome to our serious game. This game is comprised of quizes pertaining to our research into LiDAR data. We hope you have fun and maybe learn something new.", true, 750, 65);
@@ -423,8 +424,11 @@ int main()
 				}
 				mainMenuButton[0].draw();
 				fadeout.draw();
-				if (fadeout.isVisible)
-					sourceBox.draw(); //Only show the source box when fadeout is active
+				if (fadeout.isVisible) //Only show the source box  and 'close source'-button when fadeout is active
+				{
+					sourceBox.draw();
+					closeSourceButton.draw();
+				}
 			}
 
 			/*else if (gameState == SOURCE_SCREEN)
@@ -459,6 +463,7 @@ int main()
 	}
 	sourceButton.clear();
 	sourceBox.clear();
+	closeSourceButton.clear();
 	fadeout.clear();
 	credits.clear();
 	mainMenuInfo.clear();

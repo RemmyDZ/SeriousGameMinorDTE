@@ -666,12 +666,44 @@ struct CloseSourceButton {
 		y = CLOSE_SOURCE_BUTTON_Y;
 		bitmapNormal = al_load_bitmap("Resources/Textures/close.bmp");
 		bitmapHover = al_load_bitmap("Resources/Textures/close_hover.bmp");
+		al_convert_mask_to_alpha(bitmapNormal, al_map_rgb(255, 255, 255));
+		al_convert_mask_to_alpha(bitmapHover, al_map_rgb(255, 255, 255));
 		bitmap = bitmapNormal; //Start with default bitmap
+	}
+
+	bool onClick()
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x&& state.x < (x + width)
+			&& state.y > y&& state.y < (y + height)) //If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
+	}
+
+	bool onHover() //Same code as "onClick()", but better for readability
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x&& state.x < (x + width)
+			&& state.y > y&& state.y < (y + height))//If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
 	}
 
 	void draw()
 	{
-		//
+		al_draw_bitmap(bitmap, x, y, NULL);
 	}
 
 	void clear()
