@@ -60,6 +60,9 @@ const int SOURCE_BUTTON_X = 1060;
 const int SOURCE_BUTTON_Y = 480;
 const int SOURCE_BUTTON_FONT_SIZE = 30;
 
+const int SOURCE_BOX_X = DISPLAY_WIDTH / 2;
+const int SOURCE_BOX_Y = DISPLAY_HEIGHT / 2;
+
 const int CLOSE_SOURCE_BUTTON_X = 1000;
 const int CLOSE_SOURCE_BUTTON_Y = 200;
 

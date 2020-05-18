@@ -680,22 +680,25 @@ struct CloseSourceButton {
 	}
 };
 
-struct Source {
+struct SourceBox {
 	int x, y;
+	int offsetX, offsetY;
 	ALLEGRO_BITMAP* bitmap;
 	ALLEGRO_FONT* font;
 
-	Source()
+	SourceBox()
 	{
-		x = (DISPLAY_WIDTH / 2) - 300;
-		y = (DISPLAY_HEIGHT / 2) - 400;
-		bitmap = al_load_bitmap("Resources/Textures/Source.bmp");
+		x = SOURCE_BOX_X;
+		y = SOURCE_BOX_Y;
+		bitmap = al_load_bitmap("Resources/Textures/menu_option.bmp");
+		offsetX = al_get_bitmap_width(bitmap) / 2;
+		offsetY = al_get_bitmap_height(bitmap) / 2;
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", SOURCE_FONT_SIZE, NULL);
 	}
 
 	void draw()
 	{
-		al_draw_bitmap(bitmap, x, y, NULL);
+		al_draw_bitmap(bitmap, x - offsetX, y - offsetY, NULL);
 	}
 
 	void clear()
