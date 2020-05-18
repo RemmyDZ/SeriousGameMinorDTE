@@ -356,6 +356,10 @@ int main()
 					{
 						fadeout.setVisibility(true);
 					}
+					if (isAnswerGiven && fadeout.isVisible && closeSourceButton.onClick())
+					{
+						fadeout.setVisibility(false);
+					}
 				}
 			}
 
