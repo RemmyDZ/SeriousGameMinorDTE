@@ -715,17 +715,27 @@ struct CloseSourceButton {
 struct SourceBox {
 	int x, y;
 	int offsetX, offsetY;
+	std::string source;
+	std::string url;
 	ALLEGRO_BITMAP* bitmap;
 	ALLEGRO_FONT* font;
 
-	SourceBox()
+	SourceBox(std::string source, std::string url)
 	{
+		this->source = source;
+		this->url = url;
 		x = SOURCE_BOX_X;
 		y = SOURCE_BOX_Y;
 		bitmap = al_load_bitmap("Resources/Textures/menu_option.bmp");
 		offsetX = al_get_bitmap_width(bitmap) / 2;
 		offsetY = al_get_bitmap_height(bitmap) / 2;
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", SOURCE_FONT_SIZE, NULL);
+	}
+
+	void setSourceAndURL(std::string source, std::string url)
+	{
+		this->source = source;
+		this->url = url;
 	}
 
 	void draw()

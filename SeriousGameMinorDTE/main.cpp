@@ -77,13 +77,13 @@ int main()
 	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Collecting LiDAR data", menuBox, 4, "Remco de Zeeuw"), MenuButton(1, "Data noise", menuBox, 1, "Hicham Agzanay"),
 										MenuButton(2, "Modelling LiDAR data", menuBox, 0, "Danny Zoetmulder"), MenuButton(3, "Creating and maintaining databases", menuBox, 2, "Ivo Kalverboer"),
 										MenuButton(4, "What to do with modeled data", menuBox, 3, "Valtteri Rauhala") };
-	Question question(questions[0][0]);
+	Question question(""); //Start with empty question
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
 	//Source source;
 	MainMenuButton mainMenuButton[2] = { MainMenuButton(MAIN_MENU_BUTTON_X, MAIN_MENU_BUTTON_Y), MainMenuButton(MAIN_MENU_BUTTON_X_QUIZ_MENU, MAIN_MENU_BUTTON_Y_QUIZ_MENU) };
 	SourceButton sourceButton;
-	SourceBox sourceBox;
+	SourceBox sourceBox("", ""); //Start with empty source and url
 	CloseSourceButton closeSourceButton;
 	Fadeout fadeout;
 	TextBox credits(1430, 750, 20, "Danny Zoetmulder\nIvo Kalverboer\nHicham Agzanay\nValtteri Rauhala\nRemco de Zeeuw", true, 200, 30);
