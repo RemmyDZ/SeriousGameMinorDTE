@@ -114,6 +114,8 @@ bool fullScreen = false; //Game starts in windowed mode, which can be toggled to
 int currentQuestion = 0; //Starts at 0 because it acts as an index to the questions array below (except when questions are randomized)
 int currentRandomQuestion = 0; //Placeholder for real question number, currentQuestion is just linear when questions are randomized
 
+
+//Order: Danny - Hicham - Ivo - Valtteri - Remco
 std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characteristics does a modelling tool need for modelling LiDAR data?", 
 																"What are possible candidates for modelling LiDAR data?", 
 																"Entity Relationship Modelling produces databases with as less redundancy (double values) as possible.", 
@@ -227,6 +229,7 @@ std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characterist
 
 
 //Answers (CHANGE TO VECTORS)
+//Order: Danny - Hicham - Ivo - Valtteri - Remco
 std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"Able to handle large amounts of data and easy to produce new queries", "Widely used and easy to understand", "", "", "0"}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
 											{"Entity Relationship Modelling", "Multidimensional Modelling", "Fact-Oriented Modelling", "All of the above", "3"},
 											{"Correct", "Incorrect", "", "", "0"}, 
@@ -278,6 +281,7 @@ std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"A
 											{"Yes", "No", "", "", "0"},
 											{"NS", "Dutch government", "European Union", "United Nations", "1"} };
 
+//Order: Danny - Hicham - Ivo - Valtteri - Remco
 std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"LiDAR data contains large amounts of numbers and therefore needs to be able to handle large amounts of data. Making it easier to produce new queries also makes this handling easier. However being widely used and easy to understand is not necessary, but could improve readability and the depth of the modelling tool.",
 																"All of these modelling tools are possible candidates, because they can all handle large amounts of data.", 
 																"Entity relationship modelling leads to databases that have an intricate and efficient pathing with a lot of foreign keys. This construction leads to a database (almost) no repeating values and therefore no redundancy.", 
@@ -333,6 +337,7 @@ std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"LiDAR data co
 																"Yes, 1550nm falls within the bandwidth of \'eye-safe\' wavelengths.", 
 																"The Dutch government created the Spoorwegwet on April 23th of 2003."} };
 
+//Order: Danny - Hicham - Ivo - Valtteri - Remco
 std::string sources[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][2] = { {"Source", "URL"},
 																{"Source", "URL"},
 																{"Source", "URL"},
@@ -343,16 +348,16 @@ std::string sources[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][2] = { {"Source", "URL"}
 																{"Source", "URL"},
 																{"Source", "URL"}, 
 																{"Source", "URL"},
-																{"Source", "URL"}, 
-																{"Source", "URL"},
-																{"Source", "URL"}, 
-																{"Source", "URL"},
-																{"Source", "URL"}, 
-																{"Source", "URL"},
-																{"Source", "URL"}, 
-																{"Source", "URL"},
-																{"Source", "URL"}, 
-																{"Source", "URL"},
+																{"Dubayah, R.O. & Drake, J.B.", "https://academic.oup.com/jof/article/98/6/44/4614333"}, 
+																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
+																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"}, 
+																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
+																{"Corr, L. & Stagnitto, J.", "https://books.google.nl/books?hl=en&lr=&id=TRWFmnv8jP0C&oi=fnd&pg=PR23&dq=Corr,+L.,+%26+Stagnitto,+J.+(2011).+Agile+data+warehouse+design:+Collaborative+dimensional+modeling,+from+whiteboard+to+star+schema.+DecisionOne+Consulting.+&ots=SNJv5oP87z&sig=kACjJpl2sfVFemxP_kvlPbX89ts#v=onepage&q=Corr%2C%20L.%2C%20%26%20Stagnitto%2C%20J.%20(2011).%20Agile%20data%20warehouse%20design%3A%20Collaborative%20dimensional%20modeling%2C%20from%20whiteboard%20to%20star%20schema.%20DecisionOne%20Consulting.&f=false"}, 
+																{"Garani, G. & Helmer, S.", "https://www.igi-global.com/article/content/74754"},
+																{"Boehm, J. & Liu, K.", "https://discovery.ucl.ac.uk/id/eprint/1471583/"}, 
+																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
+																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
+																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
 																{"Source", "URL"}, 
 																{"Source", "URL"},
 																{"Source", "URL"}, 
