@@ -1,5 +1,7 @@
 //Libraries
 #include<iostream>
+#include<Windows.h>
+#include<shellapi.h>
 #include<string>
 #include<vector>
 #include<iterator>
@@ -371,6 +373,12 @@ int main()
 					if (isAnswerGiven && fadeout.isVisible && closeSourceButton.onClick())
 					{
 						fadeout.setVisibility(false);
+					}
+					if (isAnswerGiven && fadeout.isVisible && sourceBox.onClick())
+					{
+						std::string url = sourceBox.getURL();
+						ShellExecuteA(NULL, "open", url.c_str(), NULL, NULL, SW_SHOWNORMAL);
+						
 					}
 				}
 			}

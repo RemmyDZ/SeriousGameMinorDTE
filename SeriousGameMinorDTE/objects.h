@@ -780,6 +780,11 @@ struct SourceBox {
 		this->hover = hover;
 	}
 
+	std::string getURL()
+	{
+		return url;
+	}
+
 	void setSourceAndURL(int questionNumber, int quizStartIndex)
 	{
 		source = sources[questionNumber + quizStartIndex][0];
