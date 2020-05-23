@@ -247,6 +247,13 @@ int main()
 						sourceButton.setBitmap(DEFAULT);
 					
 				}
+				else if (isAnswerGiven && fadeout.isVisible)
+				{
+					if (closeSourceButton.onHover())
+						closeSourceButton.setBitmap(1);
+					else
+						closeSourceButton.setBitmap(DEFAULT);
+				}
 			}
 
 			else if (gameState == END_SCREEN)
@@ -320,7 +327,7 @@ int main()
 							randomQuestions.clear(); //Reset the vector with random question numbers
 							resetAnswers(answer);
 							//goToNextQuestion(question, answer, gameState, currentQuestion);
-							goToNextQuestion(question, answer, gameState, -1); //Random question
+							goToNextQuestion(question, answer, sourceBox, gameState, -1); //Random question
 						}
 					}
 				}
@@ -337,7 +344,7 @@ int main()
 							currentQuestion++;
 							resetAnswers(answer);
 							//goToNextQuestion(question, answer, gameState, currentQuestion);
-							goToNextQuestion(question, answer, gameState, -1); //Random question
+							goToNextQuestion(question, answer, sourceBox, gameState, -1); //Random question
 							nextQuestionButton.setBitmap(DEFAULT);
 							//question.setQuestion(2);
 						}

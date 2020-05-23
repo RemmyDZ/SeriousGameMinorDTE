@@ -701,6 +701,21 @@ struct CloseSourceButton {
 		return false;
 	}
 
+	void setBitmap(int bitmap) //0 = default, 1 = hover
+	{
+		switch (bitmap)
+		{
+		case 0:
+			this->bitmap = bitmapNormal;
+			break;
+		case 1:
+			this->bitmap = bitmapHover;
+			break;
+		default:
+			break;
+		}
+	}
+
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
@@ -715,6 +730,7 @@ struct CloseSourceButton {
 struct SourceBox {
 	int x, y;
 	int offsetX, offsetY;
+	bool hover;
 	std::string source;
 	std::string url;
 	ALLEGRO_BITMAP* bitmap;
@@ -724,6 +740,7 @@ struct SourceBox {
 	{
 		this->source = source;
 		this->url = url;
+		hover = false;
 		x = SOURCE_BOX_X;
 		y = SOURCE_BOX_Y;
 		bitmap = al_load_bitmap("Resources/Textures/menu_option.bmp");
@@ -732,15 +749,50 @@ struct SourceBox {
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", SOURCE_FONT_SIZE, NULL);
 	}
 
-	void setSourceAndURL(std::string source, std::string url)
+	bool onHover() //Same code as "onClick()", but better to have both for code readability
 	{
-		this->source = source;
-		this->url = url;
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		if (state.x > (x - offsetX) && state.x < (x + offsetX)
+			&& state.y >(y - offsetY) && state.y < (y + offsetY)) //If this is true, the mouse cursor is within the bitmap. Also, the answer has to be visible
+		{
+			return true;
+			//al_show_native_message_box(NULL, "False!", "False!", "False!", NULL, NULL);
+		}
+		return false;
+	}
+
+	bool onClick()
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		if (state.x > (x - offsetX) && state.x < (x + offsetX)
+			&& state.y >(y - offsetY) && state.y < (y + offsetY)) //If this is true, the mouse cursor is within the bitmap. Also, the answer has to be visible
+		{
+			return true;
+			//al_show_native_message_box(NULL, "False!", "False!", "False!", NULL, NULL);
+		}
+		return false;
+	}
+
+	void setHover(bool hover)
+	{
+		this->hover = hover;
+	}
+
+	void setSourceAndURL(int questionNumber, int quizStartIndex)
+	{
+		source = sources[questionNumber + quizStartIndex][0];
+		url = sources[questionNumber + quizStartIndex][1];
 	}
 
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x - offsetX, y - offsetY, NULL);
+		if (hover)
+			al_draw_text(font, al_map_rgb(0, 0, 200), x, y - (SOURCE_FONT_SIZE / 2), ALLEGRO_ALIGN_CENTER, source.c_str());
+		else if (!hover)
+			al_draw_text(font, al_map_rgb(0, 0, 0), x, y - (SOURCE_FONT_SIZE / 2), ALLEGRO_ALIGN_CENTER, source.c_str());
 	}
 
 	void clear()

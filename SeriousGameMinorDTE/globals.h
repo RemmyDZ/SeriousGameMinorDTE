@@ -54,7 +54,7 @@ const int ANSWER_LONG_FONT_SIZE = 25; //For long answers so it doesn't go out of
 
 const int SCORE_FONT_SIZE = 60;
 
-const int SOURCE_FONT_SIZE = 30;
+const int SOURCE_FONT_SIZE = 40;
 
 const int SOURCE_BUTTON_X = 1060;
 const int SOURCE_BUTTON_Y = 480;
@@ -338,26 +338,26 @@ std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"LiDAR data co
 																"The Dutch government created the Spoorwegwet on April 23th of 2003."} };
 
 //Order: Danny - Hicham - Ivo - Valtteri - Remco
-std::string sources[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][2] = { {"Source", "URL"},
-																{"Source", "URL"},
-																{"Source", "URL"},
-																{"Source", "URL"},
-																{"Source", "URL"}, 
-																{"Source", "URL"},
-																{"Source", "URL"}, 
-																{"Source", "URL"},
-																{"Source", "URL"}, 
-																{"Source", "URL"},
-																{"Dubayah, R.O. & Drake, J.B.", "https://academic.oup.com/jof/article/98/6/44/4614333"}, 
+std::string sources[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][2] = { {"Dubayah, R.O. & Drake, J.B.", "https://academic.oup.com/jof/article/98/6/44/4614333"},
 																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
-																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"}, 
 																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
-																{"Corr, L. & Stagnitto, J.", "https://books.google.nl/books?hl=en&lr=&id=TRWFmnv8jP0C&oi=fnd&pg=PR23&dq=Corr,+L.,+%26+Stagnitto,+J.+(2011).+Agile+data+warehouse+design:+Collaborative+dimensional+modeling,+from+whiteboard+to+star+schema.+DecisionOne+Consulting.+&ots=SNJv5oP87z&sig=kACjJpl2sfVFemxP_kvlPbX89ts#v=onepage&q=Corr%2C%20L.%2C%20%26%20Stagnitto%2C%20J.%20(2011).%20Agile%20data%20warehouse%20design%3A%20Collaborative%20dimensional%20modeling%2C%20from%20whiteboard%20to%20star%20schema.%20DecisionOne%20Consulting.&f=false"}, 
+																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
+																{"Corr, L. & Stagnitto, J.", "https://books.google.nl/books?hl=en&lr=&id=TRWFmnv8jP0C&oi=fnd&pg=PR23&dq=Corr,+L.,+%26+Stagnitto,+J.+(2011).+Agile+data+warehouse+design:+Collaborative+dimensional+modeling,+from+whiteboard+to+star+schema.+DecisionOne+Consulting.+&ots=SNJv5oP87z&sig=kACjJpl2sfVFemxP_kvlPbX89ts#v=onepage&q=Corr%2C%20L.%2C%20%26%20Stagnitto%2C%20J.%20(2011).%20Agile%20data%20warehouse%20design%3A%20Collaborative%20dimensional%20modeling%2C%20from%20whiteboard%20to%20star%20schema.%20DecisionOne%20Consulting.&f=false"},
 																{"Garani, G. & Helmer, S.", "https://www.igi-global.com/article/content/74754"},
-																{"Boehm, J. & Liu, K.", "https://discovery.ucl.ac.uk/id/eprint/1471583/"}, 
+																{"Boehm, J. & Liu, K.", "https://discovery.ucl.ac.uk/id/eprint/1471583/"},
 																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
 																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
 																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
+																{"Source", "URL"},
+																{"Source", "URL"},
+																{"Source", "URL"},
+																{"Source", "URL"},
+																{"Source", "URL"}, 
+																{"Source", "URL"},
+																{"Source", "URL"}, 
+																{"Source", "URL"},
+																{"Source", "URL"}, 
+																{"Source", "URL"},
 																{"Source", "URL"}, 
 																{"Source", "URL"},
 																{"Source", "URL"}, 

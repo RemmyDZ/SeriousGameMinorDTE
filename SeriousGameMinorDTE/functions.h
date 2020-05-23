@@ -2,7 +2,7 @@
 
 //Forward declerations
 void resetAnswers(Answer answer[]);
-void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int questionNumber);
+void goToNextQuestion(Question &question, Answer answer[], SourceBox &sourceBox, int quizNumber, int questionNumber);
 void checkForAnswers(Question &question, Answer answer[], bool randomized);
 void showExplaination(Question &question, int quizNumber, int questionNumber, ALLEGRO_COLOR color);
 void setGameState(int newGameState);
@@ -21,7 +21,7 @@ void resetAnswers(Answer answer[])
 }
 
 //Go to the next question in the current quiz
-void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int questionNumber) //Questionnumber -1 means the question
+void goToNextQuestion(Question &question, Answer answer[], SourceBox &sourceBox, int quizNumber, int questionNumber) //Questionnumber -1 means the question
 {
 	int quizStartIndex = 0; //Give it a value so the code below doesn't use uninitialized memory FIX WARNING
 	switch (quizNumber)
@@ -72,6 +72,8 @@ void goToNextQuestion(Question &question, Answer answer[], int quizNumber, int q
 		//printf("%i\n", answers[questionNumber][i].length());
 	}
 	answer[std::stoi(answers[questionNumber+quizStartIndex][4])].setCorrectAnswer(true);
+
+	sourceBox.setSourceAndURL(questionNumber, quizStartIndex);
 }
 
 void checkForAnswers(Question &question, Answer answer[], bool randomized) 
