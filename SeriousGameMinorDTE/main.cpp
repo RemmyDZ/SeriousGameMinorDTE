@@ -377,7 +377,7 @@ int main()
 					if (isAnswerGiven && fadeout.isVisible && sourceBox.onClick())
 					{
 						std::string url = sourceBox.getURL();
-						ShellExecuteA(NULL, "open", url.c_str(), NULL, NULL, SW_SHOWNORMAL);
+						ShellExecuteA(NULL, "open", url.c_str(), NULL, NULL, SW_SHOWNORMAL); //Only works on Windows!
 						
 					}
 				}
