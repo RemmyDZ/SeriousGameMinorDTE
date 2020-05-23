@@ -253,6 +253,11 @@ int main()
 						closeSourceButton.setBitmap(1);
 					else
 						closeSourceButton.setBitmap(DEFAULT);
+
+					if (sourceBox.onHover())
+						sourceBox.setHover(true);
+					else
+						sourceBox.setHover(false);
 				}
 			}
 
