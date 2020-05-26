@@ -380,7 +380,7 @@ std::string sources[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][2] = { {"Dubayah, R.O. &
 																{"Gandhi, Thota, Kuchembuck & Swartz", "https://sloanreview.mit.edu/article/demystifying-data-monetization"},
 																{"LiDAR UK", "http://www.lidar-uk.com/how-lidar-works/"},
 																{"LiDAR UK", "http://www.lidar-uk.com/how-lidar-works/"},
-																{"ARBOpodium", " https://www.arbopodium.nl/arbo-index/arbo-in-de-praktijk/lasers/"},
+																{"ARBOpodium", "https://www.arbopodium.nl/arbo-index/arbo-in-de-praktijk/lasers/"},
 																{"Wolford, B.", "https://gdpr.eu/what-is-gdpr/"},
 																{"Daniela Iordan, G.P.", "https://www.researchgate.net/publication/313509734_THE_ACCURACY_OF_LiDAR_MEASUREMENTS_FOR_THE_DIFFERENT_LAND_COVER_CATEGORIES"},
 																{"Hokuyo USA", "https://www.hokuyo-usa.com/application/files/9214/7196/2011/UTM-30LX-EW_Specification.pdf"},
