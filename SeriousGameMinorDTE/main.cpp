@@ -70,8 +70,8 @@ int main()
 	al_reserve_samples(AMOUNT_OF_SAMPLES);
 
 	//Load audio samples
-	backgroundMusic = al_load_sample("Resources/Audio/bg_music.mp3"); //MP3 doesn't work!
-	clickSound = al_load_sample("Resources/Audio/button_click.mp3"); //MP3 doesn't work!
+	//backgroundMusic = al_load_sample("Resources/Audio/bg_music.mp3"); //MP3 doesn't work!
+	//clickSound = al_load_sample("Resources/Audio/button_click.mp3"); //MP3 doesn't work!
 
 	//Create event queue and event listeners
 	ALLEGRO_EVENT_QUEUE* event_queue;
