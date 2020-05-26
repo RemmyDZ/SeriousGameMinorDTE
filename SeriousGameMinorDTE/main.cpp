@@ -70,8 +70,8 @@ int main()
 	al_reserve_samples(AMOUNT_OF_SAMPLES);
 
 	//Load audio samples
-	//backgroundMusic = al_load_sample("Resources/Audio/bg_music.mp3"); //MP3 doesn't work!
-	//clickSound = al_load_sample("Resources/Audio/button_click.mp3"); //MP3 doesn't work!
+	backgroundMusic = al_load_sample("Resources/Audio/bg_music.wav"); 
+	clickSound = al_load_sample("Resources/Audio/button_click.wav"); 
 
 	//Create event queue and event listeners
 	ALLEGRO_EVENT_QUEUE* event_queue;
@@ -128,6 +128,9 @@ int main()
 
 	//Start timer
 	al_start_timer(timer);
+
+	//Play background music on loop
+	al_play_sample(backgroundMusic, 0.1, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
 
 	//Main loop
 	while (!isGameFinished)
@@ -299,6 +302,7 @@ int main()
 				{
 					if (startQuiz.onClick())
 					{
+						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 						setGameState(QUIZ_MENU);
 					}
 					/*else if (checkSource.onClick())
@@ -307,6 +311,7 @@ int main()
 					}*/
 					else if (quitGame.onClick())
 					{
+						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 						isGameFinished = true;
 					}
 				}
@@ -317,6 +322,7 @@ int main()
 				{
 					if (mainMenuButton[1].onClick())
 					{
+						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 						background.setBitmap(DEFAULT);
 						setGameState(MAIN_MENU);
 					}
@@ -324,6 +330,7 @@ int main()
 					{
 						if (quizButton[i].onClick()) //Check if button is clicked
 						{
+							al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 							switch (quizButton[i].quizNumber)
 							{
 							case 0:
@@ -359,8 +366,10 @@ int main()
 				if (event.mouse.button == 1) //Left click
 				{
 					checkForAnswers(question, answer, true);
+					//al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 					if (isAnswerGiven && nextQuestionButton.onClick() && !fadeout.isVisible) //Only go to the next question when an answer has been given and the button has been pressed
 					{
+						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 						if (currentQuestion < 9)
 						{
 							currentQuestion++;
@@ -378,19 +387,23 @@ int main()
 					}
 					if (mainMenuButton[0].onClick() && !fadeout.isVisible)
 					{
+						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 						background.setBitmap(DEFAULT);
 						setGameState(MAIN_MENU);
 					}
 					if (isAnswerGiven && sourceButton.onClick() && !fadeout.isVisible)
 					{
+						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 						fadeout.setVisibility(true);
 					}
 					if (isAnswerGiven && fadeout.isVisible && closeSourceButton.onClick())
 					{
+						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 						fadeout.setVisibility(false);
 					}
 					if (isAnswerGiven && fadeout.isVisible && sourceBox.onClick())
 					{
+						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 						std::string url = sourceBox.getURL();
 						ShellExecuteA(NULL, "open", url.c_str(), NULL, NULL, SW_SHOWNORMAL); //Only works on Windows!
 						
@@ -404,6 +417,7 @@ int main()
 				{
 					if (mainMenuButton[1].onClick())
 					{
+						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 						background.setBitmap(DEFAULT);
 						setGameState(MAIN_MENU);
 					}
