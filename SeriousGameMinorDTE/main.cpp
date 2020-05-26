@@ -62,6 +62,17 @@ int main()
 	ALLEGRO_TIMER* timer = NULL;
 	timer = al_create_timer(1.0 / FPS);
 
+	//Create audio samples
+	ALLEGRO_SAMPLE* backgroundMusic = NULL;
+	ALLEGRO_SAMPLE* clickSound = NULL;
+
+	//Reserve audio samples
+	al_reserve_samples(AMOUNT_OF_SAMPLES);
+
+	//Load audio samples
+	backgroundMusic = al_load_sample("Resources/Audio/bg_music.mp3"); //MP3 doesn't work!
+	clickSound = al_load_sample("Resources/Audio/button_click.mp3"); //MP3 doesn't work!
+
 	//Create event queue and event listeners
 	ALLEGRO_EVENT_QUEUE* event_queue;
 	event_queue = al_create_event_queue();
