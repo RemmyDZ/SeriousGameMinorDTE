@@ -11,6 +11,8 @@
 #include<allegro5/allegro_image.h>
 #include<allegro5/allegro_font.h>
 #include<allegro5/allegro_ttf.h>
+#include<allegro5/allegro_audio.h>
+#include<allegro5/allegro_acodec.h>
 #include"globals.h"
 #include"objects.h"
 #include"functions.h"
@@ -42,12 +44,14 @@ int main()
 	ALLEGRO_COLOR BLACK = al_map_rgb(0, 0, 0);
 
 	//Initialize addons
+	al_install_keyboard();
+	al_install_mouse();
+	al_install_audio();
 	al_init_primitives_addon();
 	al_init_image_addon();
 	al_init_font_addon();
 	al_init_ttf_addon();
-	al_install_keyboard();
-	al_install_mouse();
+	al_init_acodec_addon();
 
 	//Set display icon (after image addon loaded)
 	ALLEGRO_BITMAP* icon;
@@ -496,7 +500,12 @@ int main()
 	al_destroy_timer(timer);
 	al_destroy_event_queue(event_queue);
 	al_shutdown_primitives_addon();
+	al_shutdown_font_addon();
+	al_shutdown_ttf_addon();
+	al_shutdown_native_dialog_addon();
+	al_shutdown_image_addon();
 	al_uninstall_keyboard();
 	al_uninstall_mouse();
+	al_uninstall_audio();
 	al_uninstall_system();
 }
