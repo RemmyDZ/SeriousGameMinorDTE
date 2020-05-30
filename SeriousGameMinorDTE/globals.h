@@ -75,7 +75,7 @@ const int MAIN_MENU_BUTTON_FONT_SIZE = 30;
 //const int ANSWER_Y[4] = { 550, 550, DISPLAY_HEIGHT - 175, DISPLAY_HEIGHT - 175 }; --> NOT NEEDED ANYMORE
 
 //Amount of audio samples
-const int AMOUNT_OF_SAMPLES = 2; //1 for background music, 1 for clicking sound
+const int AMOUNT_OF_SAMPLES = 10; //1 for background music, 1 for clicking sound and 8 for buffers (so that multiple clicking sounds can be played at once)
 
 //Maximum amount of possible answers per question
 const int MAX_ANSWERS = 4;
