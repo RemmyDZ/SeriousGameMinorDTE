@@ -3,7 +3,7 @@
 //Forward declerations
 void resetAnswers(Answer answer[]);
 void goToNextQuestion(Question &question, Answer answer[], SourceBox &sourceBox, int quizNumber, int questionNumber);
-void checkForAnswers(Question &question, Answer answer[], bool randomized);
+bool checkForAnswers(Question &question, Answer answer[], bool randomized);
 void showExplaination(Question &question, int quizNumber, int questionNumber, ALLEGRO_COLOR color);
 void setGameState(int newGameState);
 
@@ -76,7 +76,7 @@ void goToNextQuestion(Question &question, Answer answer[], SourceBox &sourceBox,
 	sourceBox.setSourceAndURL(questionNumber, quizStartIndex);
 }
 
-void checkForAnswers(Question &question, Answer answer[], bool randomized) 
+bool checkForAnswers(Question &question, Answer answer[], bool randomized) 
 {
 	if (!isAnswerGiven) //Only proceed with the code if an answer hasn't been given yet
 	{
@@ -108,9 +108,11 @@ void checkForAnswers(Question &question, Answer answer[], bool randomized)
 					showExplaination(question, gameState, currentRandomQuestion, color);
 				else if(!randomized)
 					showExplaination(question, gameState, currentQuestion, color);
+				return true;
 			}
 		}
 	}
+	return false;
 }
 
 void showExplaination(Question &question, int quizNumber, int questionNumber, ALLEGRO_COLOR color)

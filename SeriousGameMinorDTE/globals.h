@@ -1,7 +1,7 @@
 #pragma once
 
 //Version
-const std::string VERSION = "2.1";
+const std::string VERSION = "2.2";
 const int VERSION_FONT_SIZE = 16;
 
 //Screen resolution
@@ -61,10 +61,10 @@ const int SOURCE_BUTTON_Y = 480;
 const int SOURCE_BUTTON_FONT_SIZE = 30;
 
 const int SOURCE_BOX_X = DISPLAY_WIDTH / 2;
-const int SOURCE_BOX_Y = DISPLAY_HEIGHT / 2;
+const int SOURCE_BOX_Y = (DISPLAY_HEIGHT / 2) - 100;
 
 const int CLOSE_SOURCE_BUTTON_X = 1150;
-const int CLOSE_SOURCE_BUTTON_Y = 280;
+const int CLOSE_SOURCE_BUTTON_Y = 180;
 
 const int MAIN_MENU_BUTTON_X_QUIZ_MENU = DISPLAY_WIDTH - 250;
 const int MAIN_MENU_BUTTON_Y_QUIZ_MENU = DISPLAY_HEIGHT - 70;

@@ -365,7 +365,8 @@ int main()
 			{
 				if (event.mouse.button == 1) //Left click
 				{
-					checkForAnswers(question, answer, true);
+					if (checkForAnswers(question, answer, true))
+						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 					//al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 					if (isAnswerGiven && nextQuestionButton.onClick() && !fadeout.isVisible) //Only go to the next question when an answer has been given and the button has been pressed
 					{
