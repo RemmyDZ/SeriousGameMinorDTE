@@ -244,16 +244,16 @@ std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Why are outlying 
 
 //Answers (CHANGE TO VECTORS)
 //Order: Danny - Hicham - Ivo - Valtteri - Remco
-std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"", "", "", "", ""}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
-											{"", "", "", "", ""},
+std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"Outliers are still valuable data points, whereas noise are points that don't add (or even detract) valuable/useful information", "Outliers and data noise are the same", "Outliers do not add valuable information, whereas data noise still does add viable information", "", "0"}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
+											{"The resolution of the data", "The amount of data", "The inherent quality of the data as characterized by its accuracy, precision, bias, level of error, etc.", "It doesn\'t mean anything, it\'s just a buzzword", "2"},
+											{"They will make more money with better data", "Quality data means better business decisions", " Data quality doesn\'t really matter", "More data equals better data", "1"},
+											{"Yes", "No", "", "", "1"},
+											{"Value correlation analysis", "Structural analysis", "Value inspection", "Aggregation correlation analysis", "1"},
+											{"It is extremely time consuming", "It is a virtually impossible venture", "The GDPR forbids it", "", "0"},
+											{"Ensure top-level management involvement", " Operate a data issue log", "Create transparency by making the data public", "", "2"},
+											{"Completeness", "Consistency", "Integrity", "All of the above", "3"},
+											{"It should be left as it is", "Missing values need to be filled in by extrapolating", "Only use database entries, which have all necessary variables for doing a certain analysis", "Remove all entries, which are not complete in every data entry", "2"},
+											{"Get equipment with more sensitive sensors", "Improve the settings of your LiDAR camera", "Remove outside influences", "All of the above", "3"},
 											{"Able to handle large amounts of data and easy to produce new queries", "Widely used and easy to understand", "", "", "0"}, 
 											{"Entity Relationship Modelling", "Multidimensional Modelling", "Fact-Oriented Modelling", "All of the above", "3"},
 											{"Correct", "Incorrect", "", "", "0"}, 
