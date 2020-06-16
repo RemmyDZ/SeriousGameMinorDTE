@@ -244,7 +244,17 @@ std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Why are outlying 
 
 //Answers (CHANGE TO VECTORS)
 //Order: Danny - Hicham - Ivo - Valtteri - Remco
-std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"Able to handle large amounts of data and easy to produce new queries", "Widely used and easy to understand", "", "", "0"}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
+std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"", "", "", "", ""}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
+											{"", "", "", "", ""},
+											{"", "", "", "", ""},
+											{"", "", "", "", ""},
+											{"", "", "", "", ""},
+											{"", "", "", "", ""},
+											{"", "", "", "", ""},
+											{"", "", "", "", ""},
+											{"", "", "", "", ""},
+											{"", "", "", "", ""},
+											{"Able to handle large amounts of data and easy to produce new queries", "Widely used and easy to understand", "", "", "0"}, 
 											{"Entity Relationship Modelling", "Multidimensional Modelling", "Fact-Oriented Modelling", "All of the above", "3"},
 											{"Correct", "Incorrect", "", "", "0"}, 
 											{"Correct", "Incorrect", "", "", "1"}, 
