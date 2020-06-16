@@ -11,8 +11,8 @@ const int DISPLAY_HEIGHT = 900;
 const std::string DISPLAY_TITLE = "Serious game DTE minor Group 1";
 
 //Game states
-enum GAMESTATE { QUIZ_ONE, QUIZ_TWO, QUIZ_THREE, QUIZ_FOUR, QUIZ_FIVE, MAIN_MENU, QUIZ_MENU, END_SCREEN }; //Gameover maybe?
-enum QUIZ_INDEX { QUIZ_INDEX_ONE = 0, QUIZ_INDEX_TWO = 10, QUIZ_INDEX_THREE = 20, QUIZ_INDEX_FOUR = 30, QUIZ_INDEX_FIVE = 40 };
+enum GAMESTATE { QUIZ_ONE, QUIZ_TWO, QUIZ_THREE, QUIZ_FOUR, QUIZ_FIVE, QUIZ_SIX, MAIN_MENU, QUIZ_MENU, END_SCREEN };
+enum QUIZ_INDEX { QUIZ_INDEX_ONE = 0, QUIZ_INDEX_TWO = 10, QUIZ_INDEX_THREE = 20, QUIZ_INDEX_FOUR = 30, QUIZ_INDEX_FIVE = 40, QUIZ_INDEX_SIX = 50 };
 
 int gameState = MAIN_MENU; //Start in main menu
 
@@ -84,7 +84,7 @@ const int MAX_ANSWERS = 4;
 const int MAX_QUESTIONS = 10;
 
 //Amount of quiz subjects (1 for every individual research)
-const int AMOUNT_OF_SUBJECTS = 5;
+const int AMOUNT_OF_SUBJECTS = 6; //Main quiz about data quality and 5 for each individual research
 
 //Answer left or right --> This decides what bitmap to load
 enum POSITION { LEFT, RIGHT, TOP, BOTTOM};
@@ -119,7 +119,18 @@ int currentRandomQuestion = 0; //Placeholder for real question number, currentQu
 
 
 //Order: Danny - Hicham - Ivo - Valtteri - Remco
-std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = {	{"What characteristics does a modelling tool need for modelling LiDAR data?", 
+std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Why are outlying data points not considered data noise?",
+																"What does the term \'data quality\' entail?",
+																"Why should companies care about the quality of their data?",
+																"Does quality data mean more business potential?",
+																"Which data quality analysis technique is best suited for checking data value uniqueness?",
+																"What is the biggest issue with reverification events?",
+																"Which of the following is not an example of a data quality best practice?",
+																"Which of the following is a data quality dimension?",
+																"What should be done with missing values in data entries?",
+																"How can we improve the accuracy when measuring points with a LiDAR camera?" },
+																				
+																{"What characteristics does a modelling tool need for modelling LiDAR data?", 
 																"What are possible candidates for modelling LiDAR data?", 
 																"Entity Relationship Modelling produces databases with as less redundancy (double values) as possible.", 
 																"Entity Relationship Modelling has a structure that makes producing new queries very simple.", 
