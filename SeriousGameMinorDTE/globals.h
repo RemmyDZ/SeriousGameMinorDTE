@@ -306,7 +306,18 @@ std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"O
 											{"NS", "Dutch government", "European Union", "United Nations", "1"} };
 
 //Order: Danny - Hicham - Ivo - Valtteri - Remco
-std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"LiDAR data contains large amounts of numbers and therefore needs to be able to handle large amounts of data. Making it easier to produce new queries also makes this handling easier. However being widely used and easy to understand is not necessary, but could improve readability and the depth of the modelling tool.",
+std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"",
+																"",
+																"",
+																"",
+																"",
+																"",
+																"",
+																"",
+																"",
+																""},
+
+																{"LiDAR data contains large amounts of numbers and therefore needs to be able to handle large amounts of data. Making it easier to produce new queries also makes this handling easier. However being widely used and easy to understand is not necessary, but could improve readability and the depth of the modelling tool.",
 																"All of these modelling tools are possible candidates, because they can all handle large amounts of data.", 
 																"Entity relationship modelling leads to databases that have an intricate and efficient pathing with a lot of foreign keys. This construction leads to a database (almost) no repeating values and therefore no redundancy.", 
 																"Entity relationship modelling creates intricate joins and has a lot of foreign keys. These need to be incorporated during the production of new queries and makes this a lot harder.", 
