@@ -306,16 +306,16 @@ std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"O
 											{"NS", "Dutch government", "European Union", "United Nations", "1"} };
 
 //Order: Danny - Hicham - Ivo - Valtteri - Remco
-std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"",
-																"",
-																"",
-																"",
-																"",
-																"",
-																"",
-																"",
-																"",
-																""},
+std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Outliers may be considered data noise in a certain context, but they are actually two separate things. Noise can be defined as mislabeled examples or errors in the values of attributes, whereas outliers are defined as abnormalities or anomalies.",
+																"The inherent quality of the data as characterized by its accuracy, precision, bias, level of error, etc.",
+																"Companies who focus on the quality of data are more likely to make better decisions.",
+																"Better data quality doesn’t automatically mean better business decisions.",
+																"Structural analysis checks a collection of values for certain constraints like uniqueness.",
+																"No explaination needed.",
+																"Making company data public is rarely a good idea for obvious reasons. Top-level management involvement ensures more quality control, as well as operating an issue log.",
+																"Completeness, consistency and integrity are three of the many data quality dimensions. Other examples include validity, accessibility and accuracy.",
+																"Just making analyses by doing nothing and extrapolating values will lead to completely wrong analyses. Also not all entries need to be removed, since they could be right with another analysis and removing them would impact these analyses.",
+																"All of the above questions will improve the accuracy of all measured points when making a LiDAR recording. Better sensors will lead to more accurate readings and the wrong settings and outside influences like the weather will lead to worse readings."},
 
 																{"LiDAR data contains large amounts of numbers and therefore needs to be able to handle large amounts of data. Making it easier to produce new queries also makes this handling easier. However being widely used and easy to understand is not necessary, but could improve readability and the depth of the modelling tool.",
 																"All of these modelling tools are possible candidates, because they can all handle large amounts of data.", 
