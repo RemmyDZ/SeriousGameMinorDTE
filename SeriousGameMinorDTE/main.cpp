@@ -91,9 +91,10 @@ int main()
 	//MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Modelling LiDAR data", menuBox), MenuButton(1, "Data noise", menuBox),
 	//									MenuButton(2, "Creating and maintaining databases", menuBox), MenuButton(3, "What to do with modeled data", menuBox),
 	//									MenuButton(4, "Collecting LiDAR data", menuBox) };
-	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Collecting LiDAR data", menuBox, 4, "Remco de Zeeuw"), MenuButton(1, "Data noise", menuBox, 1, "Hicham Agzanay"),
-										MenuButton(2, "Modelling LiDAR data", menuBox, 0, "Danny Zoetmulder"), MenuButton(3, "Creating and maintaining databases", menuBox, 2, "Ivo Kalverboer"),
-										MenuButton(4, "What to do with modeled data", menuBox, 3, "Valtteri Rauhala") };
+	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Data quality", menuBox, 0, "MAIN QUIZ"),
+										MenuButton(1, "Collecting LiDAR data", menuBox, 5, "Remco de Zeeuw"), MenuButton(2, "Data noise", menuBox, 2, "Hicham Agzanay"),
+										MenuButton(3, "Modelling LiDAR data", menuBox, 1, "Danny Zoetmulder"), MenuButton(4, "Creating and maintaining databases", menuBox, 3, "Ivo Kalverboer"),
+										MenuButton(5, "What to do with modeled data", menuBox, 4, "Valtteri Rauhala") };
 	Question question(""); //Start with empty question
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
