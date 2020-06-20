@@ -373,7 +373,17 @@ std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Outliers may 
 																"The Dutch government created the Spoorwegwet on April 23th of 2003."} };
 
 //Order: Danny - Hicham - Ivo - Valtteri - Remco
-std::string sources[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][2] = { {"Dubayah, R.O. & Drake, J.B.", "https://academic.oup.com/jof/article/98/6/44/4614333"},
+std::string sources[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][2] = { {"Rouse", "https://searchbusinessanalytics.techtarget.com/definition/noisy-data"},
+																{"Redman", "https://books.google.nl/books/about/Data_Driven.html?id=Q5CJJ2wVkYAC&redir_esc=y"},
+																{"Spijker", "https://books.google.nl/books?id=zY3XBgAAQBAJ&hl=nl"},
+																{"Spijker", "https://books.google.nl/books?id=zY3XBgAAQBAJ&hl=nl"},
+																{"Olson", "https://books.google.nl/books?id=x8ahL57VOtcC&printsec=frontcover&redir_esc=y#v=onepage&q&f=false"},
+																{"Olson", "https://books.google.nl/books?id=x8ahL57VOtcC&printsec=frontcover&redir_esc=y#v=onepage&q&f=false"},
+																{"Profisee", "https://profisee.com/data-quality-what-why-how-who/"},
+																{"Knight", "https://www.dataversity.net/what-is-data-quality/"},
+																{"Fan & Geerts", "https://www.morganclaypool.com/doi/abs/10.2200/S00439ED1V01Y201207DTM030"},
+																{"Csanyi & Toth", "https://www.ingentaconnect.com/content/asprs/pers/2007/00000073/00000004/art00004"},
+																{"Dubayah, R.O. & Drake, J.B.", "https://academic.oup.com/jof/article/98/6/44/4614333"},
 																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
 																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
 																{"Li, Q. & Chen, Y.L.", "https://link.springer.com/chapter/10.1007/978-3-540-89556-5_6"},
