@@ -1,7 +1,7 @@
 #pragma once
 
 //Version
-const std::string VERSION = "2.2";
+const std::string VERSION = "2.3";
 const int VERSION_FONT_SIZE = 16;
 
 //Screen resolution
@@ -75,7 +75,7 @@ const int MAIN_MENU_BUTTON_FONT_SIZE = 30;
 //const int ANSWER_Y[4] = { 550, 550, DISPLAY_HEIGHT - 175, DISPLAY_HEIGHT - 175 }; --> NOT NEEDED ANYMORE
 
 //Amount of audio samples
-const int AMOUNT_OF_SAMPLES = 10; //1 for background music, 1 for clicking sound and 8 for buffers (so that multiple clicking sounds can be played at once)
+const int AMOUNT_OF_SAMPLES = 20; //1 for background music, 1 for clicking sound and 18 for buffers (so that multiple clicking sounds can be played at once)
 
 //Maximum amount of possible answers per question
 const int MAX_ANSWERS = 4;
@@ -244,7 +244,7 @@ std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Why are outlying 
 
 //Answers (CHANGE TO VECTORS)
 //Order: Danny - Hicham - Ivo - Valtteri - Remco
-std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"Outliers are still valuable data points, whereas noise are points that don't add (or even detract) valuable/useful information", "Outliers and data noise are the same", "Outliers do not add valuable information, whereas data noise still does add viable information", "", "0"}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
+std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"Outliers are still valuable data points, whereas noise are points that don\'t add (or even detract) valuable/useful information", "Outliers and data noise are the same", "Outliers do not add valuable information, whereas data noise still does add viable information", "", "0"}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
 											{"The resolution of the data", "The amount of data", "The inherent quality of the data as characterized by its accuracy, precision, bias, level of error, etc.", "It doesn\'t mean anything, it\'s just a buzzword", "2"},
 											{"They will make more money with better data", "Quality data means better business decisions", " Data quality doesn\'t really matter", "More data equals better data", "1"},
 											{"Yes", "No", "", "", "1"},
@@ -309,7 +309,7 @@ std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"O
 std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Outliers may be considered data noise in a certain context, but they are actually two separate things. Noise can be defined as mislabeled examples or errors in the values of attributes, whereas outliers are defined as abnormalities or anomalies.",
 																"The inherent quality of the data as characterized by its accuracy, precision, bias, level of error, etc.",
 																"Companies who focus on the quality of data are more likely to make better decisions.",
-																"Better data quality doesn’t automatically mean better business decisions.",
+																"Better data quality doesn\'t automatically mean better business decisions.",
 																"Structural analysis checks a collection of values for certain constraints like uniqueness.",
 																"No explaination needed.",
 																"Making company data public is rarely a good idea for obvious reasons. Top-level management involvement ensures more quality control, as well as operating an issue log.",
@@ -428,7 +428,7 @@ std::string sources[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][2] = { {"Rouse", "https:
 																{"ARBOpodium", "https://www.arbopodium.nl/arbo-index/arbo-in-de-praktijk/lasers/"},
 																{"Wolford, B.", "https://gdpr.eu/what-is-gdpr/"},
 																{"Daniela Iordan, G.P.", "https://www.researchgate.net/publication/313509734_THE_ACCURACY_OF_LiDAR_MEASUREMENTS_FOR_THE_DIFFERENT_LAND_COVER_CATEGORIES"},
-																{"Hokuyo USA", "https://www.hokuyo-usa.com/application/files/9214/7196/2011/UTM-30LX-EW_Specification.pdf"},
+																{"Hokuyo USA", "https://acroname.com/sites/default/files/assets/utm-30lx-ew_spec_en.pdf"},
 																{"Intersoft Consulting", "https://gdpr-info.eu/issues/right-of-access/"},
 																{"LiDAR UK", "http://www.lidar-uk.com/how-lidar-works/"},
 																{"LiDAR UK", "http://www.lidar-uk.com/how-lidar-works/"},

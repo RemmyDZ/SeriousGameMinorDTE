@@ -232,7 +232,7 @@ int main()
 				}
 			}
 
-			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
+			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE || gameState == QUIZ_SIX)
 			{
 				if (!fadeout.isVisible) //Don't bother with hover animations while the fadeout is being drawn
 				{
@@ -349,6 +349,9 @@ int main()
 							case 4:
 								setGameState(QUIZ_FIVE);
 								break;
+							case 5:
+								setGameState(QUIZ_SIX);
+								break;
 							default:
 								break;
 							}
@@ -362,7 +365,7 @@ int main()
 					}
 				}
 			}
-			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
+			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE || gameState == QUIZ_SIX)
 			{
 				if (event.mouse.button == 1) //Left click
 				{
@@ -465,7 +468,7 @@ int main()
 				mainMenuButton[1].draw();
 			}
 
-			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
+			else if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE || gameState == QUIZ_SIX)
 			{
 				question.draw();
 				if (isAnswerGiven)

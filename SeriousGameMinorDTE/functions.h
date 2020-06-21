@@ -41,6 +41,9 @@ void goToNextQuestion(Question &question, Answer answer[], SourceBox &sourceBox,
 	case 4:
 		quizStartIndex = QUIZ_INDEX_FIVE;
 		break;
+	case 5:
+		quizStartIndex = QUIZ_INDEX_SIX;
+		break;
 	default:
 		break;
 	}
