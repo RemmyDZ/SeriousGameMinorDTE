@@ -464,6 +464,7 @@ int main()
 	credits.clear();
 	mainMenuInfo.clear();
 	quizMenuInfo.clear();
+	soundButton.clear();
 	al_destroy_display(display);
 	al_destroy_sample(backgroundMusic);
 	al_destroy_sample(clickSound);
