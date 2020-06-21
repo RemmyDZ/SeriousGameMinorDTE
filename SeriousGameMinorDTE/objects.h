@@ -843,6 +843,36 @@ struct TextBox {
 	}
 };
 
+struct SoundButton {
+	int x, y;
+	ALLEGRO_BITMAP* bitmapNormal;
+	ALLEGRO_BITMAP* bitmapNormalMute;
+	ALLEGRO_BITMAP* bitmapHover;
+	ALLEGRO_BITMAP* bitmapHoverMute;
+	ALLEGRO_BITMAP* bitmap;
+
+	SoundButton()
+	{
+		x = SOUND_BUTTON_X;
+		y = SOUND_BUTTON_Y;
+		bitmapNormal = al_load_bitmap("Resources/Textures/speaker0.bmp");
+		bitmapNormalMute = al_load_bitmap("Resources/Textures/speaker1.bmp");
+		bitmapHover = al_load_bitmap("Resources/Textures/speaker0_hover.bmp");
+		bitmapHoverMute = al_load_bitmap("Resources/Textures/speaker1_hover.bmp");
+		bitmap = bitmapNormal; //Start with regular bitmap
+	}
+
+	void draw()
+	{
+		//Draw here
+	}
+
+	void clear()
+	{
+		al_destroy_bitmap(bitmap);
+	}
+};
+
 //struct Controller {
 //	//Question &question;
 //	//Answer* answer[MAX_ANSWERS];

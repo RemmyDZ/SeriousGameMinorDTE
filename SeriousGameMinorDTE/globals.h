@@ -63,6 +63,9 @@ const int SOURCE_BUTTON_FONT_SIZE = 30;
 const int SOURCE_BOX_X = DISPLAY_WIDTH / 2;
 const int SOURCE_BOX_Y = (DISPLAY_HEIGHT / 2) - 100;
 
+const int SOUND_BUTTON_X = 100;
+const int SOUND_BUTTON_Y = 600;
+
 const int CLOSE_SOURCE_BUTTON_X = 1150;
 const int CLOSE_SOURCE_BUTTON_Y = 180;
 
