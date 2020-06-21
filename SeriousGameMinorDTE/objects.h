@@ -845,26 +845,64 @@ struct TextBox {
 
 struct SoundButton {
 	int x, y;
+	bool isMuted;
 	ALLEGRO_BITMAP* bitmapNormal;
-	ALLEGRO_BITMAP* bitmapNormalMute;
-	ALLEGRO_BITMAP* bitmapHover;
-	ALLEGRO_BITMAP* bitmapHoverMute;
+	ALLEGRO_BITMAP* bitmapMute;
 	ALLEGRO_BITMAP* bitmap;
 
 	SoundButton()
 	{
 		x = SOUND_BUTTON_X;
 		y = SOUND_BUTTON_Y;
+		isMuted = false;
 		bitmapNormal = al_load_bitmap("Resources/Textures/speaker0.bmp");
-		bitmapNormalMute = al_load_bitmap("Resources/Textures/speaker1.bmp");
-		bitmapHover = al_load_bitmap("Resources/Textures/speaker0_hover.bmp");
-		bitmapHoverMute = al_load_bitmap("Resources/Textures/speaker1_hover.bmp");
+		bitmapMute = al_load_bitmap("Resources/Textures/speaker1.bmp");
 		bitmap = bitmapNormal; //Start with regular bitmap
+	}
+
+	bool onClick()
+	{
+		ALLEGRO_MOUSE_STATE state;
+		al_get_mouse_state(&state);
+		int width, height;
+		width = al_get_bitmap_width(bitmap);
+		height = al_get_bitmap_height(bitmap);
+		if (state.x > x && state.x < (x + width)
+			&& state.y > y && state.y < (y + height)) //If this is true, the mouse cursor is within the bitmap. 
+		{
+			return true;
+		}
+		return false;
+	}
+
+	bool getMuteStatus()
+	{
+		return isMuted;
+	}
+
+	void setMuteStatus(bool mute)
+	{
+		isMuted = mute;
+	}
+
+	void setBitmap(int bitmap) //0 = default, 1 = mute
+	{
+		switch (bitmap)
+		{
+		case 0:
+			this->bitmap = bitmapNormal;
+			break;
+		case 1:
+			this->bitmap = bitmapMute;
+			break;
+		default:
+			break;
+		}
 	}
 
 	void draw()
 	{
-		//Draw here
+		al_draw_bitmap(bitmap, x, y, NULL);
 	}
 
 	void clear()

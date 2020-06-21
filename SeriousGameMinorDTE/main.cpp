@@ -65,6 +65,7 @@ int main()
 	//Create audio samples
 	ALLEGRO_SAMPLE* backgroundMusic = NULL;
 	ALLEGRO_SAMPLE* clickSound = NULL;
+	ALLEGRO_SAMPLE_ID backgroundMusicID;
 
 	//Reserve audio samples
 	al_reserve_samples(AMOUNT_OF_SAMPLES);
@@ -107,6 +108,7 @@ int main()
 	TextBox credits(1430, 750, 20, "Danny Zoetmulder\nIvo Kalverboer\nHicham Agzanay\nValtteri Rauhala\nRemco de Zeeuw", true, 200, 30);
 	TextBox mainMenuInfo(850, 10, 53, "Welcome to our serious game. This game is comprised of quizes pertaining to our research into LiDAR data. We hope you have fun and maybe learn something new.", true, 750, 55);
 	TextBox quizMenuInfo(850, 10, 60, "Please select the quiz you would like to play.", true, 750, 65);
+	SoundButton soundButton;
 	//Two main menu buttons (with different coordinates), one for the quiz menu (which can also be used for the score screen) and one for the quiz itself
 	//TEST (REMOVE LATER)
 	/*for (size_t i = 0; i < (std::size(questions[currentQuestion])) - 1; i++)
@@ -131,7 +133,7 @@ int main()
 	al_start_timer(timer);
 
 	//Play background music on loop
-	al_play_sample(backgroundMusic, 0.1, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
+	al_play_sample(backgroundMusic, 0.1, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, &backgroundMusicID);
 
 	//Main loop
 	while (!isGameFinished)
@@ -315,6 +317,23 @@ int main()
 						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 						isGameFinished = true;
 					}
+
+					else if (soundButton.onClick())
+					{
+						if (soundButton.getMuteStatus()) //Sound is muted and will be un-muted
+						{
+							soundButton.setBitmap(0);
+							soundButton.setMuteStatus(false);
+							al_play_sample(backgroundMusic, 0.1, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, &backgroundMusicID);
+							
+						}
+						else if (!soundButton.getMuteStatus()) //Sound is un-muted and will be muted
+						{
+							soundButton.setBitmap(1);
+							soundButton.setMuteStatus(true);
+							al_stop_sample(&backgroundMusicID);
+						}
+					}
 				}
 			}
 			else if (gameState == QUIZ_MENU)
@@ -448,6 +467,7 @@ int main()
 				quitGame.draw();
 				credits.draw();
 				mainMenuInfo.draw();
+				soundButton.draw();
 				al_draw_textf(versionFont, BLACK, 800, 870, NULL, "Version: %s", VERSION.c_str());
 			}
 
