@@ -85,16 +85,16 @@ int main()
 	Background background(BACKGROUND_X, BACKGROUND_Y);
 	NextQuestionButton nextQuestionButton;
 	MenuBox menuBox("Test");
-	MenuButton startQuiz(0, "Start quizzing!", menuBox, 0, ""); //Quiznumber doesn't matter here, any number will do 
+	MenuButton startQuiz(0, "Start quizzing!", menuBox, 0, "", ""); //Quiznumber doesn't matter here, any number will do 
 	//MenuButton checkSource(1, "View sources", menuBox, 0, ""); //Quiznumber doesn't matter here, any number will do
-	MenuButton quitGame(1, "Quit", menuBox, 0, ""); //Quiznumber doesn't matter here, any number will do
+	MenuButton quitGame(1, "Quit", menuBox, 0, "", ""); //Quiznumber doesn't matter here, any number will do
 	//MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Modelling LiDAR data", menuBox), MenuButton(1, "Data noise", menuBox),
 	//									MenuButton(2, "Creating and maintaining databases", menuBox), MenuButton(3, "What to do with modeled data", menuBox),
 	//									MenuButton(4, "Collecting LiDAR data", menuBox) };
-	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Data quality", menuBox, 0, "MAIN QUIZ"),
-										MenuButton(1, "Collecting LiDAR data", menuBox, 5, "Remco de Zeeuw"), MenuButton(2, "Data noise", menuBox, 2, "Hicham Agzanay"),
-										MenuButton(3, "Modelling LiDAR data", menuBox, 1, "Danny Zoetmulder"), MenuButton(4, "Creating and maintaining databases", menuBox, 3, "Ivo Kalverboer"),
-										MenuButton(5, "What to do with modeled data", menuBox, 4, "Valtteri Rauhala") };
+	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Data quality", menuBox, 0, "", "Main Quiz"),
+										MenuButton(1, "Collecting LiDAR data", menuBox, 5, "Remco de Zeeuw", "Individual Research"), MenuButton(2, "Data noise", menuBox, 2, "Hicham Agzanay", "Individual Research"),
+										MenuButton(3, "Modelling LiDAR data", menuBox, 1, "Danny Zoetmulder", "Individual Research"), MenuButton(4, "Creating and maintaining databases", menuBox, 3, "Ivo Kalverboer", "Individual Research"),
+										MenuButton(5, "What to do with modeled data", menuBox, 4, "Valtteri Rauhala", "Individual Research") };
 	Question question(""); //Start with empty question
 	Answer answer[MAX_ANSWERS] = { Answer(LEFT, TOP, question), Answer(RIGHT, TOP, question),
 									Answer(LEFT, BOTTOM, question), Answer(RIGHT, BOTTOM, question) }; //Change text once text coordinates are implemented and update draw()
