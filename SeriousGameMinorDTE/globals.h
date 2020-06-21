@@ -74,8 +74,6 @@ const int MAIN_MENU_BUTTON_Y_QUIZ_MENU = DISPLAY_HEIGHT - 70;
 const int MAIN_MENU_BUTTON_X = 294;
 const int MAIN_MENU_BUTTON_Y = 480;
 const int MAIN_MENU_BUTTON_FONT_SIZE = 30;
-//const int ANSWER_X[4] = { DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3, DISPLAY_WIDTH/4, (DISPLAY_WIDTH/4)*3 }; --> OBSOLETE
-//const int ANSWER_Y[4] = { 550, 550, DISPLAY_HEIGHT - 175, DISPLAY_HEIGHT - 175 }; --> NOT NEEDED ANYMORE
 
 //Amount of audio samples
 const int AMOUNT_OF_SAMPLES = 20; //1 for background music, 1 for clicking sound and 18 for buffers (so that multiple clicking sounds can be played at once)
@@ -121,7 +119,7 @@ int currentQuestion = 0; //Starts at 0 because it acts as an index to the questi
 int currentRandomQuestion = 0; //Placeholder for real question number, currentQuestion is just linear when questions are randomized
 
 
-//Order: Danny - Hicham - Ivo - Valtteri - Remco
+//Order: Main Quiz - Danny - Hicham - Ivo - Valtteri - Remco
 std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Why are outlying data points not considered data noise?",
 																"What does the term \'data quality\' entail?",
 																"Why should companies care about the quality of their data?",
@@ -188,65 +186,8 @@ std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Why are outlying 
 																"Is a laser with a wavelength of 1550nm considered 'eye-safe'?", 
 																"Who wrote the Spoorwegwet (Railroad law)?" } };
 
-
-//std::string questions[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Which of the following parts is NOT present in a LiDAR camera?",
-//																"What is the correct formula a LiDAR camera uses to measure distance?",
-//																"\"When using a Class 1 laser, no safety precautions are needed\"",
-//																"Does collecting LiDAR data comply with the GDPR?",
-//																"Is the simulated data accurate enough to work with?",
-//																"What is the maximum scanning range of the LiDAR used by NS?",
-//																"If you want to see what personal data a company has stored about you, which GDPR law could you use?",
-//																"At what speed does a LiDAR laser travel?",
-//																"Is a laser with a wavelength of 1550nm considered 'eye-safe'?",
-//																"Who wrote the Spoorwegwet (Railroad law)?" },
-//
-//																{"What is a direct consequence of rain on LiDAR measurements?",
-//																"What visual distortion is characteristic of the rolling shutter effect?",
-//																"Which of these is the correct definition of the doppler effect?",
-//																"What type of weather can cause inaccurate readings?",
-//																"True or false: \"The doppler effect causes inaccuracy in the measurement of the distance between the camera and a stationary object?\"",
-//																"True or false: \"Noisy data is data that doesn\'t fit your beliefs\".",
-//																"Which two schools of thought are the most common for the removal of data noise?",
-//																"Are outlying data points considered data noise?",
-//																"What does the acronym INFFC stand for?",
-//																"Which of these is not a type of data noise within the context of a LiDAR?" },
-//
-//																{"What characteristics does a modelling tool need for modelling LiDAR data?",
-//																"What are possible candidates for modelling LiDAR data?",
-//																"Entity Relationship Modelling produces databases with as less redundancy (double values) as possible.",
-//																"Entity Relationship Modelling has a structure that makes producing new queries very simple.",
-//																"With Multidimensional Modelling every model is composed of 1 table with a multipart key, which is called a fact table.",
-//																"The difference between a STAR schema and a Snowflake schema is that a STAR schema contains more hierarchies, which make the schema more expansive.",
-//																"Using Document Oriented Modelling to make a NoSQL database can result in a database that can flexibly handle and process new and existing data.",
-//																"Which modelling method is the most readable for users?",
-//																"Which modelling method is most easy to perform?",
-//																"What is the best diagram for modelling LiDAR data (choose from the following answers)?" },
-//
-//																{"What method of processing data is most suitable for large, existing datasets?",
-//																"What method of processing data is most suitable for processing an incoming data flow?",
-//																"Which of these encoding formats reduce data to the smallest format?",
-//																"Which are the three most important requirements for data intensive applications?",
-//																"Partitioning of a data collection means:",
-//																"If you want to be able to retrieve your data as fast as possible you should opt for:",
-//																"When scaling vertically you:",
-//																"When stored on a machine, data is represented as:",
-//																"Which way of encoding is the most practical when you are sending data to/from a web application?",
-//																"Which measure helps improve data availability most?" },
-//
-//																{"Does raw LiDAR data need some kind of modifications to be user friendly?",
-//																"Which of the following subjects are utilizing LiDAR either in product or research?",
-//																"How much is expected data creation in 2030 ( in zettabytes, approx)?",
-//																"Companies should think of data as an asset.",
-//																"According to MIT-Sloan research \"what\'s your data worth\" data can be divided into three different categories, which category doesn\'t belong here? (1)?",
-//																"The data strategy is not important when a company wants to utilize data better.",
-//																"What benefits the data strategy provides? ( choose the INCORRECT option) ",
-//																"There are usually three different paths to data monetizations.",
-//																"Externally there are 3 different paths of data monetization. Choose the correct paths",
-//																"Data as a service is the simplest of the three paths and has the lowest business potential." } };
-
-
 //Answers (CHANGE TO VECTORS)
-//Order: Danny - Hicham - Ivo - Valtteri - Remco
+//Order: Main Quiz - Danny - Hicham - Ivo - Valtteri - Remco
 std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"Outliers are still valuable data points, whereas noise are points that don\'t add (or even detract) valuable/useful information", "Outliers and data noise are the same", "Outliers do not add valuable information, whereas data noise still does add viable information", "", "0"}, //Maximum of 4 answers for a single question + 1 string to determine the correct answer (which will be converted to an int)
 											{"The resolution of the data", "The amount of data", "The inherent quality of the data as characterized by its accuracy, precision, bias, level of error, etc.", "It doesn\'t mean anything, it\'s just a buzzword", "2"},
 											{"They will make more money with better data", "Quality data means better business decisions", " Data quality doesn\'t really matter", "More data equals better data", "1"},
@@ -308,7 +249,7 @@ std::string answers[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][MAX_ANSWERS + 1] = { {"O
 											{"Yes", "No", "", "", "0"},
 											{"NS", "Dutch government", "European Union", "United Nations", "1"} };
 
-//Order: Danny - Hicham - Ivo - Valtteri - Remco
+//Order: Main Quiz - Danny - Hicham - Ivo - Valtteri - Remco
 std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Outliers may be considered data noise in a certain context, but they are actually two separate things. Noise can be defined as mislabeled examples or errors in the values of attributes, whereas outliers are defined as abnormalities or anomalies.",
 																"The inherent quality of the data as characterized by its accuracy, precision, bias, level of error, etc.",
 																"Companies who focus on the quality of data are more likely to make better decisions.",
@@ -375,7 +316,7 @@ std::string explainations[AMOUNT_OF_SUBJECTS][MAX_QUESTIONS] = { {"Outliers may 
 																"Yes, 1550nm falls within the bandwidth of \'eye-safe\' wavelengths.", 
 																"The Dutch government created the Spoorwegwet on April 23th of 2003."} };
 
-//Order: Danny - Hicham - Ivo - Valtteri - Remco
+//Order: Main Quiz - Danny - Hicham - Ivo - Valtteri - Remco
 std::string sources[MAX_QUESTIONS * AMOUNT_OF_SUBJECTS][2] = { {"Rouse", "https://searchbusinessanalytics.techtarget.com/definition/noisy-data"},
 																{"Redman", "https://books.google.nl/books/about/Data_Driven.html?id=Q5CJJ2wVkYAC&redir_esc=y"},
 																{"Spijker", "https://books.google.nl/books?id=zY3XBgAAQBAJ&hl=nl"},

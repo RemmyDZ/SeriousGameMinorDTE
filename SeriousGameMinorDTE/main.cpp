@@ -87,11 +87,7 @@ int main()
 	NextQuestionButton nextQuestionButton;
 	MenuBox menuBox("Test");
 	MenuButton startQuiz(0, "Start quizzing!", menuBox, 0, "", ""); //Quiznumber doesn't matter here, any number will do 
-	//MenuButton checkSource(1, "View sources", menuBox, 0, ""); //Quiznumber doesn't matter here, any number will do
 	MenuButton quitGame(1, "Quit", menuBox, 0, "", ""); //Quiznumber doesn't matter here, any number will do
-	//MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Modelling LiDAR data", menuBox), MenuButton(1, "Data noise", menuBox),
-	//									MenuButton(2, "Creating and maintaining databases", menuBox), MenuButton(3, "What to do with modeled data", menuBox),
-	//									MenuButton(4, "Collecting LiDAR data", menuBox) };
 	MenuButton quizButton[AMOUNT_OF_SUBJECTS] = { MenuButton(0, "Data quality", menuBox, 0, "", "Main Quiz"),
 										MenuButton(1, "Collecting LiDAR data", menuBox, 5, "Remco de Zeeuw", "Individual Research"), MenuButton(2, "Data noise", menuBox, 2, "Hicham Agzanay", "Individual Research"),
 										MenuButton(3, "Modelling LiDAR data", menuBox, 1, "Danny Zoetmulder", "Individual Research"), MenuButton(4, "Creating and maintaining databases", menuBox, 3, "Ivo Kalverboer", "Individual Research"),
@@ -109,18 +105,6 @@ int main()
 	TextBox mainMenuInfo(850, 10, 53, "Welcome to our serious game. This game is comprised of quizes pertaining to our research into LiDAR data. We hope you have fun and maybe learn something new.", true, 750, 55);
 	TextBox quizMenuInfo(850, 10, 60, "Please select the quiz you would like to play.", true, 750, 65);
 	SoundButton soundButton;
-	//Two main menu buttons (with different coordinates), one for the quiz menu (which can also be used for the score screen) and one for the quiz itself
-	//TEST (REMOVE LATER)
-	/*for (size_t i = 0; i < (std::size(questions[currentQuestion])) - 1; i++)
-	{
-		answer[static_cast<int>(i)].setAnswer(currentQuestion, static_cast<int>(i));
-	}*/
-	//int answersAmount = (sizeof(answers) / sizeof(answers[0]));
-	//size_t result = std::size(answers[0]);
-	//int answersAmount = static_cast<int>(result);
-	
-	//Go to the first question
-	//goToNextQuestion(question, answer, gameState, currentQuestion);
 
 	//Load version font
 	ALLEGRO_FONT* versionFont;
@@ -151,51 +135,6 @@ int main()
 			isGameFinished = true;
 		}
 
-		if (event.type == ALLEGRO_EVENT_KEY_DOWN)
-		{
-			switch (event.keyboard.keycode)
-			{
-			/*case ALLEGRO_KEY_ESCAPE:
-				isGameFinished = true;
-				break;*/
-			/*case ALLEGRO_KEY_F:
-				if (fullScreen)
-				{
-					fullScreen = false;
-					al_toggle_display_flag(display, ALLEGRO_FULLSCREEN_WINDOW, false);
-				}
-				else if (!fullScreen)
-				{
-					fullScreen = true;
-					al_toggle_display_flag(display, ALLEGRO_FULLSCREEN_WINDOW, true);
-				}
-				break;*/
-			/*case ALLEGRO_KEY_SPACE:
-				background.setBitmap(DEFAULT);
-				setGameState(MAIN_MENU);
-				break;*/
-			//case ALLEGRO_KEY_SPACE:
-			//	if (gameState == QUIZ_ONE || gameState == QUIZ_TWO || gameState == QUIZ_THREE || gameState == QUIZ_FOUR || gameState == QUIZ_FIVE)
-			//	{
-			//		if (isAnswerGiven) //Only go to the next question when an answer has been given
-			//		{
-			//			if (currentQuestion < 9)
-			//			{
-			//				currentQuestion++;
-			//				resetAnswers(answer);
-			//				goToNextQuestion(question, answer, gameState, currentQuestion);
-			//				//question.setQuestion(2);
-			//			}
-			//			else if (currentQuestion == 9)
-			//			{
-			//				setGameState(MAIN_MENU);
-			//			}
-			//		}
-			//	}
-			//	break;
-			}
-		}
-
 		if (event.type == ALLEGRO_EVENT_MOUSE_AXES)
 		{
 			if (gameState == MAIN_MENU)
@@ -204,11 +143,6 @@ int main()
 					startQuiz.setBitmap(1); //HOVER doesn't work here, as its value is '3'
 				else
 					startQuiz.setBitmap(DEFAULT);
-
-				/*if (checkSource.onHover())
-					checkSource.setBitmap(1);
-				else
-					checkSource.setBitmap(DEFAULT);*/
 
 				if (quitGame.onHover())
 					quitGame.setBitmap(1);
@@ -308,10 +242,7 @@ int main()
 						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 						setGameState(QUIZ_MENU);
 					}
-					/*else if (checkSource.onClick())
-					{
-						setGameState(SOURCE_SCREEN);
-					}*/
+
 					else if (quitGame.onClick())
 					{
 						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
@@ -378,7 +309,6 @@ int main()
 							playerScore = 0; //Reset player score
 							randomQuestions.clear(); //Reset the vector with random question numbers
 							resetAnswers(answer);
-							//goToNextQuestion(question, answer, gameState, currentQuestion);
 							goToNextQuestion(question, answer, sourceBox, gameState, -1); //Random question
 						}
 					}
@@ -390,7 +320,6 @@ int main()
 				{
 					if (checkForAnswers(question, answer, true))
 						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
-					//al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 					if (isAnswerGiven && nextQuestionButton.onClick() && !fadeout.isVisible) //Only go to the next question when an answer has been given and the button has been pressed
 					{
 						al_play_sample(clickSound, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
@@ -398,10 +327,8 @@ int main()
 						{
 							currentQuestion++;
 							resetAnswers(answer);
-							//goToNextQuestion(question, answer, gameState, currentQuestion);
 							goToNextQuestion(question, answer, sourceBox, gameState, -1); //Random question
 							nextQuestionButton.setBitmap(DEFAULT);
-							//question.setQuestion(2);
 						}
 						else if (currentQuestion == 9)
 						{
@@ -463,7 +390,6 @@ int main()
 			{
 				menuBox.draw();
 				startQuiz.draw();
-				//checkSource.draw();
 				quitGame.draw();
 				credits.draw();
 				mainMenuInfo.draw();
@@ -484,7 +410,6 @@ int main()
 
 			else if (gameState == END_SCREEN)
 			{
-				//Draw score here (NO NEED, everything is done within the background)
 				mainMenuButton[1].draw();
 			}
 
@@ -509,11 +434,6 @@ int main()
 				}
 			}
 
-			/*else if (gameState == SOURCE_SCREEN)
-			{
-				source.draw();
-			}*/
-
 			al_flip_display(); //Everything is drawn to a buffer. Once you flip the display, the buffer replaces the current screen composition
 		}
 	}
@@ -528,9 +448,7 @@ int main()
 	menuBox.clear();
 	startQuiz.clear();
 	nextQuestionButton.clear();
-	//checkSource.clear();
 	quitGame.clear();
-	//source.clear();
 	for (int i = 0; i < AMOUNT_OF_SUBJECTS; i++)
 	{
 		quizButton[i].clear();
@@ -553,7 +471,6 @@ int main()
 	al_destroy_event_queue(event_queue);
 	al_shutdown_primitives_addon();
 	al_shutdown_font_addon();
-	//al_shutdown_ttf_addon();
 	al_shutdown_native_dialog_addon();
 	al_shutdown_image_addon();
 	al_uninstall_keyboard();

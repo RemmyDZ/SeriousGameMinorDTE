@@ -31,7 +31,6 @@ struct Question {
 		nrFontSize = QUESTION_NUMBER_FONT_SIZE;
 		bitmap = al_load_bitmap("Resources/Textures/Question_box.bmp");
 		bitmapCounter = al_load_bitmap("Resources/Textures/Question_counter.bmp");
-		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 		fontNormal = al_load_font("Resources/Fonts/GILLUBCD.ttf", QUESTION_FONT_SIZE, NULL);
 		fontLong = al_load_font("Resources/Fonts/GILLUBCD.ttf", QUESTION_FONT_SIZE_LONG, NULL);
 		fontExtraLong = al_load_font("Resources/Fonts/GILLUBCD.ttf", QUESTION_FONT_SIZE_EXTRA_LONG, NULL);
@@ -51,7 +50,6 @@ struct Question {
 
 	void setExplaination(int quizNumber, int questionNumber, ALLEGRO_COLOR color)
 	{
-		//fontColor = al_map_rgb(0, 255, 0);
 		fontColor = color;
 		question = explainations[quizNumber][questionNumber];
 		if (question.length() > QUESTION_EXTRA_LONG_TRESHOLD)
@@ -65,12 +63,9 @@ struct Question {
 	void draw()
 	{
 		al_draw_bitmap(bitmap, x, y, NULL);
-		//al_draw_tinted_bitmap(bitmap, al_map_rgba_f(1, 1, 1, 0.5), x, y, NULL);
 		al_draw_bitmap(bitmapCounter, x, 456, NULL);
-		//al_draw_text(font, al_map_rgb(0, 0, 0), textX, textY, NULL, question.c_str());
 		al_draw_multiline_text(font, fontColor, textX, textY, textMaxWidth, 0, NULL, question.c_str());
 		al_draw_textf(nrFont, al_map_rgb(0, 0, 0), nrTextX, nrTextY, NULL, "Question: %i/%zu", currentQuestion+1, std::size(questions[0])); //Plus 1, because currentQuestion is an index number, and we want to display a correct number
-		//FIX TOTAL QUESTIONS NOT SHOWING
 	}
 
 	void clear() //Garbage control
@@ -98,13 +93,11 @@ struct Answer {
 	ALLEGRO_FONT* fontSmall = NULL;
 	ALLEGRO_FONT* fontLarge = NULL;
 	ALLEGRO_FONT* font = NULL;
-	//Question &question;
 
 	Answer(int positionV, int positionH, Question question) //Constructor
 	{ //FIX 'Answer::y is unitialized' WARNING
 		textOffset = ANSWER_FONT_SIZE * 2;
 		answersAmount = std::size(questions[currentQuestion]);
-		//this->positionV = positionV;
 		this->positionH = positionH;
 		this->positionV = positionV;
 		isAnswer = false;
@@ -116,19 +109,12 @@ struct Answer {
 		if (positionV == LEFT)
 		{
 			x = DISPLAY_WIDTH / 4;
-		//	bitmapNormal = al_load_bitmap("Resources/Textures/Answer1.bmp"); //Load Answer1 bitmap for answers on the left
-		//	bitmapGreen = al_load_bitmap("Resources/Textures/Answer1_right.bmp");
-		//	bitmapRed = al_load_bitmap("Resources/Textures/Answer1_wrong.bmp");
 		}
 		else if (positionV == RIGHT)
 		{
 			x = (DISPLAY_WIDTH / 4) * 3;
-		//	bitmapNormal = al_load_bitmap("Resources/Textures/Answer2.bmp"); //Load Answer2 bitmap for answers on the right
-		//	bitmapGreen = al_load_bitmap("Resources/Textures/Answer2_right.bmp");
-		//	bitmapRed = al_load_bitmap("Resources/Textures/Answer2_wrong.bmp");
 		}
 		bitmap = bitmapNormal; //Start with the normal bitmap
-		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 220));
 		offsetX = al_get_bitmap_width(bitmap) / 2;
 		offsetY = al_get_bitmap_height(bitmap) / 2;
 		if (positionH == TOP) 
@@ -149,7 +135,6 @@ struct Answer {
 			&& isVisible) //If this is true, the mouse cursor is within the bitmap. Also, the answer has to be visible
 		{
 			return true;
-			//al_show_native_message_box(NULL, "False!", "False!", "False!", NULL, NULL);
 		}
 		return false;
 	}
@@ -163,7 +148,6 @@ struct Answer {
 			&& isVisible) //If this is true, the mouse cursor is within the bitmap. Also, the answer has to be visible
 		{
 			return true;
-			//al_show_native_message_box(NULL, "False!", "False!", "False!", NULL, NULL);
 		}
 		return false;
 	}
@@ -218,15 +202,12 @@ struct Answer {
 		if (isVisible) //Only draw bitmap when visible
 		{
 			al_draw_bitmap(bitmap, x - offsetX, y - offsetY, NULL);
-			//al_draw_text(font, al_map_rgb(0, 0, 0), x, y - textOffset, ALLEGRO_ALIGN_CENTER, answer.c_str());
 			al_draw_multiline_text(font, al_map_rgb(0, 0, 0), x, y-textOffset, al_get_bitmap_width(bitmap) - 50, 0, ALLEGRO_ALIGN_CENTER, answer.c_str());
-			//al_draw_textf(NULL, al_map_rgb(0, 0, 0), 10, 10, NULL, "y: %i", y);
 		}
 	}
 
 	void clear() //Garbage control
 	{
-		//al_destroy_bitmap(bitmap);
 		al_destroy_bitmap(bitmapNormal);
 		al_destroy_bitmap(bitmapGreen);
 		al_destroy_bitmap(bitmapRed);
@@ -362,7 +343,6 @@ struct Background {
 		bitmapEnd = al_load_bitmap("Resources/Textures/Score_screen.bmp");
 		bitmap = bitmapNormal; //Start with normal background
 		font = al_load_font("Resources/Fonts/GILLUBCD.ttf", SCORE_FONT_SIZE, NULL);
-		//al_convert_mask_to_alpha(bitmap, al_map_rgb(255, 0, 255));
 	}
 
 	void setBitmap(int bitmap) //0 = default, 1 = end screen
@@ -761,7 +741,6 @@ struct SourceBox {
 			&& state.y >(y - offsetY) && state.y < (y + offsetY)) //If this is true, the mouse cursor is within the bitmap. Also, the answer has to be visible
 		{
 			return true;
-			//al_show_native_message_box(NULL, "False!", "False!", "False!", NULL, NULL);
 		}
 		return false;
 	}
@@ -774,7 +753,6 @@ struct SourceBox {
 			&& state.y >(y - offsetY) && state.y < (y + offsetY)) //If this is true, the mouse cursor is within the bitmap. Also, the answer has to be visible
 		{
 			return true;
-			//al_show_native_message_box(NULL, "False!", "False!", "False!", NULL, NULL);
 		}
 		return false;
 	}
@@ -910,24 +888,3 @@ struct SoundButton {
 		al_destroy_bitmap(bitmap);
 	}
 };
-
-//struct Controller {
-//	//Question &question;
-//	//Answer* answer[MAX_ANSWERS];
-//	//MenuButton* menuButton;
-//	//Background* background;
-//
-//	Controller(const Question &question) //Constructor
-//	{
-//		//this->question = question;
-//		//this->answer = answer;
-//		//this->menuButton = menuButton;
-//		//this->background = background;
-//	}
-//
-//	void test()
-//	{
-//		//question.fontSize = 1;
-//		question.setQuestion(3);
-//	}
-//};

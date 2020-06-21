@@ -64,7 +64,6 @@ void goToNextQuestion(Question &question, Answer answer[], SourceBox &sourceBox,
 			randomQuestions.push_back(currentRandomQuestion);
 		}
 	}
-	//int answersAmount = (sizeof(answers) / sizeof(answers[questionNumber]));
 
 	for (int i = 0; i < MAX_ANSWERS; i++)
 	{
@@ -72,7 +71,6 @@ void goToNextQuestion(Question &question, Answer answer[], SourceBox &sourceBox,
 			answer[i].setAnswer(questionNumber+quizStartIndex, i);
 		if (answers[questionNumber+quizStartIndex][i].length() > ANSWER_RESIZE_LENGTH)
 			answer[i].setFont(false); //False means small font
-		//printf("%i\n", answers[questionNumber][i].length());
 	}
 	answer[std::stoi(answers[questionNumber+quizStartIndex][4])].setCorrectAnswer(true);
 
